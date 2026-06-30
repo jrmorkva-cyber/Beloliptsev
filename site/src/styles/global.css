@@ -1,0 +1,51 @@
+/* ============================================================================
+   global.css — новый слой Astro-порта (бандлится Vite, импортируется в BaseLayout).
+   ----------------------------------------------------------------------------
+   Бренд-канон значений живёт в public/colors_and_type.css (линкуется сырым тегом
+   в BaseLayout — 1:1 с продом, относительные пути к /fonts и /assets целы).
+   Здесь — Tailwind v4 + мост бренд-токенов в утилиты (для НОВОГО кода:
+   SEO-компоненты, острова, перестройка главной). Существующие страницы
+   используют свои .st-/.ds-/.bld-/.vh- классы и Tailwind не трогают.
+   (Tailwind работает через @tailwindcss/vite на Vite 7 — пин в package.json
+   overrides; на Vite 8 ломался, withastro/astro#16542.)
+   ========================================================================== */
+
+@import "tailwindcss";
+
+/* ---- Мост бренд-токенов → утилиты Tailwind (@theme inline: значение = var-ссылка,
+        резолвится в рантайме из colors_and_type.css) ----------------------------- */
+@theme inline {
+  --color-pear: var(--pear);
+  --color-pear-deep: var(--pear-deep);
+  --color-pear-ink: var(--pear-ink);
+  --color-space: var(--space);
+  --color-orange: var(--orange);
+  --color-orange-deep: var(--orange-deep);
+  --color-krayola: var(--krayola);
+  --color-platinum: var(--platinum);
+  --color-paper: var(--paper);
+  --color-yellow: var(--yellow);
+  --color-ink: var(--ink);
+  --color-on-dark: var(--on-dark);
+
+  --font-display: var(--font-display);
+  --font-display-editorial: var(--font-display-editorial);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-none: 0px;
+}
+
+/* ---- prefers-reduced-motion safety-net ----------------------------------------
+   Любая анимация → мгновенный показ контента. Никаких залипших opacity:0
+   (Яндекс штрафует скрытый текст). Дублирует логику motion.ts на уровне CSS. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

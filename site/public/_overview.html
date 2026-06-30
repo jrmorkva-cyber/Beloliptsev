@@ -1,0 +1,59 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<title>Белолипцев — все 25 экранов (astro)</title>
+<!-- Обзорный контакт-лист всех страниц текущего astro-сайта. Аналог website/_contactsheet.html,
+     но под astro-роуты (trailingSlash). Лежит в public → служится как /_overview.html. -->
+<style>
+  :root{ --w:1440; --h:880; --s:.30; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#0e0f13;font-family:ui-monospace,Menlo,Consolas,monospace;color:#cfd2da;padding:18px}
+  h1{font-size:15px;font-weight:600;letter-spacing:.04em;margin:0 0 4px;color:#fff}
+  p.sub{font-size:12px;color:#9aa0ad;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .cap{font-size:12px;letter-spacing:.02em;margin:0 0 6px;color:#9aa0ad}
+  .cap b{color:#fff;font-weight:600}
+  .thumb{width:100%;aspect-ratio:1440/880;overflow:hidden;position:relative;border:1px solid #23262f;border-radius:4px;background:#1a1b20}
+  .thumb iframe{width:calc(var(--w)*1px);height:calc(var(--h)*1px);border:0;transform:scale(var(--s));transform-origin:top left;position:absolute;top:0;left:0;pointer-events:none}
+  .cap a{color:#9aa0ad;text-decoration:none}.cap a:hover{color:#BB5C3C}
+  @media (max-width:1100px){ .grid{grid-template-columns:repeat(2,1fr)} :root{--s:.34} }
+</style></head>
+<body>
+<h1>Белолипцев — все экраны (astro-сайт)</h1>
+<p class="sub">25 страниц · геро 1440×880 · масштаб 30% · клик по названию открывает страницу целиком</p>
+<div class="grid" id="g"></div>
+<script>
+  const pages=[
+    ["Главная","/"],
+    ["Высотки · хаб","/visotki/"],
+    ["Котельническая","/visotki/kotelnicheskaya/"],
+    ["МГУ","/visotki/mgu/"],
+    ["Гостиница «Ленинградская»","/visotki/gostinitsa-leningradskaya/"],
+    ["Гостиница «Украина»","/visotki/gostinitsa-ukraina/"],
+    ["Авангард и конструктивизм · хаб","/modernizm/"],
+    ["Дом Наркомфина","/modernizm/dom-narkomfina/"],
+    ["Дом на набережной","/modernizm/dom-na-naberezhnoy/"],
+    ["Дом учёных","/modernizm/dom-uchenykh/"],
+    ["ЦАО · хаб","/cao/"],
+    ["Хамовники","/cao/khamovniki/"],
+    ["Замоскворечье","/cao/zamoskvoreche/"],
+    ["Сталинки","/stalinki/"],
+    ["Премиум","/premium/"],
+    ["Услуги · хаб","/uslugi/"],
+    ["Проверка квартиры","/uslugi/proverka-kvartiry/"],
+    ["Подход · методология","/podkhod/"],
+    ["ПДКП и аккредитив","/sdelka/predvarytelnyy-dogovor/"],
+    ["Ипотека на вторичку","/ipoteka/na-vtorichku/"],
+    ["Инвестиции","/investicii/"],
+    ["Кейсы","/keysy/"],
+    ["О себе","/o-sebe/"],
+    ["Оферта","/oferta/"],
+    ["Политика конфиденциальности","/politika-konfidentsialnosti/"]
+  ];
+  const g=document.getElementById('g');
+  pages.forEach(([name,src],i)=>{
+    const cell=document.createElement('div');
+    cell.innerHTML='<p class="cap"><b>'+(i+1)+'.</b> <a href="'+src+'" target="_blank">'+name+'</a></p>'
+      +'<div class="thumb"><iframe loading="lazy" scrolling="no" src="'+src+'"></iframe></div>';
+    g.appendChild(cell);
+  });
+</script>
+</body></html>

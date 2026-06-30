@@ -1,0 +1,209 @@
+/* ============================================================================
+   CHANGELOG
+   2026-06-04 · Aesthetic Overlay (редакционно-типографический слой).
+     ADDITIVE ONLY — ни один существующий токен/класс не переименован и не удалён.
+     + Editorial type tokens: --leading-display, --fs-hero-editorial
+       (+alias --size-hero-editorial), --size-hero, --size-display-{1,2,3}.
+     + Tracking tokens: --tracking-eyebrow (0.14em, фиксирует текущее значение),
+       --tracking-label (0.20em).
+     + Layout tokens: --measure-micro (320px), --space-section
+       (clamp(64px,9vw,160px)).
+     Новый слой классов (.t-hero, .t-eyebrow, .poster-grid, .crop-marks …) живёт
+     в styles/components.css + styles/base.css; кросс-схемные алиасы
+     (--text-* / --color-*) — в styles/tokens.css. Подключать ПОСЛЕ этого файла.
+   ----------------------------------------------------------------------------
+   Владимир Белолипцев — Solomon Estate
+   Colors & Type foundation
+   ----------------------------------------------------------------------------
+   Premium-resale real-estate personal brand, Moscow Central District (ЦАО).
+   Editorial, architectural, restrained. Deep navy + warm neutrals + terracotta.
+
+   FONTS — the two core brand families are bundled LOCALLY (real foundry files,
+   supplied by the client):
+     Anticva  (display serif) → fonts/Activa.ttf
+     Panama   (grotesque)     → fonts/Panama-{Regular,Bold,Italic}.ttf + Mono
+   Three minor faces are still substituted (Google Fonts, Cyrillic-capable):
+     Nyght Serif (italic numerals) → Cormorant Garamond Italic
+     Actay (13px labels)           → Panama (near-identical at that size)
+     Sweet Mavka Script (rare)     → подключён напрямую: fonts/Sweet-Mavka-Script.otf
+   The Google import below provides those substitutes + a fallback stack.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Caveat:wght@400;500;600;700&family=Kaushan+Script&family=Marck+Script&family=Prata&family=Golos+Text:wght@400;500;600;700;800&display=swap');
+
+/* --- Local brand fonts ---------------------------------------------------- */
+@font-face { font-family: "Anticva"; src: url("fonts/Anticva-Regular.otf") format("opentype"), url("fonts/Activa-clean.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Panama"; src: url("fonts/Panama-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Panama"; src: url("fonts/Panama-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Panama"; src: url("fonts/Panama-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Panama"; src: url("fonts/Panama-Iranic.ttf") format("truetype"); font-weight: 400; font-style: oblique; font-display: swap; }
+@font-face { font-family: "Panama Mono"; src: url("fonts/PanamaMonospace-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Panama Mono"; src: url("fonts/PanamaMonospace-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Panama Mono"; src: url("fonts/PanamaMonospace-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Panama Mono"; src: url("fonts/PanamaMonospace-Iranic.ttf") format("truetype"); font-weight: 400; font-style: oblique; font-display: swap; }
+@font-face { font-family: "Sweet Mavka Script"; src: url("fonts/Sweet-Mavka-Script.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+
+/* --- Viewport baseline (2026-06-16) --------------------------------------
+   Полноэкранные секции дизайна рассчитаны на full-bleed: убираем дефолтный
+   8px-зазор UA вокруг <body> и страхуемся от горизонтальной прокрутки.
+   Только body/html — внутренние отступы элементов не трогаем.             */
+html { overflow-x: clip; scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+body { margin: 0; background: #EDECEB; }
+/* Геро: воздух под нижним блоком — статы/кнопка не липнут к нижнему краю экрана.
+   Сдержанно (≈20px), чтобы плотные геро не уезжали за экран. */
+.st-hero { padding-bottom: clamp(16px, 2vh, 30px); }
+
+/* Ссылка «политика конфиденциальности» в формах согласия — единый стиль на всех
+   страницах. a[href] поднимает приоритет над общим сбросом «.st a { decoration:none }». */
+.sd-contact__priv a[href], .hm-form__priv a[href] { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; transition: color .25s ease; }
+.sd-contact__priv a[href]:hover, .hm-form__priv a[href]:hover { color: var(--orange); }
+
+/* Telegram / контакт-ссылки в подвале — наследуют бренд-цвет вместо синего UA-дефолта. Единый стиль на всех страницах. */
+.sd-cap__v a[href], .sd-contact dd a[href], a[href*="t.me"] { color: inherit; text-decoration: none; transition: color .25s ease; }
+.sd-cap__v a[href]:hover, .sd-contact dd a[href]:hover, a[href*="t.me"]:hover { color: var(--orange); }
+
+/* Юридические ссылки в подвале (политика · оферта) — на оранжевой плашке */
+.st-legal__row a[href] { color: var(--platinum); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; transition: color .25s ease; }
+.st-legal__row a[href]:hover { color: var(--pear); }
+
+/* Кропмарки-«скобы» в углах геро убраны со всех главных экранов (запрос 16.06.2026) */
+.st-crop { display: none !important; }
+
+:root {
+  /* ---- Brand palette (official brand-book values) -------------------------
+     Names are the brand's own swatch names from the "Палитра" page.          */
+  --pear:        #272F42; /* primary — deep navy. "should dominate"           */
+  --pear-deep:   #22293A; /* darker navy — button right-cap / shadow side     */
+  --pear-ink:    #1B2230; /* deepest navy — fine print on light               */
+  --space:       #39474A; /* dark slate-green — secondary dark surface        */
+  --orange:      #BB5C3C; /* terracotta — the single accent. Use sparingly.   */
+  --orange-deep: #AC5336; /* pressed / right-cap terracotta                   */
+  --krayola:     #D1C5BC; /* warm taupe — soft fills, dividers                */
+  --platinum:    #EAE9E8; /* off-white — light text on dark, panel fills      */
+  --yellow:      #EEC936; /* reserve accent — rare, for energy / highlights   */
+
+  /* ---- Surfaces ---------------------------------------------------------- */
+  --paper:       #EDECEB; /* default page background (warm off-white)         */
+  --paper-2:     #EAE9E8; /* alt light surface = platinum                     */
+  --surface-dark:#272F42; /* default dark section background = pear           */
+  --surface-deep:#39474A; /* deepest dark section = space                     */
+
+  /* ---- Text -------------------------------------------------------------- */
+  --ink:         #272F42; /* primary text on light                            */
+  --ink-60:      rgba(39,47,66,0.60); /* secondary text / captions on light   */
+  --ink-80:      rgba(39,47,66,0.80); /* dense reading body (legal) — AA ≈6.3:1 on paper */
+  --ink-40:      rgba(39,47,66,0.40); /* muted on light                       */
+  --on-dark:     #EDECEB; /* primary text on dark                             */
+  --on-dark-70:  rgba(237,236,235,0.70);
+
+  /* ---- Lines ------------------------------------------------------------- */
+  --line:        rgba(39,47,66,0.20); /* hairline divider on light            */
+  --line-dark:   rgba(237,236,235,0.18); /* hairline divider on dark          */
+  --hairline-w:  1px;
+
+  /* Duotone ink — default tone for .media-duotone (overridden per modifier) */
+  --duotone-ink: var(--pear); /* @kind color */
+
+  /* ---- Typography -------------------------------------------------------- */
+  --font-display: 'Anticva', 'Prata', 'Times New Roman', serif;  /* real: Activa.ttf */
+  --font-display-editorial: 'Cormorant Garamond', 'Prata', 'Times New Roman', serif; /* roman+italic SAME family (true italic mix); Anticva is caps-only */
+  --font-display-mono-cut: 'Prata', 'Times New Roman', serif; /* heavier didone for solo big romans (no italic needed) */
+  --font-sans:    'Panama', 'Golos Text', system-ui, sans-serif; /* real: Panama     */
+  --font-label:   'Panama', 'Golos Text', system-ui, sans-serif; /* Actay → Panama   */
+  --font-script:  'Cormorant Garamond', 'Prata', serif;          /* Nyght Serif italic */
+  --font-marker:  'Marck Script', 'Kaushan Script', 'Caveat', cursive; /* elegant brush WITH Cyrillic (refs 105/107/113/116/117) */
+  --font-mono:    'Panama Mono', ui-monospace, monospace;        /* tabular data     */
+  --font-hand:    'Sweet Mavka Script', 'Caveat', cursive;       /* script accent */
+
+  /* Type scale (px values taken from the live designs at 1440 / 1920) ------ */
+  --fs-mega:    120px; /* page super-titles (ПАЛИТРА)                         */
+  --fs-display:  96px; /* cover name                                          */
+  --fs-h1:       64px; /* section headlines                                   */
+  --fs-h2:       48px; /* sub-section headlines                               */
+  --fs-h3:       32px; /* card / block titles                                 */
+  --fs-stat:     64px; /* big numerals (500+, №3, 19/1080)                    */
+  --fs-lead:     24px; /* lead paragraph                                      */
+  --fs-body:     20px; /* default body                                        */
+  --fs-small:    16px; /* fine print, footer                                  */
+  --fs-label:    13px; /* tracked eyebrow labels                              */
+
+  --lh-tight:   1.0; /* @kind font */
+  --lh-snug:    1.08; /* @kind font */
+  --lh-body:    1.45; /* @kind font */
+
+  /* ---- Spacing (8px base; the site lives on a generous 70px page gutter) - */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 30px;
+  --space-5: 50px;
+  --space-6: 70px;   /* page gutter                                          */
+  --space-7: 100px;
+  --space-8: 145px;  /* section vertical rhythm                              */
+
+  /* ---- Radius — the brand is almost entirely SQUARE. Corners stay sharp. - */
+  --radius-0: 0px;     /* default: buttons, cards, images are all 0px         */
+  --radius-pill: 999px;/* only used on the rare tag / status dot              */
+
+  /* ---- Buttons ----------------------------------------------------------- */
+  --btn-h: 50px;       /* fixed button height                                 */
+  --btn-cap: 50px;     /* the darker square "arrow cap" on the right          */
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --dur:  0.32s; /* @kind other */
+
+  /* ===== AESTHETIC OVERLAY editorial tokens (additive, ASCII comments) ===== */
+  /* P1 Type-as-Hero: hyper-large editorial display size */
+  --fs-hero-editorial: clamp(3.5rem, 12vw, 12rem); /* @kind font */
+  --size-hero-editorial: var(--fs-hero-editorial);
+  --size-hero:           var(--fs-mega);
+  --size-display-1:      var(--fs-display);
+  --size-display-2:      var(--fs-h1);
+  --size-display-3:      var(--fs-h2);
+  --leading-display:     0.9;
+
+  /* P2 spaced small-caps tracking */
+  --tracking-eyebrow: 0.14em;
+  --tracking-label:   0.20em;
+
+  /* P3 justified micro-column width */
+  --measure-micro: 320px;
+
+  /* P5 air-first vertical section rhythm */
+  --space-section: clamp(64px, 9vw, 160px);
+}
+
+/* ============================================================================
+   SEMANTIC ELEMENT STYLES
+   Apply .ds-* classes, or wrap content in .ds-scope to get sensible defaults.
+   ========================================================================== */
+
+.ds-scope { color: var(--ink); font-family: var(--font-sans); background: var(--paper); }
+
+.ds-mega    { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-mega);    line-height: var(--lh-tight); letter-spacing: -0.01em; color: var(--ink); }
+.ds-display { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: -0.005em; color: var(--ink); }
+h1.ds, .ds-h1 { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-h1); line-height: 1.08; letter-spacing: -0.005em; color: var(--ink); margin: 0; }
+h2.ds, .ds-h2 { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-h2); line-height: 0.96; color: var(--ink); margin: 0; }
+h3.ds, .ds-h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--fs-h3); line-height: 1.05; color: var(--ink); margin: 0; }
+
+.ds-stat { font-family: var(--font-sans); font-weight: 700; font-size: var(--fs-stat); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+
+.ds-lead  { font-family: var(--font-sans); font-weight: 400; font-size: var(--fs-lead);  line-height: 1.28; color: var(--ink); }
+p.ds, .ds-body { font-family: var(--font-sans); font-weight: 400; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--ink); margin: 0; }
+.ds-small { font-family: var(--font-sans); font-weight: 400; font-size: var(--fs-small); line-height: 1.4; color: var(--ink-60); }
+
+/* Eyebrow / label — Actay substitute. Always uppercase + tracked. */
+.ds-label {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: var(--fs-label);
+  line-height: 1.1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+/* Section index numeral (e.g. "01 / Сталинки") set in the display serif */
+.ds-index { font-family: var(--font-display); font-size: var(--fs-h3); color: var(--orange); line-height: 1; }

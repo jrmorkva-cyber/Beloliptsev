@@ -1,0 +1,1412 @@
+/* ============================================================================
+   /stalinki — Сталинки ЦАО. Стили страницы-хаба.
+   Подключается ПОСЛЕ ../../colors_and_type.css и site.css.
+   Палитра / типографика / мотивы — строго из эталона (index.html):
+   навы #272F42 · тиловый #39474A · терракота #BB5C3C · песок #D1C5BC ·
+   офф-вайт #EDECEB. Углы квадратные, хэйрлайны @20%, без теней.
+   ========================================================================== */
+
+/* ============================ ШАПКА (общая система) ===================== */
+.st-topbar { position: absolute; top: 0; left: 0; right: 0; z-index: 30; }
+.st-topbar__row { display: flex; align-items: center; justify-content: space-between;
+  padding-top: 34px; padding-bottom: 34px; }
+.st-topbar .brand img { height: 48px; width: auto; display: block; }
+.st-topbar__right { display: flex; align-items: center; gap: 30px; }
+.st-topnav { display: flex; align-items: center; gap: 34px; }
+.st-topnav a { font-size: 18px; text-decoration: none; color: var(--platinum); opacity: .92; }
+.st-topnav a:hover { color: var(--orange); opacity: 1; }
+.st-topbar__phone { color: var(--platinum); font-size: 18px; text-decoration: none; white-space: nowrap; }
+.st-topbar .brand { flex: none; }
+.st-menu-btn { display: inline-flex; align-items: center; gap: 11px; background: none; border: 0;
+  color: var(--platinum); cursor: pointer; font-family: var(--font-sans); font-size: 18px;
+  letter-spacing: .04em; }
+.st-menu-btn .bars { width: 16px; display: flex; flex-direction: column; gap: 3px; }
+.st-menu-btn .bars i { height: 1.5px; background: var(--platinum); display: block; }
+@media (max-width: 1080px){ .st-topnav, .st-topbar__phone { display: none; } }
+
+/* Меню-оверлей */
+.st-overlay { overflow-y: auto; overscroll-behavior: contain; position: fixed; inset: 0; z-index: 60; background: var(--pear); color: var(--platinum);
+  transform: translateY(-100%); transition: transform .5s var(--ease); display: flex; flex-direction: column;
+  padding: 34px 70px; }
+.st-overlay.open { transform: translateY(0); }
+.st-overlay__top { display: flex; justify-content: space-between; align-items: center; }
+.st-overlay__top img { height: 46px; }
+.st-overlay__top button { background: none; border: 0; color: var(--platinum); font-family: var(--font-sans);
+  font-size: 18px; letter-spacing: .04em; cursor: pointer; }
+.st-overlay nav { margin: auto 0; display: flex; flex-direction: column; gap: 2px; }
+.st-overlay nav a { font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: 52px; line-height: 1.12; text-decoration: none; color: var(--platinum); }
+.st-overlay nav a:hover { color: var(--orange); }
+.st-overlay__foot { display: flex; gap: 34px; flex-wrap: wrap; color: var(--on-dark-70); font-size: 16px; }
+@media (max-width: 560px){ .st-overlay{ padding: 26px 22px; } .st-overlay nav a{ font-size: 34px; } }
+
+/* ============================ ФУТЕР (общая система) ===================== */
+.st-foot { position: relative; background: var(--space); color: var(--platinum); overflow: hidden; }
+.st-foot__wave { position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/520px;
+  opacity: .03; filter: invert(1); pointer-events: none; }
+.st-foot__in { position: relative; z-index: 2; padding-top: 90px; padding-bottom: 70px; }
+.st-foot__brand { display: flex; align-items: flex-start; gap: 120px; flex-wrap: wrap; }
+.st-foot__brand img { height: 54px; }
+.st-foot__brand p { max-width: 480px; font-size: 18px; line-height: 1.5; color: var(--on-dark); }
+.st-foot__cols { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; margin-top: 80px; }
+.st-foot__cols h4 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 22px; }
+.st-foot__cols a { display: block; font-size: 17px; text-decoration: none; color: var(--platinum); opacity: .78; margin-bottom: 13px; }
+.st-foot__cols a:hover { color: var(--orange); opacity: 1; }
+.st-legal { position: relative; z-index: 2; background: var(--orange); }
+.st-legal__row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+  padding-top: 12px; padding-bottom: 12px; color: var(--platinum); font-size: 15px; }
+@media (max-width: 880px){ .st-foot__cols { grid-template-columns: 1fr 1fr; gap: 40px; } .st-foot__brand{ gap: 40px; } }
+@media (max-width: 560px){ .st-foot__cols { grid-template-columns: 1fr; } }
+
+/* ---- Заголовки секций (общий ритм) -------------------------------------- */
+.st-secthead { display: flex; flex-direction: column; gap: 22px; margin-bottom: 70px; }
+.st-secthead--center { align-items: center; text-align: center; }
+.st-secthead .st-eyebrow { margin: 0; }
+.st-h2 { font-family: var(--font-display); font-weight: 400; font-size: 56px; line-height: 1.0; word-spacing: -0.06em; text-wrap: balance;
+  letter-spacing: -.005em; color: var(--ink); max-width: 18ch; margin: 0; }
+.st-section--dark .st-h2, .st-section--space .st-h2 { color: var(--platinum); }
+.st-secthead--center .st-h2 { max-width: 22ch; }
+.st-section--dark .st-secthead .st-eyebrow, .st-section--space .st-secthead .st-eyebrow { color: var(--orange); }
+.st-intro { font-size: 19px; line-height: 1.5; color: var(--ink-60); max-width: 60ch; }
+.st-secthead--center .st-intro { max-width: 52ch; }
+.st-section--dark .st-intro, .st-section--space .st-intro { color: var(--on-dark-70); }
+@media (max-width: 700px){ .st-h2 { font-size: 36px; } .st-secthead { margin-bottom: 46px; } }
+
+/* ---- Сброс (эталон: всё на border-box) ---------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ---- Базовая сетка страницы --------------------------------------------- */
+.st { background: var(--paper); color: var(--ink); }
+.st a { text-decoration: none; }
+.st-wrap { width: 1440px; max-width: 100%; margin: 0 auto; }
+.st-pad  { padding-left: 70px; padding-right: 70px; }
+@media (max-width: 1100px){ .st-pad{ padding-left: 6vw; padding-right: 6vw; } }
+@media (max-width: 560px){ .st-pad{ padding-left: 22px; padding-right: 22px; } }
+
+.st-section { padding-top: 140px; padding-bottom: 140px; }
+@media (max-width: 1100px){ .st-section{ padding-top: 96px; padding-bottom: 96px; } }
+@media (max-width: 560px){ .st-section{ padding-top: 68px; padding-bottom: 68px; } }
+.st-section--dark  { background: var(--pear);  color: var(--platinum); }
+.st-section--space { background: var(--space); color: var(--platinum); }
+
+/* Надзаголовок-eyebrow (трекинг, капс) */
+.st-eyebrow { font-family: var(--font-label); font-weight: 500; font-size: 13px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.st-section--dark .st-eyebrow, .st-section--space .st-eyebrow { color: var(--orange); }
+/* Нумерованные кикеры «NN ·» — скрыты визуально, текст остаётся в DOM (решение В-1) */
+.st-eyebrow--num { display: none; }
+
+/* Искра-буллет (4-лучевая звезда) */
+.st-spark { width: 16px; height: 16px; flex: none; background: currentColor;
+  clip-path: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%); }
+.st-spark--orange { background: var(--orange); }
+
+/* Плейсхолдер изображения (фото подставим позже) — квадрат в палитре,
+   тонкая диагональная штриховка + моно-подпись «что сюда встанет». */
+.st-ph { position: relative; overflow: hidden; background: var(--krayola);
+  background-image: repeating-linear-gradient(45deg, rgba(39,47,66,.07) 0 2px, transparent 2px 11px);
+  display: flex; align-items: flex-end; }
+.st-ph::after { content: attr(data-ph); font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60);
+  padding: 14px 16px; line-height: 1.35; max-width: 80%; }
+.st-ph--dark { background: var(--pear);
+  background-image: repeating-linear-gradient(45deg, rgba(237,236,235,.06) 0 2px, transparent 2px 11px); }
+.st-ph--dark::after { color: var(--on-dark-70); }
+.st-ph--center { align-items: center; justify-content: center; }
+.st-ph--center::after { text-align: center; }
+
+/* Угловые кроп-метки (как в типографике эталона) */
+.st-crop { position: absolute; width: 18px; height: 18px; pointer-events: none; z-index: 4; }
+.st-crop::before, .st-crop::after { content:""; position: absolute; background: currentColor; }
+.st-crop::before { width: 18px; height: 1.5px; top: 0; left: 0; }
+.st-crop::after  { width: 1.5px; height: 18px; top: 0; left: 0; }
+.st-crop.tr { right: 0; transform: scaleX(-1); }
+.st-crop.bl { bottom: 0; transform: scaleY(-1); }
+.st-crop.br { right: 0; bottom: 0; transform: scale(-1,-1); }
+
+/* Фирменная кнопка (надпись + тёмная квадрат-крышка с шевроном -45°) */
+.st-btn { display: inline-flex; height: 50px; cursor: pointer; text-decoration: none;
+  font-family: var(--font-sans); width: max-content; border: 0; background: none; }
+.st-btn__lab { display: flex; align-items: center; padding: 0 28px; font-size: 20px;
+  color: var(--platinum); white-space: nowrap; }
+.st-btn__cap { width: 50px; display: flex; align-items: center; justify-content: center;
+  transition: width .3s var(--ease); }
+.st-btn__cap svg { width: 13px; height: 13px; transform: rotate(-45deg); color: var(--platinum); }
+.st-btn:hover .st-btn__cap { width: 60px; }
+.st-btn--orange .st-btn__lab { background: var(--orange); }
+.st-btn--orange .st-btn__cap { background: var(--orange-deep); }
+.st-btn--navy   .st-btn__lab { background: var(--pear); }
+.st-btn--navy   .st-btn__cap { background: var(--pear-deep); }
+.st-btn--ghost  .st-btn__lab { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+.st-btn--ghost  .st-btn__cap { background: var(--pear); }
+
+/* ============================ S1 · ГЕРО ================================== */
+.st-hero { position: relative; min-height: 100vh; background: var(--pear-ink);
+  display: flex; flex-direction: column; overflow: hidden; }
+.st-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.st-hero__veil-t { position: absolute; left: 0; right: 0; top: 0; height: 200px;
+  background: linear-gradient(180deg, rgba(18,16,24,.5) 0%, rgba(18,16,24,0) 100%); }
+.st-hero__veil-b { position: absolute; left: 0; right: 0; bottom: 0; height: 60%;
+  background: linear-gradient(0deg, rgba(18,16,24,.74) 12%, rgba(18,16,24,.34) 50%, rgba(18,16,24,0) 100%); }
+.st-hero__veil-l { position: absolute; top: 0; bottom: 0; left: 0; width: 30%;
+  background: linear-gradient(90deg, rgba(18,16,24,.46) 24%, rgba(18,16,24,0) 100%); }
+.st-hero__veil-r { position: absolute; top: 0; bottom: 0; right: 0; width: 26%;
+  background: linear-gradient(270deg, rgba(18,16,24,.34) 20%, rgba(18,16,24,0) 100%); }
+.st-breadcrumbs { position: relative; z-index: 3; display: flex; align-items: center; gap: 12px;
+  font-size: 14px; letter-spacing: .04em; color: var(--on-dark-70); padding-top: 140px; }
+.st-breadcrumbs a { color: var(--on-dark-70); text-decoration: none; }
+.st-breadcrumbs a:hover { color: var(--orange); }
+.st-breadcrumbs .sep { color: rgba(237,236,235,.4); }
+.st-breadcrumbs .cur { color: var(--platinum); }
+.st-hero__eyebrow-row { position: relative; z-index: 3; display: flex; gap: 22px; flex-wrap: wrap;
+  align-items: center; padding-top: 22px; }
+.st-hero__eyebrow-row span { font-size: 18px; letter-spacing: .02em; color: var(--on-dark); }
+.st-hero__eyebrow-row .dot { color: var(--orange); }
+
+.st-hero h1 { position: relative; z-index: 3; font-family: var(--font-display); font-weight: 400;
+  text-transform: uppercase; font-size: clamp(54px, 8.6vw, 124px); line-height: .92;
+  letter-spacing: -.015em; color: var(--platinum); margin-top: 50px; max-width: 13ch;
+  text-shadow: 0 2px 44px rgba(10,8,6,.4); }
+
+.st-hero__bottom { position: relative; z-index: 3; padding-top: 54px;
+  display: grid; grid-template-columns: 1.32fr .9fr; gap: 60px; align-items: end; }
+.st-hero__lead { font-size: 20px; line-height: 1.5; color: var(--on-dark); max-width: 600px; margin: 0; }
+.st-hero__lead b { font-weight: 700; color: var(--platinum); }
+
+.st-hero__stats { display: flex; margin-top: 40px; border-top: 1px solid var(--line-dark); }
+.st-hstat { padding: 24px 40px 0 0; margin-right: 40px; border-right: 1px solid var(--line-dark); }
+.st-hstat:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.st-hstat__n { font-family: var(--font-display); font-weight: 400; font-size: 46px; line-height: 1;
+  letter-spacing: -.01em; color: var(--platinum); display: flex; align-items: baseline; gap: 12px; }
+.st-hstat__n span { font-size: 26px; color: var(--on-dark-70); }
+.st-hstat__t { font-size: 14px; line-height: 1.35; color: var(--on-dark-70); margin-top: 14px; max-width: 160px; }
+
+.st-hero__right { padding-bottom: 4px; }
+.st-hero__addr-label { font-size: 18px; color: var(--platinum); }
+.st-hero__addr { font-size: 19px; line-height: 1.5; color: var(--on-dark); margin: 14px 0 30px; max-width: 40ch; }
+
+@media (max-width: 1100px){
+  .st-hero__bottom { grid-template-columns: 1fr; gap: 36px; align-items: start; }
+  .st-hero__right { padding-bottom: 0; }
+}
+@media (max-width: 700px){
+  .st-hero__stats { flex-wrap: wrap; gap: 18px 0; }
+  .st-hstat { padding-right: 24px; margin-right: 24px; }
+  .st-hstat__n { font-size: 38px; }
+}
+
+/* ============================ S2 · ЧТО СЧИТАЕТСЯ ========================= */
+.st-def__top { display: grid; grid-template-columns: 1.12fr .88fr; gap: 70px; align-items: start; }
+.st-def__lead { font-family: var(--font-display-editorial); font-weight: 500; font-size: 30px;
+  line-height: 1.34; letter-spacing: 0; color: var(--ink); }
+.st-def__lead .accent { color: var(--orange); font-style: italic; }
+.st-def__chips { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 8px; }
+.st-def__chip { font-family: var(--font-label); font-weight: 500; font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink-60); border: 1px solid var(--line); padding: 9px 15px; }
+.st-def__chip--period { font-family: var(--font-mono); letter-spacing: .04em; color: var(--orange);
+  border-color: rgba(187,92,60,.42); }
+.st-def__cols { display: grid; grid-template-columns: 1fr 1fr; margin-top: 62px;
+  border-top: 1px solid var(--line); }
+.st-def__cols p { font-size: 20px; line-height: 1.5; color: var(--ink); text-align: left;
+  text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; padding: 34px 56px 0 0; }
+.st-def__cols p:nth-child(2) { border-left: 1px solid var(--line); padding-left: 56px; padding-right: 0; }
+.st-def__cols a { color: var(--orange); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+@media (max-width: 1100px){
+  .st-def__top { grid-template-columns: 1fr; gap: 32px; }
+  .st-def__cols { grid-template-columns: 1fr; }
+  .st-def__cols p { padding: 30px 0 0; }
+  .st-def__cols p:nth-child(2){ border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+}
+
+/* ============================ S3 · ПАРАМЕТРЫ СЕГМЕНТА (стат-полоса) ====== */
+.st-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); }
+.st-stat { padding: 46px 40px 46px 0; border-bottom: 1px solid var(--line-dark);
+  border-left: 1px solid var(--line-dark); padding-left: 40px; }
+.st-stat:nth-child(3n+1) { border-left: 0; padding-left: 0; }
+.st-stat__mark { color: var(--orange); margin-bottom: 24px; }
+.st-stat__n { font-family: var(--font-display); font-weight: 400; font-size: 54px; line-height: .96;
+  letter-spacing: -.01em; color: var(--platinum); }
+.st-stat__l { font-size: 16px; line-height: 1.4; color: var(--on-dark-70); margin-top: 16px; }
+@media (max-width: 880px){ .st-stats { grid-template-columns: 1fr 1fr; }
+  .st-stat:nth-child(3n+1){ border-left: 1px solid var(--line-dark); padding-left: 40px; }
+  .st-stat:nth-child(2n+1){ border-left: 0; padding-left: 0; } .st-stat__n { font-size: 42px; } }
+@media (max-width: 540px){ .st-stats { grid-template-columns: 1fr; }
+  .st-stat, .st-stat:nth-child(n){ border-left: 0; padding-left: 0; } }
+
+/* ============================ S3 · ТРИ ТИПА ============================== */
+.st-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.st-type { position: relative; overflow: hidden; min-height: 560px; padding: 40px;
+  display: flex; flex-direction: column; color: var(--platinum); }
+.st-type__wave { position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/360px;
+  opacity: .03; filter: invert(1); pointer-events: none; }
+.st-type__photo { position: absolute; inset: 0; background-size: cover; background-position: center;
+  opacity: .28; mix-blend-mode: luminosity; pointer-events: none; }
+.st-type--orange { background: var(--orange); }
+.st-type--navy   { background: var(--pear); }
+.st-type--space  { background: var(--space); }
+.st-type__year { position: relative; z-index: 2; align-self: flex-start; font-family: var(--font-mono);
+  font-size: 14px; letter-spacing: .04em; color: var(--platinum); opacity: .8; }
+.st-type h3 { position: relative; z-index: 2; font-family: var(--font-display); font-weight: 400;
+  font-size: 34px; line-height: 1.02; margin-top: 30px; color: var(--platinum); }
+.st-type__facts { position: relative; z-index: 2; margin-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+.st-type__facts p { font-size: 16px; line-height: 1.5; color: var(--on-dark); }
+.st-type__nums { position: relative; z-index: 2; margin-top: auto; padding-top: 26px; font-size: 17px;
+  border-top: 1px solid var(--line-dark); color: var(--platinum); }
+.st-type__link { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 22px; font-size: 18px; color: var(--platinum); text-decoration: none; }
+.st-type__link svg { width: 13px; height: 13px; transform: rotate(-45deg); }
+.st-type__link:hover { color: #fff; }
+
+/* ============================ S4 · ПРЕМИУМ-АДРЕСА ======================== */
+/* Индекс лежит на тёмной (--space) секции → светлый текст, тёмные хэйрлайны */
+.st-index { border-top: 1px solid var(--line-dark); }
+.st-addr { display: grid; grid-template-columns: 60px 1.1fr 1.4fr auto;
+  gap: 30px; align-items: center; padding: 34px 0; border-bottom: 1px solid var(--line-dark);
+  text-decoration: none; color: var(--platinum); position: relative; transition: padding .35s var(--ease); }
+.st-addr__no { font-family: var(--font-mono); font-size: 14px; color: rgba(237,236,235,.45); }
+.st-addr__name { font-family: var(--font-display); font-weight: 400; font-size: 30px; line-height: 1.02; color: var(--platinum); }
+.st-addr__name .dist { display: block; font-family: var(--font-sans); font-size: 14px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-top: 10px; }
+.st-addr__note { font-size: 16px; line-height: 1.45; color: var(--on-dark-70); max-width: 46ch; }
+.st-addr__meta { text-align: right; white-space: nowrap; }
+.st-addr__meta .price { font-family: var(--font-sans); font-weight: 700; font-size: 20px; color: var(--platinum); }
+.st-addr__meta .years { font-family: var(--font-mono); font-size: 14px; color: rgba(237,236,235,.5); margin-top: 8px; }
+.st-addr__meta .arr { display: inline-block; margin-left: 8px; color: var(--orange); }
+.st-addr::after { content:""; position: absolute; left: 0; bottom: -1px; height: 2px; width: 0;
+  background: var(--orange); transition: width .4s var(--ease); }
+.st-addr:hover { padding-left: 18px; }
+.st-addr:hover::after { width: 100%; }
+.st-addr:hover .st-addr__name { color: var(--orange); }
+
+/* ============================ S5 · ТИПОЛОГИЯ ============================= */
+.st-typo { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 80px; }
+.st-typo__row { display: grid; grid-template-columns: 92px 1fr; gap: 26px; align-items: start;
+  padding: 40px 0; border-top: 1px solid var(--line); }
+.st-typo__no { font-family: var(--font-display); font-weight: 400; font-size: 56px; line-height: .9; color: var(--orange); }
+.st-typo__row h4 { font-family: var(--font-display); font-weight: 400; font-size: 26px; color: var(--ink); }
+.st-typo__row p { font-size: 16px; line-height: 1.55; color: var(--ink-60); margin-top: 14px; }
+.st-typo__row .hero-num { font-family: var(--font-sans); font-weight: 700; font-size: 22px; color: var(--ink); display: block; margin-top: 16px; }
+.st-typo__spec { margin-top: 20px; }
+.st-typo__spec .row { display: flex; justify-content: space-between; gap: 20px; align-items: baseline;
+  padding: 11px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.st-typo__spec .row:last-child { border-bottom: 1px solid var(--line); }
+.st-typo__spec .k { color: var(--ink); }
+.st-typo__spec .v { font-family: var(--font-mono); color: var(--ink-60); white-space: nowrap; text-align: right; }
+.st-typo__note { font-size: 15px; line-height: 1.55; color: var(--ink-60); margin-top: 16px; }
+
+/* ============================ S6 · OFF-MARKET / ЦЕНЫ ===================== */
+.st-tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: end; }
+.st-tier { padding: 0 30px; border-left: 1px solid var(--line-dark); }
+.st-tier:first-child { border-left: 0; padding-left: 0; }
+.st-tier__mark { color: var(--orange); margin-bottom: 26px; }
+.st-tier .price { font-family: var(--font-display); font-weight: 400; font-size: 46px; line-height: 1; color: var(--platinum); }
+.st-tier .type { font-family: var(--font-display); font-weight: 400; font-size: 21px; line-height: 1.1; color: var(--platinum); margin-top: 16px; }
+.st-tier .desc { font-size: 16px; line-height: 1.5; color: var(--on-dark-70); margin-top: 14px; }
+.st-tier.s1 { padding-bottom: 0; }
+.st-tier.s2 { padding-bottom: 36px; }
+.st-tier.s3 { padding-bottom: 72px; }
+.st-tier.s4 { padding-bottom: 108px; }
+.st-tier.s4 .price { color: var(--orange); }
+.st-tiers__base { height: 1px; background: var(--line-dark); margin-top: 0; }
+
+/* ============================ S7 · 23 ГОДА ============================== */
+.st-trust { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: start; }
+.st-trust__media { position: sticky; top: 100px; background: var(--pear); aspect-ratio: 4/5; overflow: hidden; }
+.st-trust__media .band { position: absolute; left: 0; right: 0; bottom: 0; height: 26%; background: var(--orange); }
+.st-trust__media .wave { position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/300px; opacity: .03; filter: invert(1); }
+.st-trust__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; z-index: 2; }
+.st-trust h2 { font-family: var(--font-display); font-weight: 400; font-size: 56px; line-height: 1.0; color: var(--ink); }
+.st-trust p.lead { font-size: 19px; line-height: 1.5; color: var(--ink); margin-top: 28px; max-width: 56ch; }
+.st-trust__quote { font-family: var(--font-display); font-style: normal; font-weight: 400; text-transform: uppercase;
+  font-size: 30px; line-height: 1.32; letter-spacing: 0; color: var(--ink); margin: 30px 0 0;
+  padding-left: 28px; border-left: 2px solid var(--orange); max-width: 30ch; }
+.st-trust__cols { margin-top: 34px; padding-top: 32px; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+.st-trust__cols p { font-size: 20px; line-height: 1.5; color: var(--ink); margin: 0; }
+.st-trust__cols p b, .st-trust__cols p strong { color: var(--ink); font-weight: 700; }
+@media (max-width: 700px){ .st-trust__cols { grid-template-columns: 1fr; gap: 22px; } }
+/* Trust · де-уплотнение: стат-лид + капсулы-индекс + голос (как на visotki) */
+.st-trust__lead { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--line);
+  font-size: 18px; line-height: 1.5; color: var(--ink); max-width: 62ch; }
+.st-trust__lead b { font-weight: 700; }
+.st-trust__idxlabel { font-family: var(--font-label); font-weight: 500; font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--orange); margin-top: 24px; }
+.st-trust__index { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.st-trust__cap { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-label);
+  font-weight: 500; font-size: 13px; letter-spacing: .02em; color: var(--ink); text-decoration: none;
+  border: 1px solid var(--line); padding: 10px 16px; background: #fff;
+  transition: border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease); }
+a.st-trust__cap:hover { background: var(--pear); color: var(--platinum); border-color: var(--pear); }
+.st-trust__cap--static { color: var(--ink-60); }
+.st-trust__voice { margin-top: 26px; font-size: 16px; line-height: 1.62; color: var(--ink-60); max-width: 72ch; }
+.st-trust__voice a { color: var(--orange); text-decoration: none; border-bottom: 1px solid currentColor; }
+/* Trust · компактная факт-полоса (премиум-досье вместо стопки капсул) */
+.st-trust__facts { display: flex; flex-wrap: wrap; margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--line); }
+.st-trust__fact { padding-right: 32px; margin-right: 32px; border-right: 1px solid var(--line); }
+.st-trust__fact:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.st-trust__fact .n { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 3vw, 42px); line-height: .95; color: var(--orange); }
+.st-trust__fact .l { font-size: 14px; line-height: 1.5; color: var(--ink-60); margin-top: 6px; max-width: 32ch; }
+.st-trust__fact .l b { display: block; font-family: var(--font-label); font-weight: 500; font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 5px; }
+@media (max-width: 560px){ .st-trust__fact { border-right: 0; margin-right: 0; padding-right: 0; padding-bottom: 18px; } }
+.st-trust__tags { display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 8px 16px; margin-top: 34px; padding-top: 28px;
+  border-top: 1px solid var(--line); align-items: center; }
+.st-trust__tags span { font-size: 14px; color: var(--ink-60); white-space: nowrap; }
+.st-trust__tags .sep { color: var(--orange); }
+.st-trust__tags a { color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+.st-trust__tags a svg { width: 12px; height: 12px; transform: rotate(-45deg); }
+
+/* ============================ S8 · FAQ ================================== */
+.st-faq { border-top: 1px solid var(--line); }
+.st-faq__item { border-bottom: 1px solid var(--line); }
+.st-faq__q { width: 100%; background: none; border: 0; cursor: pointer; text-align: left;
+  display: flex; align-items: center; gap: 24px; padding: 32px 0; color: var(--ink); font-family: inherit; }
+.st-faq__q .st-spark { color: var(--ink-40); transition: color .3s; }
+.st-faq__q h4 { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.1; flex: 1; color: var(--ink); }
+.st-faq__chev { flex: none; transition: transform .35s var(--ease); color: var(--ink); }
+.st-faq__chev svg { width: 16px; height: 16px; transform: rotate(45deg); }
+.st-faq__item.open .st-faq__chev { transform: rotate(90deg); }
+.st-faq__item.open .st-faq__q .st-spark { color: var(--orange); }
+.st-faq__body { max-height: 0; overflow: hidden; transition: max-height .45s var(--ease); }
+.st-faq__inner { padding: 0 0 36px 46px; }
+.st-faq__inner p { font-size: 20px; line-height: 1.5; color: var(--ink); max-width: 76ch; }
+.st-faq__inner b { color: var(--ink); font-weight: 700; }
+/* FAQ-ответы списками (Баден-Баден-фикс: иерархия №3, типология №4, ценовая лестница №5) */
+.st-faq__list { list-style: none; margin: 14px 0 0; padding: 0; max-width: 76ch; }
+.st-faq__list li { position: relative; padding: 13px 0 13px 28px; border-top: 1px solid var(--line);
+  font-size: 18px; line-height: 1.5; color: var(--ink); overflow-wrap: anywhere; }
+.st-faq__list li::before { content: ""; position: absolute; left: 0; top: 21px; width: 12px; height: 12px;
+  background: var(--orange); clip-path: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%); }
+.st-faq__list li b { font-weight: 700; color: var(--ink); }
+.st-faq__spec { margin: 0 0 22px; max-width: 76ch; }
+.st-faq__spec .row { display: flex; justify-content: space-between; gap: 20px; align-items: baseline;
+  padding: 11px 0; border-top: 1px solid var(--line); font-size: 16px; }
+.st-faq__spec .row:last-child { border-bottom: 1px solid var(--line); }
+.st-faq__spec .k { color: var(--ink); }
+.st-faq__spec .v { font-family: var(--font-mono); color: var(--ink-60); white-space: nowrap; text-align: right; }
+
+/* ============================ S9 · СОСЕДНИЕ ПЛАСТЫ ======================= */
+.st-near { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.st-near__card { position: relative; display: flex; flex-direction: column; min-height: 240px;
+  padding: 34px; background: #fff; text-decoration: none; color: var(--ink);
+  border: 1px solid var(--line); transition: background .3s var(--ease); overflow: hidden; }
+.st-near__card:hover { background: var(--pear); color: var(--platinum); }
+.st-near__card h4 { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.05; max-width: 20ch; min-height: 3.15em; margin: 0; }
+.st-near__card p { font-size: 15px; line-height: 1.5; color: var(--ink-60); margin-top: 25px; }
+.st-near__card:hover p { color: var(--on-dark-70); }
+.st-near__card .anchor { margin-top: auto; padding-top: 24px; display: inline-flex; align-items: center; gap: 12px;
+  font-size: 17px; color: var(--orange); }
+.st-near__card .anchor svg { width: 12px; height: 12px; transform: rotate(-45deg); }
+.st-near__card:hover .anchor { color: var(--platinum); }
+
+/* ============================ S10 · CTA ================================= */
+.st-cta { position: relative; background: var(--orange); color: var(--platinum); overflow: hidden; }
+.st-cta__wave { position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/420px;
+  opacity: .03; filter: invert(1); pointer-events: none; }
+.st-cta__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: end; }
+.st-cta h2 { font-family: var(--font-display); font-weight: 400; font-size: 60px; line-height: 1.02; color: var(--platinum); }
+.st-cta p { font-size: 19px; line-height: 1.5; color: var(--platinum); margin-top: 26px; max-width: 52ch; }
+.st-cta__act { display: flex; align-items: center; gap: 22px; margin-top: 38px; flex-wrap: wrap; }
+.st-cta__act .micro { font-size: 15px; color: rgba(237,236,235,.8); }
+.st-cta__contacts { border-top: 1px solid rgba(237,236,235,.28); padding-top: 30px; }
+.st-cta__contacts dl { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 30px; margin: 0; }
+.st-cta__contacts dt { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: rgba(237,236,235,.7); }
+.st-cta__contacts dd { margin: 8px 0 0; font-size: 19px; color: var(--platinum); }
+.st-cta__contacts a { color: var(--platinum); text-decoration: none; border-bottom: 1px solid rgba(237,236,235,.4); }
+
+/* ============================ MOTION ==================================== */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .st-btn__cap, .st-addr, .st-faq__chev, .st-faq__body, .st-near__card { transition: none !important; }
+}
+
+/* ============================ АДАПТИВ =================================== */
+@media (max-width: 1100px){
+  .st-def { grid-template-columns: 1fr; gap: 44px; }
+  .st-types { grid-template-columns: 1fr; }
+  .st-type { min-height: 0; }
+  .st-typo { grid-template-columns: 1fr; gap: 0; }
+  .st-tiers { grid-template-columns: 1fr 1fr; gap: 30px 0; align-items: stretch; }
+  .st-tier { padding-bottom: 0 !important; border-left: 0; padding-left: 30px; }
+  .st-tier:nth-child(odd){ padding-left: 0; }
+  .st-trust { grid-template-columns: 1fr; gap: 44px; }
+  .st-near { grid-template-columns: 1fr 1fr; }
+  .st-cta__inner { grid-template-columns: 1fr; gap: 50px; }
+}
+@media (max-width: 700px){
+  .st-def__lead { font-size: 30px; }
+  .st-deflist__row { grid-template-columns: 18px 1fr; }
+  .st-deflist__row h4 { grid-column: 2; }
+  .st-deflist__row p { grid-column: 2; margin-top: 8px; }
+  .st-addr { grid-template-columns: 1fr; gap: 14px; }
+  .st-addr__meta { text-align: left; }
+  .st-near { grid-template-columns: 1fr; }
+  .st-cta h2 { font-size: 40px; }
+  .st-cta__contacts dl { grid-template-columns: 1fr; }
+  .st-trust h2 { font-size: 40px; }
+  .st-faq__q h4 { font-size: 21px; }
+}
+
+/* ============================================================================
+   ТУМБЛЕРЫ (Tweaks) — экспрессивные перекройки настроения.
+   1) Акцент — перекрашивает всю акцентную систему через --orange/--orange-deep
+      (это делается из JS на documentElement, классы тут не нужны).
+   2) Ритм — Журнал ⇄ Каталог: воздух + масштаб дисплея.
+   3) Геро — Фото / Тёмный / Тон.
+   ========================================================================== */
+
+/* --- Геро: дуотон-навы (тинт фото) --- */
+.st-hero__tint { position: absolute; inset: 0; background: var(--pear);
+  mix-blend-mode: color; opacity: 0; transition: opacity .45s var(--ease); pointer-events: none; z-index: 2; }
+.st-hero.hero-tone .st-hero__tint { opacity: .62; }
+.st-hero.hero-tone .st-hero__img { filter: grayscale(.65) contrast(1.06) brightness(.92); }
+
+/* --- Геро: тёмный типографский (фото скрыто, тонкая редакционная сетка точек) --- */
+.st-hero.hero-dark { background: #1B2230; }
+.st-hero.hero-dark .st-hero__img { opacity: 0; }
+.st-hero.hero-dark::before { content: ""; position: absolute; inset: 0; z-index: 1;
+  background-image: radial-gradient(circle at 1px 1px, rgba(237,236,235,.06) 1px, transparent 0);
+  background-size: 30px 30px; }
+.st-hero.hero-dark .st-hero__veil-l, .st-hero.hero-dark .st-hero__veil-r { opacity: 0; }
+.st-hero.hero-dark .st-hero__veil-t { opacity: .5; }
+@media (prefers-reduced-motion: reduce){ .st-hero__tint { transition: none; } }
+
+/* --- Ритм: Каталог (плотнее, тише, меньше воздуха) --- */
+.rhythm-catalog .st-section { padding-top: 92px; padding-bottom: 92px; }
+.rhythm-catalog .st-secthead { margin-bottom: 46px; }
+.rhythm-catalog .st-h2 { font-size: 44px; }
+.rhythm-catalog .st-hero { min-height: 740px; }
+.rhythm-catalog .st-hero h1 { font-size: 60px; }
+.rhythm-catalog .st-hero__lead { margin-top: 20px; }
+.rhythm-catalog .st-hero__proof { margin: 30px 0 22px; }
+.rhythm-catalog .st-def__lead { font-size: 33px; }
+.rhythm-catalog .st-deflist__row { padding: 22px 0; }
+.rhythm-catalog .st-type { min-height: 470px; padding: 34px; }
+.rhythm-catalog .st-type h3 { font-size: 30px; margin-top: 24px; }
+.rhythm-catalog .st-addr { padding: 24px 0; }
+.rhythm-catalog .st-addr__name { font-size: 26px; }
+.rhythm-catalog .st-typo__row { padding: 30px 0; }
+.rhythm-catalog .st-typo__no { font-size: 46px; }
+.rhythm-catalog .st-tier .price { font-size: 40px; }
+.rhythm-catalog .st-trust { gap: 60px; }
+.rhythm-catalog .st-trust h2 { font-size: 46px; }
+.rhythm-catalog .st-faq__q { padding: 24px 0; }
+.rhythm-catalog .st-faq__q h4 { font-size: 23px; }
+.rhythm-catalog .st-near__card { min-height: 210px; padding: 28px; }
+.rhythm-catalog .st-cta h2 { font-size: 50px; }
+@media (max-width: 700px){
+  .rhythm-catalog .st-h2 { font-size: 34px; }
+  .rhythm-catalog .st-hero h1 { font-size: 40px; }
+}
+
+/* --- Панель тумблеров (vanilla, под хост-протокол) --- */
+.tw-panel { position: fixed; right: 16px; bottom: 16px; z-index: 2147483646; width: 252px;
+  display: none; flex-direction: column;
+  background: rgba(237,236,235,.86); color: var(--ink);
+  -webkit-backdrop-filter: blur(22px) saturate(150%); backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(39,47,66,.14);
+  box-shadow: 0 14px 44px rgba(27,34,48,.22); font-family: var(--font-sans); }
+.tw-panel.open { display: flex; }
+.tw-hd { display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 12px 13px 16px; cursor: move; user-select: none; border-bottom: 1px solid rgba(39,47,66,.12); }
+.tw-hd b { font-family: var(--font-display); font-weight: 400; font-size: 16px; letter-spacing: .01em; }
+.tw-x { border: 0; background: none; color: var(--ink-60); width: 24px; height: 24px; cursor: pointer; font-size: 14px; }
+.tw-x:hover { color: var(--orange); }
+.tw-body { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+.tw-row { display: flex; flex-direction: column; gap: 8px; }
+.tw-lbl { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-60); font-weight: 500; }
+.tw-seg { display: flex; border: 1px solid rgba(39,47,66,.2); }
+.tw-seg button { flex: 1; appearance: none; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--font-sans); font-size: 13px; color: var(--ink-60); padding: 9px 4px; line-height: 1.1;
+  border-right: 1px solid rgba(39,47,66,.2); transition: background .2s var(--ease), color .2s var(--ease); }
+.tw-seg button:last-child { border-right: 0; }
+.tw-seg button[data-on="1"] { background: var(--pear); color: var(--platinum); }
+.tw-chips { display: flex; gap: 8px; }
+.tw-chip { flex: 1; height: 40px; border: 1px solid rgba(39,47,66,.2); cursor: pointer; position: relative;
+  padding: 0; background: var(--c); transition: transform .12s var(--ease); }
+.tw-chip:hover { transform: translateY(-1px); }
+.tw-chip[data-on="1"] { box-shadow: 0 0 0 2px var(--pear); }
+.tw-chip span { position: absolute; left: 6px; bottom: 5px; font-size: 10px; letter-spacing: .06em;
+  text-transform: uppercase; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+
+
+/* ============================================================================
+   VISOTKI-SPECIFIC (.vh-*) — хаб коллекции 9 зданий. Chrome/атомы — общие (.st-*).
+   ========================================================================== */
+
+/* S2 · Манифест «Семь сестёр» (TMH-разворот) */
+.vh-manifest { display: grid; grid-template-columns: 1.05fr .95fr; gap: 80px; align-items: start; }
+.vh-manifest__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(96px, 12vw, 168px);
+  line-height: .78; letter-spacing: -.02em; color: var(--orange); margin: 4px 0 22px; }
+.vh-manifest__lead { font-family: var(--font-display-editorial); font-weight: 500; font-size: clamp(25px, 2.3vw, 33px);
+  line-height: 1.32; color: var(--ink); }
+.vh-manifest__lead .accent { color: var(--orange); font-style: italic; }
+.vh-points { display: flex; flex-direction: column; }
+.vh-point { display: grid; grid-template-columns: 20px 1fr; gap: 18px; padding: 24px 0; border-top: 1px solid var(--line); align-items: start; }
+.vh-points .vh-point:last-child { border-bottom: 1px solid var(--line); }
+.vh-point .st-spark { color: var(--orange); margin-top: 5px; }
+.vh-point h4 { font-family: var(--font-display); font-weight: 400; font-size: 21px; line-height: 1.1; color: var(--ink); margin-bottom: 8px; }
+.vh-point p { font-size: 16px; line-height: 1.55; color: var(--ink-60); }
+.vh-manifest__note { grid-column: 1 / -1; margin-top: 16px; padding-top: 30px; border-top: 1px solid var(--line); }
+.vh-manifest__note p { font-family: var(--font-display-editorial); font-style: italic; font-weight: 500;
+  font-size: clamp(20px, 1.9vw, 26px); line-height: 1.4; color: var(--ink); max-width: 46ch; }
+@media (max-width: 1000px){ .vh-manifest { grid-template-columns: 1fr; gap: 40px; } }
+
+/* S3 · Грид девяти зданий (кураторская витрина) */
+.vh-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.vh-card { position: relative; display: flex; flex-direction: column; background: #fff;
+  border: 1px solid var(--line); text-decoration: none; color: var(--ink); overflow: hidden;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.vh-card--hero { grid-column: span 2; flex-direction: row; }
+.vh-card__photo { position: relative; aspect-ratio: 16/11; background: var(--pear); overflow: hidden; flex: none; }
+.vh-card--hero .vh-card__photo { width: 56%; aspect-ratio: auto; min-height: 420px; }
+.vh-card__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vh-card__wave { position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/300px; opacity: .03; filter: invert(1); }
+.vh-card__big { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, 7vw, 104px); line-height: 1;
+  color: var(--platinum); opacity: .26; letter-spacing: -.01em; }
+.vh-card__hint { position: absolute; left: 16px; bottom: 14px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-70); }
+.vh-card__tag { position: absolute; top: 0; left: 0; z-index: 2; font-family: var(--font-label); font-weight: 500;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--orange); color: var(--platinum); padding: 8px 13px; }
+.vh-card__tag--soon { background: var(--space); }
+.vh-card__body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+.vh-card--hero .vh-card__body { padding: 40px; justify-content: center; }
+.vh-card__no { font-family: var(--font-mono); font-size: 13px; color: var(--ink-40); }
+.vh-card__name { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.04; color: var(--ink); margin-top: 8px; }
+.vh-card--hero .vh-card__name { font-size: 40px; }
+.vh-card__addr { font-family: var(--font-sans); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-top: 12px; }
+.vh-card__spec { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--ink-60); }
+.vh-card__arch { font-size: 15px; line-height: 1.5; color: var(--ink-60); margin-top: 14px; }
+.vh-card__note { font-size: 15px; line-height: 1.55; color: var(--ink-60); margin-top: 12px; }
+.vh-card__link { margin-top: auto; padding-top: 22px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; color: var(--orange); }
+.vh-card__link svg { width: 12px; height: 12px; transform: rotate(-45deg); }
+.vh-card__soon { margin-top: auto; padding-top: 22px; font-family: var(--font-label); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-40); }
+a.vh-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(27,34,48,.13); }
+a.vh-card:hover .vh-card__name { color: var(--orange); }
+@media (max-width: 1000px){ .vh-grid { grid-template-columns: 1fr 1fr; }
+  .vh-card--hero { grid-column: span 2; flex-direction: column; }
+  .vh-card--hero .vh-card__photo { width: 100%; min-height: 0; aspect-ratio: 16/9; } }
+@media (max-width: 640px){ .vh-grid { grid-template-columns: 1fr; } .vh-card--hero { grid-column: span 1; } }
+
+/* S4 · Сравнительная таблица 9 зданий */
+.vh-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.vh-table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 720px; }
+.vh-table th, .vh-table td { text-align: left; padding: 17px 20px 17px 0; border-bottom: 1px solid var(--line-dark); }
+.vh-table thead th { font-family: var(--font-label); font-weight: 500; font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--on-dark-70); border-bottom: 1px solid var(--platinum); }
+.vh-table td.name { font-family: var(--font-display); font-size: 19px; color: var(--platinum); }
+.vh-table td.num { font-family: var(--font-mono); font-size: 15px; color: var(--on-dark-70); white-space: nowrap; }
+.vh-table td.st-ok { color: var(--orange); font-family: var(--font-sans); font-size: 14px; }
+.vh-table td.st-soon { color: var(--on-dark-70); font-family: var(--font-sans); font-size: 14px; opacity: .7; }
+.vh-table tbody tr:hover td { background: rgba(237,236,235,.05); }
+
+/* S5 · Три факт-блока (банки / охрана / типология) — на тёмной */
+.vh-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); }
+.vh-fact { padding: 42px 40px 0 40px; border-left: 1px solid var(--line-dark); }
+.vh-fact:first-child { border-left: 0; padding-left: 0; }
+.vh-fact__mark { color: var(--orange); margin-bottom: 22px; }
+.vh-fact h3 { font-family: var(--font-display); font-weight: 400; font-size: 25px; line-height: 1.05; color: var(--platinum); }
+.vh-fact p { font-size: 16px; line-height: 1.62; color: var(--on-dark-70); margin-top: 16px; }
+.vh-fact p b { color: var(--platinum); font-weight: 700; }
+.vh-facts__link { margin-top: 44px; display: inline-flex; align-items: center; gap: 12px; font-size: 18px; color: var(--orange); text-decoration: none; }
+.vh-facts__link svg { width: 13px; height: 13px; transform: rotate(-45deg); }
+@media (max-width: 900px){ .vh-facts { grid-template-columns: 1fr; }
+  .vh-fact { border-left: 0; padding-left: 0; padding-top: 34px; } }
+
+
+/* ============================================================================
+   MODERNIZM-SPECIFIC (.mz-*) — хаб пласта. Chrome/атомы/грид — общие (.st-* и .vh-*).
+   ========================================================================== */
+
+/* S2 · Три эпохи — индекс-таймлайн (сухая модернистская сетка) */
+.mz-epoch { border-top: 1px solid var(--line); }
+.mz-epoch__row { display: grid; grid-template-columns: 210px 1fr; gap: 44px; padding: 40px 0;
+  border-bottom: 1px solid var(--line); align-items: start; }
+.mz-epoch__row > div:last-child { min-width: 0; }
+.mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 4.6vw, 66px);
+  line-height: 1.02; letter-spacing: -.01em; color: var(--orange); }
+.mz-epoch__name { font-family: var(--font-display); font-weight: 400; font-size: clamp(20px, 5.2vw, 27px); line-height: 1.04; color: var(--ink); margin-bottom: 14px; }
+.mz-epoch__note { font-size: 20px; line-height: 1.5; color: var(--ink); max-width: 74ch; }
+@media (max-width: 760px){ .mz-epoch__row { grid-template-columns: 1fr; gap: 14px; } }
+
+/* S3 · Девятая позиция — индекс-капсулы gap-сущностей (без фото) */
+.mz-index { grid-column: 1 / -1; border: 1px solid var(--line); padding: clamp(26px,3vw,40px); background: var(--paper-2); }
+.mz-index__head { font-family: var(--font-display); font-weight: 400; font-size: 23px; color: var(--ink); }
+.mz-index__sub { font-size: 14px; letter-spacing: .04em; color: var(--ink-60); margin: 8px 0 22px; }
+.mz-index__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+.mz-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 15px 0;
+  border-top: 1px solid var(--line); font-size: 15px; }
+.mz-cap .nm { color: var(--ink); }
+.mz-cap .ad { font-family: var(--font-mono); font-size: 13px; color: var(--ink-60); white-space: nowrap; text-align: right; }
+@media (max-width: 760px){ .mz-index__list { grid-template-columns: 1fr; gap: 0; } }
+
+/* S4 · Факторы 01–03 — крупная серив-цифра вместо искры */
+.vh-fact__num { font-family: var(--font-display); font-weight: 400; font-size: 46px; line-height: .9; color: var(--orange); }
+.mz-factors-lead { font-family: var(--font-display-editorial); font-style: italic; font-weight: 500;
+  font-size: clamp(20px,1.9vw,26px); line-height: 1.4; color: var(--platinum); max-width: 52ch; margin-bottom: 8px; }
+
+/* FAQ · spec-table архитекторов внутри ответа Q4 */
+.mz-arch-table { width: 100%; border-collapse: collapse; margin: 4px 0 6px; }
+.mz-arch-table td { padding: 10px 16px 10px 0; border-top: 1px solid var(--line); font-size: 15px; vertical-align: baseline; }
+.mz-arch-table tr:last-child td { border-bottom: 1px solid var(--line); }
+.mz-arch-table .a-name { color: var(--ink); white-space: nowrap; }
+.mz-arch-table .a-years { font-family: var(--font-mono); font-size: 13px; color: var(--ink-60); white-space: nowrap; }
+.mz-arch-table .a-work { color: var(--ink-60); }
+
+
+/* CAO · линк-стрелка в строке эпохи таймлайна */
+.mz-epoch__link { display: inline-flex; align-items: center; gap: 9px; margin-top: 12px;
+  font-size: 15px; color: var(--orange); text-decoration: none; }
+.mz-epoch__link svg { width: 11px; height: 11px; transform: rotate(-45deg); }
+.mz-epoch__dash { display: inline-block; margin-top: 12px; color: var(--ink-40); font-family: var(--font-mono); font-size: 14px; }
+
+
+/* ============================================================================
+   BUILDING PAGE (.bld-*) — F1 нарратив одного здания. Split-hero + сцены.
+   ========================================================================== */
+
+/* Сцена 1 · SPLIT-ГЕРО (навы-панель слева + фото справа) */
+.bld-hero { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--pear-ink); overflow: hidden; }
+.bld-hero__panel { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(40px, 6vw, 110px) clamp(34px, 5vw, 96px); color: var(--platinum); }
+.bld-hero__crumbs { font-size: 14px; letter-spacing: .04em; color: var(--on-dark-70); margin-bottom: 30px; }
+.bld-hero__crumbs a { color: var(--on-dark-70); text-decoration: none; }
+.bld-hero__crumbs a:hover { color: var(--orange); }
+.bld-hero__crumbs .sep { color: rgba(237,236,235,.4); padding: 0 8px; }
+.bld-hero__eyebrow { font-family: var(--font-label); font-weight: 500; font-size: 13px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 26px; }
+.bld-hero__h1 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
+  font-size: clamp(40px, 4.4vw, 68px); line-height: 1.0; letter-spacing: -.01em; color: var(--platinum); margin: 0; }
+.bld-hero__h1 .em { color: var(--orange); text-transform: uppercase; }
+.bld-hero__h1 .sub-line { display: block; margin-top: 20px; font-family: var(--font-display); font-weight: 400;
+  text-transform: none; font-size: clamp(20px, 2vw, 30px); line-height: 1.14; letter-spacing: 0; color: var(--on-dark); max-width: 22ch; }
+.bld-hero__h1 .sub-line .em { color: var(--orange); }
+.bld-hero__sub { font-family: var(--font-mono); font-size: 14px; line-height: 1.5; letter-spacing: .02em;
+  color: var(--on-dark); margin: 30px 0 0; max-width: 44ch; }
+.bld-hero__cta { margin-top: 40px; }
+.bld-hero__media { position: relative; }
+.bld-hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bld-hero__media::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(27,34,48,.55) 0%, rgba(27,34,48,0) 26%); }
+.bld-hero .st-crop { color: rgba(237,236,235,.5); }
+@media (max-width: 900px){
+  .bld-hero { grid-template-columns: 1fr; min-height: 0; }
+  .bld-hero__media { min-height: 360px; order: -1; }
+  .bld-hero__media img { position: relative; }
+  .bld-hero__panel { padding: 56px 28px 64px; }
+}
+
+/* Сцена 3 · три стат-карточки (высота/шпиль/этажи) на тёмной */
+.bld-stat3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); }
+.bld-stat3__c { padding: 44px 40px 0 0; border-left: 1px solid var(--line-dark); padding-left: 40px; }
+.bld-stat3__c:first-child { border-left: 0; padding-left: 0; }
+.bld-stat3__n { font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, 6.5vw, 92px);
+  line-height: .9; letter-spacing: -.02em; color: var(--orange); }
+.bld-stat3__t { font-family: var(--font-display); font-weight: 400; font-size: 21px; color: var(--platinum); margin-top: 18px; }
+.bld-stat3__d { font-size: 15px; line-height: 1.55; color: var(--on-dark-70); margin-top: 12px; }
+.bld-cols-dark { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 56px; }
+.bld-cols-dark p { font-size: 20px; line-height: 1.5; color: var(--on-dark); margin: 0; }
+.bld-cols-dark p b { color: var(--platinum); font-weight: 700; }
+@media (max-width: 900px){ .bld-stat3 { grid-template-columns: 1fr; }
+  .bld-stat3__c { border-left: 0; padding-left: 0; padding-top: 32px; }
+  .bld-cols-dark { grid-template-columns: 1fr; gap: 24px; } }
+
+/* Сцена 4 · типология тремя тирами */
+.bld-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.bld-tier { border: 1px solid var(--line); padding: 34px 30px 32px; background: #fff; display: flex; flex-direction: column; }
+.bld-tier--top { border-color: rgba(187,92,60,.5); }
+.bld-tier__m { font-family: var(--font-display); font-weight: 400; font-size: clamp(34px,3.4vw,46px); line-height: .95;
+  letter-spacing: -.01em; color: var(--ink); }
+.bld-tier--top .bld-tier__m { color: var(--orange); }
+.bld-tier__h { font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--ink); margin: 16px 0 0; }
+.bld-tier__p { font-size: 15px; line-height: 1.6; color: var(--ink-60); margin-top: 14px; }
+@media (max-width: 900px){ .bld-tiers { grid-template-columns: 1fr; } }
+
+/* DNN · типология 4 тирами (2×2) + пул-кво музейной сцены */
+.bld-tiers--4 { grid-template-columns: repeat(2, 1fr); }
+.bld-tier--top.bld-tier--wide { grid-column: 1 / -1; }
+.bld-pull { font-family: var(--font-display-editorial); font-style: italic; font-weight: 500;
+  font-size: clamp(22px,2.4vw,32px); line-height: 1.34; color: var(--ink); max-width: 30ch;
+  padding-left: 30px; border-left: 2px solid var(--orange); margin: 0; }
+@media (max-width: 760px){ .bld-tiers--4 { grid-template-columns: 1fr; } }
+
+/* Сцена 5 · кейс-цитата (blockquote с терракотовой кромкой) */
+.bld-case { border-left: 3px solid var(--orange); padding: 6px 0 6px 30px; margin: 30px 0 0;
+  font-family: var(--font-display-editorial); font-style: italic; font-weight: 500;
+  font-size: clamp(19px,1.8vw,24px); line-height: 1.42; color: var(--ink); max-width: 60ch; }
+.bld-case__by { display: block; margin-top: 16px; font-family: var(--font-sans); font-style: normal;
+  font-size: 13px; letter-spacing: .04em; color: var(--ink-60); }
+.bld-steps { list-style: none; margin: 22px 0 0; padding: 0; counter-reset: s; max-width: 70ch; }
+.bld-steps li { position: relative; padding: 14px 0 14px 44px; border-top: 1px solid var(--line);
+  font-size: 16px; line-height: 1.55; color: var(--ink-60); counter-increment: s; }
+.bld-steps li::before { content: counter(s,decimal-leading-zero); position: absolute; left: 0; top: 14px;
+  font-family: var(--font-mono); font-size: 13px; color: var(--orange); }
+
+
+/* BUILDING · сплошная шапка (не оверлеит фото split-героя) */
+.st-topbar--solid { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: var(--pear-ink); }
+.st-topbar--solid .brand img { height: 34px; }
+.st-topbar--solid .st-topbar__row { position: relative; padding-top: 13px; padding-bottom: 13px; }
+.st-topbar--solid .st-topnav { position: absolute; left: 50%; transform: translateX(-50%); }
+.bld-hero { padding-top: 60px; }
+
+
+/* KOTELNICHESKAYA · зеркальный split-геро (фото слева, панель справа) + сетка персон */
+.bld-hero--mirror .bld-hero__media { order: -1; }
+.bld-hero--mirror .bld-hero__media::after { background: linear-gradient(270deg, rgba(27,34,48,.5) 0%, rgba(27,34,48,0) 28%); }
+@media (max-width: 900px){ .bld-hero--mirror .bld-hero__media { order: -1; } }
+
+/* Сцена 5 · сетка знаменитых жильцов */
+.bld-persons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bld-person { border: 1px solid var(--line); padding: 28px 24px; background: #fff; }
+.bld-person--feat { background: var(--pear); border-color: var(--pear); position: relative; overflow: hidden; }
+.bld-person--feat::after { content: ""; position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/280px; opacity: .03; filter: invert(1); pointer-events: none; }
+.bld-person__n { position: relative; font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.08; color: var(--ink); }
+.bld-person--feat .bld-person__n { color: var(--platinum); }
+.bld-person__y { position: relative; font-family: var(--font-mono); font-size: 13px; color: var(--orange); margin-top: 8px; }
+.bld-person__r { position: relative; font-size: 15px; line-height: 1.55; color: var(--ink-60); margin-top: 13px; }
+.bld-person--feat .bld-person__r { color: var(--on-dark-70); }
+.bld-persons__more { margin-top: 26px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 16px; line-height: 1.7; color: var(--ink-60); max-width: 90ch; }
+.bld-persons__note { margin-top: 20px; font-family: var(--font-display-editorial); font-style: italic; font-size: 19px; line-height: 1.45; color: var(--ink); max-width: 60ch; padding-left: 26px; border-left: 2px solid var(--orange); }
+@media (max-width: 900px){ .bld-persons { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px){ .bld-persons { grid-template-columns: 1fr; } }
+
+
+/* ============================================================================
+   MGU-SPECIFIC (.bld-adj / .bld-compare / .bld-know) — adjacent-рынок,
+   международный контекст, чек-лист «что знать». Атомы/chrome — общие (.st-* и .bld-*).
+   ========================================================================== */
+
+/* Сцена 4 · Adjacent-рынок: featured-карта + грид из 4 направлений */
+.bld-adj { display: grid; gap: 22px; }
+.bld-adj__feat { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(180px,260px) 1fr;
+  gap: clamp(28px,4vw,64px); align-items: center; background: var(--pear); color: var(--platinum);
+  border: 1px solid var(--pear); padding: clamp(34px,4vw,52px) clamp(30px,4vw,56px); }
+.bld-adj__feat::after { content: ""; position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/300px;
+  opacity: .03; filter: invert(1); pointer-events: none; }
+.bld-adj__feat-l { position: relative; z-index: 2; }
+.bld-adj__feat-r { position: relative; z-index: 2; }
+.bld-adj__time { font-family: var(--font-display); font-weight: 400; font-size: clamp(46px,5.5vw,76px);
+  line-height: .9; letter-spacing: -.02em; color: var(--orange); }
+.bld-adj__feat .bld-adj__time { color: var(--orange); }
+.bld-adj__where { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.05; color: var(--platinum); margin-top: 12px; }
+.bld-adj__feat-r .bld-adj__where { font-size: 30px; }
+.bld-adj__tag { font-family: var(--font-label); font-weight: 500; font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--orange); margin-top: 14px; }
+.bld-adj__feat .bld-adj__p { color: var(--on-dark-70); margin-top: 16px; font-size: 16px; line-height: 1.62; max-width: 64ch; }
+.bld-adj__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.bld-adj__card { border: 1px solid var(--line); background: #fff; padding: 32px 28px; display: flex; flex-direction: column; }
+.bld-adj__card .bld-adj__time { font-size: clamp(36px,3.6vw,48px); color: var(--ink); }
+.bld-adj__card .bld-adj__where { color: var(--ink); font-size: 22px; }
+.bld-adj__card .bld-adj__p { font-size: 15px; line-height: 1.6; color: var(--ink-60); margin-top: 14px; }
+@media (max-width: 1000px){ .bld-adj__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 900px){ .bld-adj__feat { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 560px){ .bld-adj__grid { grid-template-columns: 1fr; } }
+
+/* Сцена 6 · Международный контекст: строка-сопоставление (3 года серивом) */
+.bld-compare { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); margin-top: 48px; }
+.bld-compare__c { padding: 30px 30px 0 0; border-left: 1px solid var(--line); padding-left: 30px; }
+.bld-compare__c:first-child { border-left: 0; padding-left: 0; }
+.bld-compare__y { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px,4vw,58px); line-height: .9;
+  letter-spacing: -.01em; color: var(--orange); }
+.bld-compare__n { font-family: var(--font-display); font-weight: 400; font-size: 20px; line-height: 1.1; color: var(--ink); margin-top: 14px; }
+.bld-compare__d { font-size: 14px; line-height: 1.5; color: var(--ink-60); margin-top: 8px; }
+@media (max-width: 760px){ .bld-compare { grid-template-columns: 1fr; }
+  .bld-compare__c { border-left: 0; padding-left: 0; padding-top: 24px; border-top: 1px solid var(--line); }
+  .bld-compare__c:first-child { border-top: 0; padding-top: 0; } }
+
+/* Сцена 7 · Чек-лист «что знать»: сетка 2×2 */
+.bld-know { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.bld-know__card { border: 1px solid var(--line); background: #fff; padding: 36px 34px; display: flex; flex-direction: column; }
+.bld-know__card--accent { border-color: rgba(187,92,60,.5); }
+.bld-know__h { display: flex; align-items: center; gap: 16px; }
+.bld-know__h .st-spark { color: var(--orange); }
+.bld-know__h h4 { font-family: var(--font-display); font-weight: 400; font-size: 25px; line-height: 1.05; color: var(--ink); }
+.bld-know__p { font-size: 20px; line-height: 1.5; color: var(--ink); margin-top: 18px; }
+@media (max-width: 760px){ .bld-know { grid-template-columns: 1fr; } }
+
+/* LENINGRADSKAYA · сетка соседних премиум-районов «где покупать рядом» (4 карты) */
+.bld-dist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.bld-dist__card { border: 1px solid var(--line); background: #fff; padding: 36px 34px; display: flex; flex-direction: column; }
+.bld-dist__card--accent { border-color: rgba(187,92,60,.5); }
+.bld-dist__eyebrow { font-family: var(--font-label); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+.bld-dist__addr { font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.04; color: var(--ink); margin-top: 12px; }
+.bld-dist__p { font-size: 15px; line-height: 1.62; color: var(--ink-60); margin-top: 16px; }
+.bld-dist__card--wide { grid-column: 1 / -1; }
+
+/* ============================================================================
+   DISTRICT F2 (.kh-*) — Хамовники/Замоскворечье: гео-легенды, грид локаций,
+   матрица-типология, стат-капсулы геро. Chrome/атомы — общие (.st-* и .bld-*).
+   ========================================================================== */
+
+/* Геро · стат-капсулы под CTA */
+.kh-hero-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 60px; }
+.kh-hero-stats span { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--on-dark-70); border: 1px solid var(--line-dark); padding: 9px 14px; }
+.kh-anchor { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px;
+  font-family: var(--font-label); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); text-decoration: none; }
+
+/* S3 · карта-плейсхолдер + 4 легенды */
+.kh-mapbox { position: relative; min-height: 320px; border: 1px solid var(--line);
+  background: var(--krayola);
+  background-image: repeating-linear-gradient(45deg, rgba(39,47,66,.07) 0 2px, transparent 2px 12px);
+  display: flex; align-items: flex-end; overflow: hidden; }
+.kh-mapbox::after { content: attr(data-ph); font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-60); padding: 16px 18px; }
+.kh-legends { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 44px;
+  border-top: 1px solid var(--line); padding-top: 40px; }
+.kh-legend__h { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 400;
+  font-size: 21px; color: var(--ink); margin-bottom: 18px; }
+.kh-legend__h .st-spark { color: var(--orange); width: 13px; height: 13px; }
+.kh-legend ul { list-style: none; margin: 0; padding: 0; }
+.kh-legend li { font-size: 15px; line-height: 1.5; color: var(--ink-60); padding: 8px 0; border-top: 1px solid var(--line); }
+.kh-legend li:first-child { border-top: 0; }
+@media (max-width: 1000px){ .kh-legends { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px){ .kh-legends { grid-template-columns: 1fr; } }
+
+/* S4/S6 · группы локаций + карточки-входы */
+.kh-group { margin-top: 46px; }
+.kh-group:first-of-type { margin-top: 0; }
+.kh-group__h { font-family: var(--font-label); font-weight: 500; font-size: 13px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--orange); padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 26px; }
+.kh-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.kh-card { position: relative; display: flex; flex-direction: column; min-height: 200px; border: 1px solid var(--line);
+  background: #fff; padding: 30px 28px; text-decoration: none; color: var(--ink); transition: background .3s var(--ease), transform .3s var(--ease); }
+a.kh-card:hover { background: var(--pear); transform: translateY(-3px); }
+.kh-card__loc { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-40); }
+.kh-card__name { font-family: var(--font-display); font-weight: 400; font-size: 25px; line-height: 1.04; color: var(--ink); margin-top: 10px; }
+a.kh-card:hover .kh-card__name { color: var(--orange); }
+.kh-card__note { font-size: 15px; line-height: 1.55; color: var(--ink-60); margin-top: 14px; }
+a.kh-card:hover .kh-card__loc, a.kh-card:hover .kh-card__note { color: var(--on-dark-70); }
+.kh-card__link { margin-top: auto; padding-top: 20px; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; color: var(--orange); }
+.kh-card__link svg { width: 12px; height: 12px; transform: rotate(-45deg); }
+a.kh-card:hover .kh-card__link { color: var(--platinum); }
+@media (max-width: 1000px){ .kh-grid3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px){ .kh-grid3 { grid-template-columns: 1fr; } }
+
+/* S4 Топ-локации (#lokacii) — оживление коллекции: индекс + многослой-паттерн + reveal-нота + вход */
+#lokacii { counter-reset: khidx; }
+#lokacii .kh-card { counter-increment: khidx; overflow: hidden;
+  transition: background .35s var(--ease), transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease); }
+#lokacii .kh-card > * { position: relative; z-index: 1; }
+/* индекс-номер коллекции 01…09 */
+#lokacii .kh-card::before { content: counter(khidx, decimal-leading-zero); position: absolute; top: 22px; right: 24px; z-index: 2;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: var(--ink-40); transition: color .35s var(--ease); }
+/* паттерн-подложка (многослой) */
+#lokacii .kh-card::after { content: ""; position: absolute; inset: 0; z-index: 0;
+  background: url(../../assets/pattern-waves.png) center / 380px;
+  opacity: 0; transform: translateY(10px); transition: opacity .45s var(--ease), transform .55s var(--ease); pointer-events: none; }
+/* единый ховер для всех карточек (и ссылок, и статичных) */
+#lokacii .kh-card:hover, #lokacii a.kh-card:hover { background: #fff; border-color: rgba(187,92,60,.5);
+  transform: translateY(-4px); box-shadow: 0 18px 40px -28px rgba(27,34,48,.55); }
+#lokacii .kh-card:hover::before { color: var(--orange); }
+#lokacii .kh-card:hover::after { opacity: .06; transform: translateY(0); }
+#lokacii .kh-card:hover .kh-card__name, #lokacii a.kh-card:hover .kh-card__name { color: var(--orange); }
+#lokacii a.kh-card:hover .kh-card__loc { color: var(--ink-40); }
+#lokacii a.kh-card:hover .kh-card__note { color: var(--ink-60); }
+#lokacii a.kh-card:hover .kh-card__link { color: var(--orange); }
+/* reveal-нота: по умолчанию свёрнута в зарезервированное место (min-height стабилен → нет реклоу) */
+#lokacii .kh-card__note { max-height: 0; opacity: 0; margin-top: 0; overflow: hidden;
+  transition: max-height .5s var(--ease), opacity .45s var(--ease), margin-top .5s var(--ease); }
+#lokacii .kh-card:hover .kh-card__note, #lokacii .kh-card:focus-within .kh-card__note { max-height: 220px; opacity: 1; margin-top: 14px; }
+/* анимированная линия под заголовком группы */
+#lokacii .kh-group__h { position: relative; }
+#lokacii .kh-group__h::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%;
+  background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease); }
+#lokacii .reveal.in .kh-group__h::after { transform: scaleX(1); }
+/* ступенчатый вход карточек */
+@media (prefers-reduced-motion: no-preference){
+  #lokacii .reveal .kh-card { opacity: 0; }
+  #lokacii .reveal.in .kh-card { animation: khrise .6s var(--ease) forwards; }
+  #lokacii .reveal.in .kh-grid3 .kh-card:nth-child(2){ animation-delay: .09s; }
+  #lokacii .reveal.in .kh-grid3 .kh-card:nth-child(3){ animation-delay: .18s; }
+}
+@keyframes khrise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+/* тач + reduced-motion: нота всегда раскрыта, без джанка */
+@media (hover: none){ #lokacii .kh-card__note { max-height: 220px; opacity: 1; margin-top: 14px; } }
+@media (prefers-reduced-motion: reduce){
+  #lokacii .kh-card__note { max-height: 220px; opacity: 1; margin-top: 14px; transition: none; }
+  #lokacii .reveal .kh-card { opacity: 1; }
+  #lokacii .kh-card::after { display: none; }
+}
+
+/* S5 · матрица-типология (table на тёмной) */
+.kh-matrix-wrap { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.kh-matrix { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 760px; }
+.kh-matrix thead th { font-family: var(--font-label); font-weight: 500; font-size: 12px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--on-dark-70); text-align: left; padding: 0 20px 16px 0; border-bottom: 1px solid var(--platinum); }
+.kh-matrix td { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line-dark); vertical-align: top; }
+.kh-matrix .ep { width: 30%; }
+.kh-matrix .ep b { font-family: var(--font-display); font-weight: 400; font-size: 22px; color: var(--platinum); display: block; }
+.kh-matrix .ep .yr { font-family: var(--font-mono); font-size: 13px; color: var(--orange); }
+.kh-matrix .ep p { font-size: 14px; line-height: 1.5; color: var(--on-dark-70); margin-top: 8px; }
+.kh-matrix .val { font-family: var(--font-mono); font-size: 14px; color: var(--on-dark); white-space: nowrap; }
+.kh-matrix .val.price { color: var(--platinum); font-weight: 700; }
+.bld-list { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 30px; }
+.bld-list li { position: relative; padding-left: 24px; font-size: 16px; line-height: 1.5; color: var(--on-dark-70); }
+.bld-list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 12px; height: 12px; background: var(--orange);
+  clip-path: polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%); }
+@media (max-width: 760px){ .bld-dist { grid-template-columns: 1fr; } .bld-list { grid-template-columns: 1fr; } }
+
+
+/* ===== Моторная прокачка (CSS-only, gated prefers-reduced-motion) ===== */
+@media (prefers-reduced-motion: no-preference){
+  /* S1 геро — оркестрованный вход лесенкой */
+  .bld-hero__panel > * { opacity: 0; animation: khHeroIn .7s var(--ease) both; }
+  .bld-hero__panel > .bld-hero__crumbs { animation-delay: .05s; }
+  .bld-hero__panel > .bld-hero__eyebrow { animation-delay: .14s; }
+  .bld-hero__panel > .bld-hero__h1 { animation-delay: .22s; }
+  .bld-hero__panel > .bld-hero__sub { animation-delay: .34s; }
+  .bld-hero__panel > .bld-hero__cta, .bld-hero__panel > div { animation-delay: .44s; }
+  .bld-hero__panel > .kh-hero-stats { animation-delay: .54s; }
+  .bld-hero__panel > .kh-anchor { animation-delay: .62s; }
+  /* терракотовая линия прочерчивается под H1 */
+  .bld-hero__h1 { position: relative; }
+  .bld-hero__h1::after { content: ""; position: absolute; left: 0; bottom: -16px; height: 2px; width: 96px;
+    background: var(--orange); transform: scaleX(0); transform-origin: left; animation: khRule .8s var(--ease) .5s forwards; }
+  /* S2 история — таймлайн въезжает построчно */
+  .mz-epoch__row { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.in .mz-epoch__row { opacity: 1; transform: none; }
+  .reveal.in .mz-epoch__row:nth-child(2){ transition-delay: .07s; }
+  .reveal.in .mz-epoch__row:nth-child(3){ transition-delay: .14s; }
+  .reveal.in .mz-epoch__row:nth-child(4){ transition-delay: .21s; }
+  .reveal.in .mz-epoch__row:nth-child(5){ transition-delay: .28s; }
+  .reveal.in .mz-epoch__row:nth-child(6){ transition-delay: .35s; }
+}
+@keyframes khHeroIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes khRule { to { transform: scaleX(1); } }
+
+
+/* S3 География — интерактивная гео-схема (легенды подсвечивают слои карты, CSS :has) */
+.kh-geo { display: grid; gap: 0; }
+.kh-map { position: relative; min-height: clamp(280px, 34vw, 380px); border: 1px solid var(--line); background: var(--krayola);
+  background-image: repeating-linear-gradient(45deg, rgba(39,47,66,.05) 0 2px, transparent 2px 15px); overflow: hidden; }
+.kh-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.kh-map .m-layer { transition: stroke .35s var(--ease), opacity .35s var(--ease), stroke-width .35s var(--ease); }
+.kh-map .m-river { fill: none; stroke: var(--pear); stroke-width: 11; opacity: .12; stroke-linecap: round; }
+.kh-map .m-bound { fill: none; stroke: var(--pear); stroke-width: 2; opacity: .34; stroke-dasharray: 5 7; }
+.kh-map .m-street path { fill: none; stroke: var(--pear); stroke-width: 2.4; opacity: .4; stroke-linecap: round; transition: stroke .35s var(--ease), opacity .35s var(--ease), stroke-width .35s var(--ease); }
+.kh-map .m-lane path { fill: none; stroke: var(--pear); stroke-width: 1.3; opacity: .3; stroke-linecap: round; transition: stroke .35s var(--ease), opacity .35s var(--ease), stroke-width .35s var(--ease); }
+.kh-map .m-metro circle { fill: var(--pear); opacity: .4; transition: fill .35s var(--ease), r .35s var(--ease), opacity .35s var(--ease); }
+.kh-map__cap { position: absolute; left: 16px; bottom: 14px; z-index: 2; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-60); }
+/* подсветка слоя при наведении на соответствующую легенду */
+.kh-geo:has(.kh-legend--bounds:hover) .m-bound { stroke: var(--orange); opacity: .95; }
+.kh-geo:has(.kh-legend--streets:hover) .m-street path { stroke: var(--orange); opacity: 1; stroke-width: 3.6; }
+.kh-geo:has(.kh-legend--lanes:hover) .m-lane path { stroke: var(--orange); opacity: 1; stroke-width: 2.1; }
+.kh-geo:has(.kh-legend--metro:hover) .m-metro circle { fill: var(--orange); opacity: 1; r: 7.5; }
+.kh-geo:has(.kh-legend:hover) .kh-legend:not(:hover) { opacity: .5; }
+.kh-legend { transition: opacity .3s var(--ease); }
+.kh-legend__h { transition: color .3s var(--ease); }
+.kh-legend:hover .kh-legend__h { color: var(--orange); }
+
+
+/* S5 типология — стат-бары: строки въезжают, цена «загорается» индикатором (CSS-only) */
+@media (prefers-reduced-motion: no-preference){
+  .kh-matrix tbody tr { opacity: 0; transform: translateY(12px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+  .reveal.in .kh-matrix tbody tr { opacity: 1; transform: none; }
+  .reveal.in .kh-matrix tbody tr:nth-child(2){ transition-delay: .08s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(3){ transition-delay: .16s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(4){ transition-delay: .24s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(5){ transition-delay: .32s; }
+  .kh-matrix .val.price { position: relative; }
+  .kh-matrix .val.price::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 2px;
+    background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease); }
+  .reveal.in .kh-matrix tbody tr:nth-child(1) .val.price::after { transition-delay: .15s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(2) .val.price::after { transition-delay: .23s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(3) .val.price::after { transition-delay: .31s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(4) .val.price::after { transition-delay: .39s; }
+  .reveal.in .kh-matrix tbody tr:nth-child(5) .val.price::after { transition-delay: .47s; }
+  .reveal.in .kh-matrix .val.price::after { transform: scaleX(1); }
+}
+
+
+/* S6 · нумерация + многослой-ховер (ноты не сворачиваем — это описания зданий) */
+#objekty { counter-reset: objidx; }
+#objekty .kh-card { counter-increment: objidx; overflow: hidden; }
+#objekty .kh-card > * { position: relative; z-index: 1; }
+#objekty .kh-card::before { content: counter(objidx, decimal-leading-zero); position: absolute; top: 22px; right: 24px; z-index: 2;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; color: var(--ink-40); transition: color .35s var(--ease); }
+#objekty .kh-card::after { content: ""; position: absolute; inset: 0; z-index: 0;
+  background: url(../../assets/pattern-waves.png) center / 380px;
+  opacity: 0; transform: translateY(10px); transition: opacity .45s var(--ease), transform .55s var(--ease); pointer-events: none; }
+#objekty .kh-card:hover, #objekty a.kh-card:hover { background: #fff; border-color: rgba(187,92,60,.5);
+  transform: translateY(-4px); box-shadow: 0 18px 40px -28px rgba(27,34,48,.55); }
+#objekty .kh-card:hover::before { color: var(--orange); }
+#objekty .kh-card:hover::after { opacity: .06; transform: translateY(0); }
+#objekty .kh-card:hover .kh-card__name, #objekty a.kh-card:hover .kh-card__name { color: var(--orange); }
+#objekty a.kh-card:hover .kh-card__loc { color: var(--ink-40); }
+#objekty a.kh-card:hover .kh-card__note { color: var(--ink-60); }
+#objekty a.kh-card:hover .kh-card__link { color: var(--orange); }
+@media (prefers-reduced-motion: no-preference){
+  #objekty .reveal .kh-card { opacity: 0; }
+  #objekty .reveal.in .kh-card { animation: khrise .6s var(--ease) forwards; }
+  #objekty .reveal.in .kh-grid3 .kh-card:nth-child(2){ animation-delay: .08s; }
+  #objekty .reveal.in .kh-grid3 .kh-card:nth-child(3){ animation-delay: .16s; }
+  #objekty .reveal.in .kh-grid3 .kh-card:nth-child(4){ animation-delay: .24s; }
+  #objekty .reveal.in .kh-grid3 .kh-card:nth-child(5){ animation-delay: .32s; }
+}
+@media (prefers-reduced-motion: reduce){ #objekty .reveal .kh-card { opacity: 1; } #objekty .kh-card::after { display: none; } }
+
+/* Геро на весь первый экран (без светлой полосы под ним) */
+.bld-hero { min-height: 100vh; }
+@supports (height: 100dvh){ .bld-hero { min-height: 100dvh; } }
+
+/* ===== Контакты — форма обратной связи 1-в-1 с главной ===== */
+.sd-contact { background: var(--paper); color: var(--ink); position: relative; }
+.sd-contact .st-eyebrow { color: var(--ink-60); }
+.sd-contact__grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: 90px; align-items: start; }
+.sd-contact__h { font-family: var(--font-display); font-weight: 400; font-size: 48px; line-height: 1.0; letter-spacing: -.01em; margin: 20px 0 0; color: var(--ink); text-transform: uppercase; }
+.sd-contact__lead { font-family: var(--font-sans); font-size: 20px; line-height: 1.5; margin-top: 28px; max-width: 40ch; color: var(--ink); }
+.sd-contact__form { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 30px; align-items: end; }
+.sd-field { display: flex; flex-direction: column; gap: 14px; }
+.sd-field:not(.sd-field--half) { grid-column: 1 / -1; }
+.sd-field label { font-family: var(--font-sans); font-size: 20px; color: var(--ink); line-height: 1; }
+.sd-field input { font-family: var(--font-sans); font-size: 20px; color: var(--ink); background: transparent; border: 0;
+  border-bottom: 1px solid var(--ink); padding: 0 0 12px; outline: none; transition: border-color .35s var(--ease); }
+.sd-field input:focus { border-bottom-color: var(--orange); }
+.sd-contact__priv { grid-column: 1 / -1; font-size: 16px; color: var(--ink-60); margin: 0; line-height: 1.4; }
+.sd-contact__form .st-btn { grid-column: 1 / -1; width: 310px; max-width: 100%; }
+.sd-contact__coords { display: flex; flex-wrap: wrap; gap: 24px 80px; margin-top: 140px; }
+.sd-contact__big { font-family: var(--font-sans); font-weight: 700; font-size: clamp(34px,4.4vw,64px); line-height: 1;
+  letter-spacing: -.02em; color: var(--ink); text-transform: uppercase; text-decoration: none; transition: color .4s var(--ease); }
+.sd-contact__big:hover { color: var(--orange); }
+.sd-contact__caps { display: flex; flex-wrap: wrap; gap: 40px 60px; margin-top: 46px; }
+.sd-contact__caps > div, .sd-contact__caps > a { display: flex; flex-direction: column; gap: 6px; min-width: 200px; text-decoration: none; }
+.sd-cap__k { font-size: 20px; color: var(--ink); opacity: .6; }
+.sd-cap__v { font-size: 20px; font-weight: 700; color: var(--ink); text-transform: uppercase; }
+@media (max-width: 900px){ .sd-contact__grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 560px){ .sd-contact__form { grid-template-columns: 1fr; } }
+
+/* ===== Мобайл-гигиена: ноль горизонт-скролла на 375/360 (контент сохранён) ===== */
+/* Грид-айтемы должны сжиматься, а не распирать body min-content'ом */
+.bld-hero__panel, .st-trust, .sd-contact__grid, .kh-grid3, .st-near, .kh-legends { min-width: 0; }
+.bld-hero__panel > *, .st-trust > *, .sd-contact__grid > * { min-width: 0; max-width: 100%; }
+/* tags-полоса: прокрутка ВНУТРИ, не страничная */
+.st-trust__tags { max-width: 100%; }
+/* FAQ-вопрос и заголовки секций: текст сжимается под узкий экран, не распирая body */
+.st-faq__q { min-width: 0; }
+.st-faq__q h4 { min-width: 0; overflow-wrap: anywhere; }
+.st-h2 { overflow-wrap: anywhere; }
+/* Крупные контакт-строки (email/телефон) переносятся на узких, не распирая body */
+.sd-contact__big { overflow-wrap: anywhere; word-break: break-word; }
+@media (max-width: 560px){
+  /* Длинный лейбл фирменной кнопки в герое переносится, кап сохраняется */
+  .bld-hero__cta.st-btn { height: auto; align-items: stretch; max-width: 100%; }
+  .bld-hero__cta .st-btn__lab { white-space: normal; line-height: 1.25; padding: 12px 20px; }
+  /* CTA-заголовок Anticva сжимается под узкий экран (текст не меняется) */
+  .sd-contact__h { font-size: clamp(30px, 8.5vw, 48px); overflow-wrap: anywhere; }
+}
+
+
+/* ============================================================================
+   ENHANCE · масштабируемый слой эталона (перенос с visotki--mgu, 15.06).
+   Плейбук: QA/_taste/_MOBILE-DESIGN-PLAYBOOK.md. Vanilla, motion ≤2/5,
+   reduced-motion-safe. Глобальные (тонкие, каноничные): прогресс чтения,
+   ровные переносы, каскад коллекций. Десктоп-1440 не разъезжается.
+   ========================================================================== */
+:root{ --ease-soft: cubic-bezier(.16,1,.3,1); --dur-reveal:.7s; --rise:18px; }
+
+/* — Г2 · прогресс чтения (тонкая терракотовая полоса сверху) — */
+.read-progress{ position:fixed; top:0; left:0; height:2px; width:100%; background:var(--orange);
+  z-index:60; transform:scaleX(0); transform-origin:0 50%; pointer-events:none; }
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion:no-preference){
+    .read-progress{ animation:rp-grow linear both; animation-timeline:scroll(root block); }
+  }
+}
+@keyframes rp-grow{ to{ transform:scaleX(1); } }
+
+/* — В5 · ровные переносы (без сирот в теле, балансировка заголовков) — */
+.mz-epoch__note, .st-intro, .kh-card__note, .kh-legend li, .st-trust__voice,
+.st-faq__inner p, .st-faq__list li, .sd-contact__lead, .kh-matrix .ep p{ text-wrap:pretty; }
+.st-h2, .bld-hero__h1, .kh-card__name, .st-trust__quote, .sd-contact__h{ text-wrap:balance; }
+
+/* — Д2 · каскад появления коллекций (карточки/строки по очереди) —
+   только там, где НЕТ собственной khrise-анимации (#lokacii/#objekty оставлены своими). */
+[data-stagger]>*{ opacity:0; transform:translateY(var(--rise));
+  transition:opacity var(--dur-reveal) var(--ease-soft), transform var(--dur-reveal) var(--ease-soft);
+  transition-delay:calc(min(var(--i,0),6) * 100ms); }
+[data-stagger].in>*{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion:reduce){
+  [data-stagger]>*{ opacity:1!important; transform:none!important; transition:none!important; }
+  .read-progress{ display:none; }
+}
+
+/* — m-fold · вторичный хвост сворачивается в нативный <details> ≤640.
+   Десктоп ≥641 — display:contents (раскладка как была, весь текст в DOM, M≥N). — */
+.m-fold { display: contents; }
+.m-fold > summary { display: none; }
+@media (max-width: 640px){
+  .m-fold { display: block; }
+  .m-fold > summary {
+    display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none;
+    margin-top: 6px; padding: 14px 0; width: 100%;
+    font-family: var(--font-label); font-weight: 700; font-size: 13px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--orange); border-top: 1px solid var(--line);
+  }
+  .st-section--dark .m-fold > summary { border-top-color: var(--line-dark); }
+  .m-fold > summary::-webkit-details-marker { display: none; }
+  .m-fold > summary::after { content: ' \25BE'; font-size: 11px; margin-left: auto; }
+  .m-fold[open] > summary::after { content: ' \25B4'; }
+  .m-fold > *:not(summary) { margin-top: 16px; }
+}
+
+/* ============================================================================
+   MOBILE LANDING F2 (≤640) · посадка _ULTRA-PLAN: буквица истории, геро-H1
+   потолок, ленты-свайпы коллекций, матрица→карточки. Десктоп-1440 не трогаем.
+   Особый визуал (карта SVG + легенды, 9 локаций) сохранён — карта остаётся.
+   ========================================================================== */
+@media (max-width: 640px){
+
+  /* — Геро · мобильный потолок H1 (heroH1 в цель 26–34) + воздух компактнее — */
+  .bld-hero { min-height: 100vh; }
+  .bld-hero__h1 { font-size: clamp(28px, 8vw, 33px); }
+  .bld-hero__h1 .sub-line { font-size: clamp(17px, 4.6vw, 21px); margin-top: 14px; }
+  .bld-hero__panel { padding: 40px 22px 44px; }
+  .bld-hero__media { min-height: 240px; }
+  .kh-hero-stats { margin-top: 28px; gap: 8px; }
+  .kh-anchor { margin-top: 16px; }
+
+  /* — В3 · буквица на старте «главы» истории (один абзац-лид) — */
+  .lux-lead::first-letter{ float:left; font-family:var(--font-display); font-weight:400;
+    font-size:3.1em; line-height:.72; padding:.04em .12em 0 0; color:var(--orange); }
+  @supports (initial-letter: 2){ .lux-lead::first-letter{ float:none; font-size:inherit; initial-letter:2; margin-right:.1em; } }
+
+  /* — Д5 · draw-on подчёркивание заголовков секций (растёт при входе) — */
+  .st-secthead .st-h2{ position:relative; }
+  .st-secthead .st-h2::after{ content:""; position:absolute; left:0; bottom:-12px; height:2px; width:56px;
+    background:var(--orange); transform:scaleX(0); transform-origin:left; transition:transform .8s var(--ease) .12s; }
+  .st-secthead.in .st-h2::after{ transform:scaleX(1); }
+
+  /* — S2 история · компактнее таймлайн (текст весь на месте) — */
+  .st-intro { font-size: 16px; line-height: 1.55; }
+  .mz-epoch__row { padding: 22px 0; gap: 10px; }
+  .mz-epoch__note { font-size: 15.5px; line-height: 1.5; }
+
+  /* — S3 география · легенды компактнее, карта остаётся (особый визуал) — */
+  .kh-map { min-height: clamp(230px, 56vw, 300px); }
+  .kh-legends { gap: 22px; padding-top: 30px; margin-top: 32px; }
+  .kh-legend li { font-size: 14.5px; padding: 7px 0; }
+
+  /* — S4/S6 коллекции 3+ → горизонтальная лента-свайп (карточки не прячем) —
+     Б: лента вместо стопки. 9 локаций и 5 объектов свайпаются вбок. */
+  .kh-grid3 {
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; margin: 0 -22px; padding: 4px 22px 12px; scrollbar-width: none;
+  }
+  .kh-grid3::-webkit-scrollbar { display: none; }
+  .kh-grid3 > * { flex: 0 0 80%; scroll-snap-align: start; min-width: 0; min-height: 0; }
+  .kh-group { margin-top: 34px; }
+  /* В ленте ноту локаций показываем сразу (ховера нет) — текст виден, не залипает */
+  #lokacii .kh-card__note { max-height: none; opacity: 1; margin-top: 12px; overflow: visible; }
+
+  /* — S5 типология · таблица 5×5 → карточки (числа verbatim, ничего не режем) — */
+  .kh-matrix-wrap { overflow: visible; }
+  .kh-matrix { min-width: 0; display: block; }
+  .kh-matrix thead { display: none; }
+  .kh-matrix tbody, .kh-matrix tr { display: block; }
+  .kh-matrix tr { border: 1px solid var(--line-dark); padding: 20px 18px; margin-bottom: 14px; }
+  .kh-matrix td { display: flex; justify-content: space-between; gap: 18px; align-items: baseline;
+    padding: 9px 0; border-bottom: 1px solid var(--line-dark); white-space: normal; }
+  .kh-matrix td:last-child { border-bottom: 0; }
+  .kh-matrix td.ep { display: block; padding-top: 0; }
+  .kh-matrix td.val::before { content: attr(data-k); font-family: var(--font-label); font-weight: 500;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-70); flex: none; }
+  .kh-matrix .ep p { font-size: 14px; }
+
+  /* — S8 соседние пласты (6) → лента-свайп — */
+  .st-near {
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; margin: 0 -22px; padding: 4px 22px 12px; scrollbar-width: none;
+  }
+  .st-near::-webkit-scrollbar { display: none; }
+  .st-near__card { flex: 0 0 82%; scroll-snap-align: start; min-width: 0; min-height: 0; }
+
+  /* — Д7 · tap-feedback карточек (дорогой микро-отклик) — */
+  .kh-card:active, .st-near__card:active { transform: translateY(-1px); }
+
+  /* — S5 карточки типологии · проза во всю ширину + компактнее (числа verbatim) — */
+  .kh-matrix tr { padding: 18px 16px; margin-bottom: 12px; }
+  .kh-matrix td.ep { width: auto; padding-bottom: 6px; }
+  .kh-matrix .ep b { font-size: 20px; }
+  .kh-matrix .ep p { font-size: 13.5px; line-height: 1.45; margin-top: 6px; max-width: none; }
+  .kh-matrix td { padding: 7px 0; font-size: 13.5px; }
+
+  /* — S7 портрет эксперта · ниже на узком (4/5 → 1/1), голос-факты компактнее — */
+  .st-trust__media { aspect-ratio: 1 / 1; }
+  .st-trust__quote { font-size: 24px; margin-top: 18px; }
+  .st-trust__facts { margin-top: 22px; padding-top: 22px; }
+  .st-trust__voice { margin-top: 18px; }
+  .st-trust__tags { margin-top: 22px; padding-top: 20px; }
+
+  /* — S3 легенды · короткие пункты (улицы/переулки) → капсулы-чипы в ряд — */
+  .kh-legend--streets ul, .kh-legend--lanes ul { display: flex; flex-wrap: wrap; gap: 8px; }
+  .kh-legend--streets li, .kh-legend--lanes li { border: 1px solid var(--line); border-top: 1px solid var(--line);
+    padding: 7px 12px; font-size: 13px; color: var(--ink); }
+  .kh-legend--streets li:first-child, .kh-legend--lanes li:first-child { border-top: 1px solid var(--line); }
+  .kh-legends { margin-top: 28px; padding-top: 28px; gap: 26px; }
+
+  /* — S10 CTA · уплотнение вертикали (огромный margin-top координат) — */
+  .sd-contact__grid { gap: 36px; }
+  .sd-contact__coords { margin-top: 44px; gap: 16px 40px; }
+  .sd-contact__caps { margin-top: 32px; gap: 24px 40px; }
+  .sd-contact__form { gap: 26px 22px; }
+
+  /* — общий ритм секций компактнее на узком (воздух сохранён, но меньше пустот) — */
+  .st-section { padding-top: 56px; padding-bottom: 56px; }
+  .st-secthead { margin-bottom: 36px; }
+}
+.sd-contact__caps > a { color: inherit; }
+.sd-contact__caps > a:hover .sd-cap__v { color: var(--orange); transition: color .3s; }
+/* === Footer contact block === */
+.st-foot__contact { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 26px 64px; margin-top: 60px; padding-top: 36px; border-top: 1px solid rgba(237,236,235,.18); }
+.st-foot__contact-big { text-decoration: none; color: var(--platinum); font-family: var(--font-sans); font-size: clamp(20px,2.8vw,36px); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; transition: opacity .25s; }
+.st-foot__contact-big:hover { opacity: .65; }
+.st-foot__contact-cap { text-decoration: none; display: flex; flex-direction: column; gap: 4px; min-width: 200px; }
+.st-foot__contact-cap > span:first-child { font-size: 16px; color: rgba(234,233,232,.55); }
+.st-foot__contact-cap > span:last-child { font-size: 18px; font-weight: 700; text-transform: uppercase; color: var(--platinum); transition: opacity .25s; }
+.st-foot__contact-cap:hover > span:last-child { opacity: .65; }
+@media (max-width: 640px) { .st-foot__contact { gap: 20px 40px; } .st-foot__contact-big { font-size: clamp(18px,5vw,26px); } }
+/* Убрать оранжевые черты (motion-plus draw-on), исправлено (2026-06) */
+.ds-scope .st-secthead::after { display: none !important; }
+.ds-scope .st-secthead.in::after { display: none !important; }
+.ds-scope .st-secthead--center::after { display: none !important; }
+
+
+
+/* ===== ТИПОЛОГИЯ ФОНДА: ВАРИАНТ А — 5 карточек-плиток (2026-06) ===== */
+.kh-epoch-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+.kh-epoch {
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+}
+.kh-epoch--accent {
+  background: rgba(187,92,60,.15);
+  border-color: rgba(187,92,60,.38);
+}
+.kh-epoch__yr {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+.kh-epoch__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.08;
+  text-transform: uppercase;
+  color: var(--platinum);
+  margin-bottom: 18px;
+  min-height: 2.2em;
+}
+.kh-epoch__sep {
+  height: 1px;
+  background: rgba(255,255,255,.14);
+  margin-bottom: 16px;
+}
+.kh-epoch__row {
+  margin-bottom: 10px;
+}
+.kh-epoch__k {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(237,236,235,.38);
+  margin-bottom: 2px;
+}
+.kh-epoch__v {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(237,236,235,.82);
+}
+.kh-epoch__note {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(237,236,235,.42);
+  margin-top: 12px;
+  flex: 1;
+}
+.kh-epoch__price {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--orange);
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(187,92,60,.3);
+}
+@media (max-width: 1100px) {
+  .kh-epoch-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .kh-epoch { min-height: 0; }
+}
+@media (max-width: 700px) {
+  .kh-epoch-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .kh-epoch { padding: 18px 14px; }
+  .kh-epoch__name { font-size: 16px; }
+}
+@media (max-width: 440px) {
+  .kh-epoch-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Ховер на карточках эпох: подъём + оранжевая черта снизу (2026-06) */
+.kh-epoch {
+  transition: transform .28s var(--ease), border-color .28s var(--ease), background .28s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.kh-epoch::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 2px; width: 100%;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .38s var(--ease) .04s;
+}
+.kh-epoch:hover {
+  transform: translateY(-4px);
+  border-color: rgba(187,92,60,.45);
+  background: rgba(255,255,255,.09);
+}
+.kh-epoch:hover::after {
+  transform: scaleX(1);
+}
+.kh-epoch--accent:hover {
+  background: rgba(187,92,60,.24);
+}
+@media (prefers-reduced-motion: reduce) {
+  .kh-epoch { transition: none; }
+  .kh-epoch::after { display: none; }
+}
+
+/* S7: "5–10 млн" и "4 банка" — side by side (2026-06) */
+#about .st-trust__facts { flex-wrap: nowrap; align-items: flex-start; gap: 0; }
+#about .st-trust__fact  { flex: 1; min-width: 0; }
+#about .st-trust__fact .n { font-size: clamp(22px, 2.2vw, 34px); }
+
+/* Цена эпохи: компактнее на мобайле (2026-06) */
+@media (max-width: 440px) {
+  .kh-epoch__price { font-size: 16px; margin-top: 12px; padding-top: 10px; }
+}

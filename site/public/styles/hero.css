@@ -1,0 +1,152 @@
+/* ============================================================================
+   Белолипцев — HERO SYSTEM (.hp-*) · общий слой геро для всех страниц.
+   ДНК эталона «О себе»: full-bleed фото → единые градиентные подложки →
+   матовая плашка слева → прозрачная шапка → navy при скролле. Каждый тип
+   ведёт свою сигнатуру. Подключать ПОСЛЕ page css (чтобы перебить .st-topbar).
+   CTA — реюз страничного .st-btn (стилизуется в page css), здесь только отступ.
+   ========================================================================== */
+
+/* --- база хиро ----------------------------------------------------------- */
+.hp-hero{position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;background:var(--pear-ink)}
+.hp-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hp-hero__scrim{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(180deg,rgba(27,34,48,.55) 0%,rgba(27,34,48,0) 20%),
+  linear-gradient(90deg,rgba(27,34,48,.78) 0%,rgba(27,34,48,.30) 42%,rgba(27,34,48,0) 70%),
+  linear-gradient(0deg,rgba(27,34,48,.62) 0%,rgba(27,34,48,0) 42%)}
+
+/* плейсхолдер фото: навы + терракотовое свечение + призрак печати (CSS-лёгкий) */
+.hp-hero__ph{position:absolute;inset:0;overflow:hidden;
+  background:radial-gradient(120% 95% at 80% 62%,rgba(187,92,60,.20),transparent 58%),var(--pear-ink)}
+.hp-hero__ph::before{content:"";position:absolute;right:-6%;top:50%;transform:translateY(-50%);
+  width:min(80vh,680px);height:min(80vh,680px);background:url("/assets/logo-seal-light.svg") center/contain no-repeat;
+  opacity:.07;pointer-events:none}
+.hp-hero__ph-tag{position:absolute;right:var(--space-5);bottom:var(--space-5);z-index:2;font-family:var(--font-mono);
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark-70);
+  border:1px solid var(--line-dark);padding:8px 14px}
+
+/* --- матовая плашка (ведущий блок) --------------------------------------- */
+.hp-plate{position:absolute;z-index:4;left:var(--space-6);top:50%;transform:translateY(-50%);
+  width:min(620px,48vw);padding:46px 44px;background:rgba(24,29,42,.42);
+  -webkit-backdrop-filter:blur(22px) saturate(118%);backdrop-filter:blur(22px) saturate(118%);
+  border:1px solid var(--line-dark)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.hp-plate{background:rgba(20,24,34,.9)}}
+.hp-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 18px;
+  font-family:var(--font-label);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-70)}
+.hp-crumbs a{color:var(--on-dark-70);text-decoration:none;transition:color .25s var(--ease)}
+.hp-crumbs a:hover{color:var(--platinum)}
+.hp-crumbs .sep{color:var(--orange)}
+/* Крошки вынесены из .hp-plate — позиционируются под шапкой */
+.hp-hero > .hp-crumbs{position:absolute;top:72px;left:var(--space-6);margin:0;z-index:20}
+.hp-eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--font-label);font-weight:500;
+  font-size:13px;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--on-dark-70);margin:0 0 20px}
+.hp-eyebrow::before{content:"";width:38px;height:2px;background:var(--orange);flex:none}
+.hp-h1{font-family:var(--font-display);font-weight:400;text-transform:uppercase;color:var(--platinum);
+  font-size:clamp(38px,3.4vw,50px);line-height:.92;letter-spacing:-.01em;margin:0;text-wrap:balance;overflow-wrap:break-word}
+.hp-h1 .ln2{display:block;font-size:clamp(13px,1.1vw,16px);line-height:1.2;color:var(--on-dark-70);
+  margin-top:4px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hp-desc{font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--on-dark-70);margin:24px 0 0;max-width:40ch;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.hp-desc .em{color:var(--orange)}
+.hp-chips{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
+.hp-chips span{border:1px solid var(--line-dark);padding:7px 13px;font-family:var(--font-label);
+  font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--on-dark-70)}
+.hp-cta{margin-top:28px}
+.hp-stats{display:flex;gap:clamp(20px,3vw,40px);margin:26px 0 0;border-top:1px solid var(--line-dark);padding-top:20px}
+.hp-stats div b{display:block;font-family:var(--font-display-mono-cut);font-weight:400;font-size:clamp(26px,2.4vw,38px);
+  line-height:.9;color:var(--orange)}
+.hp-stats div span{display:block;font-family:var(--font-label);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--on-dark-70);margin-top:7px}
+.hp-stats + .hp-cta{margin-top:26px}
+
+/* --- сигнатура «здание»: гигантский год + вертикальный корешок ----------- */
+.hp-year{position:absolute;z-index:2;right:2vw;bottom:-1vh;pointer-events:none;
+  font-family:var(--font-display-mono-cut);font-weight:400;line-height:.7;
+  font-size:clamp(140px,20vw,320px);color:rgba(234,233,232,.12);letter-spacing:-.02em}
+.hp-spine{position:absolute;z-index:4;right:26px;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--font-label);font-weight:500;
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-70);white-space:nowrap}
+
+/* --- сигнатура «хаб»: лента коллекции + счётчик -------------------------- */
+.hp-strip{position:absolute;z-index:4;left:var(--space-6);right:var(--space-6);bottom:var(--space-5);
+  display:flex;align-items:flex-end;gap:16px;flex-wrap:nowrap;overflow:hidden}
+.hp-strip__count{flex:none;display:flex;flex-direction:column;justify-content:flex-end;padding-right:8px}
+.hp-strip__count b{font-family:var(--font-display-mono-cut);font-weight:400;font-size:clamp(40px,4vw,64px);
+  line-height:.8;color:var(--platinum)}
+.hp-strip__count span{font-family:var(--font-label);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--orange);margin-top:8px}
+.hp-strip__rail{display:flex;gap:12px;min-width:0}
+.hp-strip__item{flex:none;width:clamp(120px,13vw,176px)}
+.hp-strip__item img{display:block;width:100%;height:clamp(72px,8vw,104px);object-fit:cover;border:1px solid var(--line-dark)}
+.hp-strip__item b{display:block;font-family:var(--font-label);font-weight:500;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--on-dark-70);margin-top:8px}
+
+/* --- сигнатура «район»: фактбар ----------------------------------------- */
+.hp-factbar{position:absolute;z-index:4;left:var(--space-6);right:var(--space-6);bottom:var(--space-5);
+  display:flex;flex-wrap:wrap;gap:14px clamp(28px,4vw,64px);align-items:flex-end;
+  border-top:1px solid var(--line-dark);padding-top:22px}
+.hp-fact b{display:block;font-family:var(--font-display-mono-cut);font-weight:400;font-size:clamp(28px,3vw,44px);
+  line-height:.9;color:var(--platinum)}
+.hp-fact span{display:block;font-family:var(--font-label);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--on-dark-70);margin-top:8px}
+
+/* --- сигнатура «кейсы»: монтаж-сетка фото -------------------------------- */
+.hp-montage{position:absolute;inset:0;display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;background:var(--pear-ink)}
+.hp-montage img{width:100%;height:100%;object-fit:cover;display:block}
+.hp-montage img:first-child{grid-row:1 / 3}
+
+/* --- сигнатура «юридика»: тёмный навы + терракотовое свечение ------------ */
+.hp-hero--legal{background:var(--pear-ink)}
+.hp-hero--legal .hp-glow{position:absolute;inset:0;pointer-events:none;overflow:hidden;
+  background:radial-gradient(120% 90% at 80% 70%,rgba(187,92,60,.42),rgba(124,54,29,.14) 38%,transparent 70%)}
+.hp-hero--legal .hp-glow::after{content:"";position:absolute;right:-4%;bottom:-12%;
+  width:min(70vh,560px);height:min(70vh,560px);background:url("/assets/logo-seal-light.svg") center/contain no-repeat;opacity:.05}
+.hp-hero--legal .hp-plate{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border:0;padding:0;width:min(720px,60vw)}
+.hp-legfacts{position:absolute;z-index:4;left:var(--space-6);right:var(--space-6);bottom:var(--space-5);
+  display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line-dark)}
+.hp-legfacts div{flex:1 1 180px;padding:18px 22px 0;font-family:var(--font-sans);font-size:13px;line-height:1.5;
+  color:var(--on-dark-70);border-left:1px solid var(--line-dark)}
+.hp-legfacts div:first-child{border-left:0;padding-left:0}
+.hp-legfacts b{color:var(--platinum);font-weight:500}
+
+/* --- прозрачная шапка → navy при скролле (page .st-topbar--solid) -------- */
+.st-topbar--solid{background:transparent;transition:background .35s var(--ease)}
+.st-topbar--solid::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(27,34,48,.55),rgba(27,34,48,0));transition:opacity .35s var(--ease)}
+.st-topbar--solid.is-solid{background:var(--pear-ink)}
+.st-topbar--solid.is-solid::before{opacity:0}
+.st-topbar .st-wrap{width:100%;max-width:100%}
+@media (prefers-reduced-motion:reduce){.st-topbar--solid{transition:none}}
+
+/* ============================ МОБАЙЛ ====================================== */
+@media (max-width:860px){
+  .hp-hero{height:auto;min-height:0;display:flex;flex-direction:column}
+  /* фото выше + отрицательный нижний margin → плашка наезжает на нижний край снимка */
+  .hp-hero__img,.hp-hero__ph{position:relative;height:58vh;flex:none;margin-bottom:-96px}
+  .hp-montage{position:relative;height:48vh;flex:none;margin-bottom:-96px}
+  .hp-hero__scrim{display:none}
+  .hp-year,.hp-spine{display:none}
+  /* матовая стеклянная плашка «парит» поверх фото, терракотовый акцент слева */
+  .hp-plate{position:relative!important;top:auto!important;left:auto!important;transform:none!important;
+    width:auto!important;z-index:4!important;margin:0 var(--space-3)!important;padding:28px 24px 30px!important;
+    background:rgba(20,24,34,.60)!important;
+    -webkit-backdrop-filter:blur(18px) saturate(120%)!important;backdrop-filter:blur(18px) saturate(120%)!important;
+    border:1px solid var(--line-dark)!important;border-left:2px solid var(--orange)!important}
+  .hp-h1{font-size:clamp(30px,8vw,56px)}
+  .hp-h1 .ln2{white-space:normal}
+  /* CTA: во всю ширину плашки, лейбл переносится, крышка-стрелка справа — не вылезает */
+  .hp-cta{width:100%!important;max-width:100%!important;height:auto!important;min-height:50px}
+  .hp-cta .st-btn__lab{flex:1 1 auto!important;min-width:0;white-space:normal!important;
+    padding:11px 16px!important;font-size:14px!important;line-height:1.25;text-align:left}
+  .hp-cta .st-btn__cap{flex:none;align-self:stretch}
+  .hp-strip,.hp-factbar{position:relative;left:auto;right:auto;bottom:auto;
+    padding:26px var(--space-4) 28px;background:var(--pear-ink);border-top:0}
+  .hp-strip{overflow-x:auto}
+  /* юридика: фото нет — плашка не парит, обычный навы-стек */
+  .hp-hero--legal{min-height:auto}
+  .hp-hero--legal .hp-glow{position:absolute}
+  .hp-hero--legal .hp-plate{margin:0!important;z-index:2!important;padding:84px var(--space-4) 0!important;
+    background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:0!important}
+  .hp-legfacts{position:relative;left:auto;right:auto;bottom:auto;flex-direction:column;gap:0;
+    padding:8px var(--space-4) 30px;border-top:0;z-index:2}
+  .hp-legfacts div{flex:none;border-left:0;border-top:1px solid var(--line-dark);padding:14px 0 0}
+  .hp-legfacts div:first-child{border-top:0}
+}

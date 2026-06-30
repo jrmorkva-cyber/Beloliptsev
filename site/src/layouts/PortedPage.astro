@@ -1,0 +1,99 @@
+---
+/* PortedPage.astro — 1:1 порт существующей продакшен-страницы.
+
+   BaseLayout даёт <head>-мету/SEO + colors_and_type.css ПЕРВЫМ (как в оригинале).
+   ВСЯ остальная CSS-последовательность исходника (page CSS <link> + инлайн <style> +
+   hero.css <link>) инжектится ВЕРБАТИМ в ТОЧНОМ исходном порядке → идентичный каскад.
+   Внешние head-скрипты (opentype + brand-fonts-loader; hero-topbar, кроме o-sebe) —
+   ИСПОЛНЯЕМЫЕ is:inline (set:html скрипты не исполняет).
+   Тело — set:html; инлайн-скрипты тела помечаются инертными и переисполняются bootstrap'ом
+   ВЕРБАТИМ → точное поведение прода (шрифты/reveal.in/FAQ/меню/счётчики + страничные скрипты). */
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  raw: string;
+  extraSchema?: string; // доп. JSON-LD (raw <script type=ld+json> строкой) — напр. schema главной
+}
+const { raw, extraSchema = '' } = Astro.props;
+
+const head = (raw.match(/<head>([\s\S]*?)<\/head>/) || [, ''])[1];
+const title = (head.match(/<title>([\s\S]*?)<\/title>/) || [, ''])[1];
+const description = (head.match(/<meta name="description" content="([^"]*)"/) || [, ''])[1];
+const ogTitle = (head.match(/<meta property="og:title" content="([^"]*)"/) || [, ''])[1];
+const ogDescription = (head.match(/<meta property="og:description" content="([^"]*)"/) || [, ''])[1];
+
+const schemaHtml =
+  (raw.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g) || []).join('\n') +
+  (extraSchema ? '\n' + extraSchema : '');
+
+// CSS-последовательность исходника (link stylesheet + инлайн style) в ТОЧНОМ порядке,
+// без colors_and_type (его даёт BaseLayout первым).
+const headCss = (head.match(/<link\b[^>]*rel="stylesheet"[^>]*>|<style[\s\S]*?<\/style>/g) || [])
+  // убираем ТОЛЬКО <link> на colors_and_type (его даёт BaseLayout). НЕ трогаем <style>-блоки,
+  // даже если они упоминают colors_and_type в комментарии (иначе теряется критичный page-стиль).
+  .filter((t) => !(/^<link/.test(t) && /colors_and_type\.css/.test(t)))
+  .join('\n');
+
+const hasHeroTopbar = /\/js\/hero-topbar\.js/.test(head);
+
+const bodyClass = (raw.match(/<body[^>]*class="([^"]*)"/) || [, ''])[1];
+let bodyInner = (raw.match(/<body[^>]*>([\s\S]*)<\/body>/) || [, ''])[1];
+// Инлайн-скрипты тела → инертный type (set:html не исполняет), bootstrap переисполнит ниже.
+bodyInner = bodyInner.replace(/<script(\s[^>]*)?>/g, (m, attrs) =>
+  /\ssrc=/.test(attrs || '') ? m : '<script type="application/x-ported"' + (attrs || '') + '>',
+);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  bodyClass={bodyClass}
+>
+  <Fragment slot="schema" set:html={schemaHtml} />
+  <Fragment slot="head" set:html={headCss} />
+  <script is:inline slot="head" src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+  <script is:inline slot="head" src="/brand-fonts-loader.js"></script>
+  {hasHeroTopbar && <script is:inline defer slot="head" src="/js/hero-topbar.js"></script>}
+  <link rel="stylesheet" slot="head" href="/styles/motion-plus.css" />
+
+  <Fragment set:html={bodyInner} />
+
+  <script is:inline>
+    // Переисполняем инлайн-скрипты тела исходника ВЕРБАТИМ на КАЖДЫЙ astro:page-load
+    // (первая загрузка + SPA-переход ClientRouter). Иначе при клик-навигации reveal IO/
+    // FAQ/счётчики/шрифты не инициализируются → .reveal-контент висит на opacity:0
+    // (пустые секции). Идемпотентно: исполненный скрипт удаляется, повторный page-load
+    // не находит x-ported. Guard на window — одна подписка на весь жизненный цикл SPA.
+    (function () {
+      function boot() {
+        Array.prototype.forEach.call(
+          document.querySelectorAll('script[type="application/x-ported"]'),
+          function (old) {
+            var s = document.createElement('script');
+            for (var i = 0; i < old.attributes.length; i++) {
+              if (old.attributes[i].name !== 'type') s.setAttribute(old.attributes[i].name, old.attributes[i].value);
+            }
+            s.textContent = old.textContent;
+            old.parentNode.insertBefore(s, old);
+            old.parentNode.removeChild(old);
+          },
+        );
+      }
+      if (!window.__portedBootBound) {
+        window.__portedBootBound = true;
+        document.addEventListener('astro:page-load', boot);
+      }
+    })();
+  </script>
+
+  {/* Моушн-слой: count-up чисел-сигнатур (CSS-часть — motion-plus.css в head) */}
+  <script is:inline src="/js/motion-plus.js"></script>
+
+  {/* Интерактивные Яндекс.Карты на страницах с [data-yamap] (ленивая загрузка) */}
+  <script is:inline src="/js/ya-map.js"></script>
+
+  {/* Доп. клиентский модуль страницы (напр. GSAP-сигнатур главной) */}
+  <slot name="client" />
+</BaseLayout>

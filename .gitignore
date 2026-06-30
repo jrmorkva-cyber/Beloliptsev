@@ -1,0 +1,30 @@
+# Cloudflare CLI — содержит секреты
+.wrangler/
+
+# Архивы — не нужны в репо
+*.zip
+*.rar
+*.7z
+
+# Node / Astro
+node_modules/
+.astro/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Логи
+*.log
+npm-debug.log*
+
+# Бэкапы-дубликаты (стале-копии, не нужны в репо)
+_bak-topnav/
+_bak-trust-tags/
+site/_bak-before-p0/
+_bak-*
+_index-before-nbsp.html
+site/src/data/_index-before-nbsp.html

@@ -1,0 +1,593 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="o-sebe" subtitle="О себе — F4 личный бренд: портрет, эпизоды, регалии, 4 пласта, философия" -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Белолипцев Владимир — частный брокер премиум-вторички ЦАО · риэлтор РГР Топ-3</title>
+<meta name="description" content="Белолипцев Владимир Александрович — частный риэлтор Москвы. РГР Топ-3 из 1080, Аттестат «Эксперт» 19/1080, ГРМ. 23 года, 500+ сделок, премиум-вторичка ЦАО →">
+<link rel="canonical" href="https://beloliptsev.ru/o-sebe/">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Белолипцев — премиум-вторичка ЦАО Москвы">
+<meta property="og:title" content="Белолипцев Владимир — частный брокер премиум-вторички ЦАО · риэлтор РГР Топ-3">
+<meta property="og:description" content="Белолипцев Владимир Александрович — частный риэлтор Москвы. РГР Топ-3 из 1080, Аттестат «Эксперт» 19/1080, ГРМ. 23 года, 500+ сделок, премиум-вторичка ЦАО →">
+<meta property="og:url" content="https://beloliptsev.ru/o-sebe/">
+<meta property="profile:first_name" content="Владимир">
+<meta property="profile:last_name" content="Белолипцев">
+<meta name="theme-color" content="#272F42">
+<link rel="stylesheet" href="/colors_and_type.css">
+<link rel="stylesheet" href="/ui_kits/website/o-sebe.css">
+<style>
+/* ===== S1 · слоистый геро «О себе» (16.06.2026) — на токенах, реюз .st-btn + #i-arr ===== */
+.os-hero{position:relative;width:100%;height:100vh;min-height:680px;overflow:hidden;background:var(--pear-ink)}
+.os-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 28%}
+.os-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(180deg,rgba(27,34,48,.45) 0%,rgba(27,34,48,0) 18%),
+  linear-gradient(90deg,rgba(27,34,48,.72) 0%,rgba(27,34,48,.18) 40%,rgba(27,34,48,0) 66%),
+  linear-gradient(0deg,rgba(27,34,48,.62) 0%,rgba(27,34,48,0) 40%)}
+.os-hero__plate{position:absolute;z-index:3;left:var(--space-6);top:45%;transform:translateY(-50%);
+  width:min(560px,46vw);padding:46px 44px;background:rgba(24,29,42,.42);
+  -webkit-backdrop-filter:blur(22px) saturate(118%);backdrop-filter:blur(22px) saturate(118%);
+  border:var(--hairline-w) solid var(--line-dark)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.os-hero__plate{background:rgba(20,24,34,.9)}}
+.os-hero__eyebrow{display:flex;align-items:center;gap:16px;font-family:var(--font-label);font-weight:500;
+  font-size:var(--fs-label);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--on-dark-70);margin:0 0 22px}
+.os-hero__eyebrow::before{content:"";width:40px;height:2px;background:var(--orange);flex:none}
+.os-hero__h1{font-family:var(--font-display);font-weight:400;text-transform:uppercase;color:var(--platinum);
+  font-size:clamp(40px,3.7vw,62px);line-height:.92;letter-spacing:-.01em;margin:0}
+.os-hero__h1 .ln2{display:block;font-size:clamp(20px,1.7vw,30px);line-height:1.05;color:var(--on-dark-70);margin-top:8px}
+.os-hero__role{font-family:var(--font-sans);font-size:15px;line-height:1.5;color:var(--on-dark-70);margin:18px 0 0;max-width:34ch}
+.os-hero__role .em{color:var(--orange)}
+.os-hero__creed{font-family:var(--font-sans);font-size:14.5px;line-height:1.55;color:var(--on-dark-70);margin:16px 0 0;max-width:38ch}
+.os-hero__reg{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 26px}
+.os-hero__reg span{border:var(--hairline-w) solid var(--line-dark);padding:7px 13px;font-family:var(--font-label);
+  font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--on-dark-70)}
+.os-hero__meta{position:absolute;z-index:2;right:var(--space-4);top:50%;transform:translateY(-50%);text-align:right;
+  font-family:var(--font-label);font-size:var(--fs-label);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--on-dark-70);line-height:2.4}
+.os-hero__meta b{font-family:var(--font-display);font-size:1.9em;letter-spacing:0;color:var(--platinum);display:block;font-weight:400}
+.os-hero .os-hero__cta{margin-top:2px}
+@media (max-width:860px){
+  .os-hero{height:auto;min-height:0;display:flex;flex-direction:column}
+  .os-hero__img{position:relative;height:56vh}
+  .os-hero::after{display:none}
+  .os-hero__meta{display:none}
+  .os-hero__plate{position:relative;top:auto;left:auto;transform:none;width:auto;padding:36px var(--space-4);
+    background:var(--pear);backdrop-filter:none;-webkit-backdrop-filter:none;border:0}
+}
+/* Шапка: прозрачная поверх фото на 1-м экране → navy при скролле за геро */
+.st-topbar--solid{background:transparent;transition:background .35s var(--ease)}
+.st-topbar--solid::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(27,34,48,.55),rgba(27,34,48,0));transition:opacity .35s var(--ease)}
+.st-topbar--solid.is-solid{background:var(--pear-ink)}
+.st-topbar--solid.is-solid::before{opacity:0}
+/* Шапка во всю ширину экрана (как full-bleed геро), а не в узком 1440-контейнере */
+.st-topbar .st-wrap{width:100%;max-width:100%}
+@media (prefers-reduced-motion:reduce){.st-topbar--solid{transition:none}}
+</style>
+<link rel="icon" type="image/svg+xml" href="/assets/logo-seal.svg">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://beloliptsev.ru/" },
+    { "@type": "ListItem", "position": 2, "name": "О себе", "item": "https://beloliptsev.ru/o-sebe/" }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://beloliptsev.ru/#person",
+  "name": "Белолипцев Владимир Александрович",
+  "alternateName": ["Владимир Белолипцев", "частный брокер премиум-вторички ЦАО", "Beloliptsev Vladimir"],
+  "jobTitle": "Частный брокер и риэлтор премиум-вторички ЦАО Москвы",
+  "description": "Частный риэлтор Москвы со специализацией на премиум-вторичной недвижимости Центрального административного округа: сталинских высотках, сталинском ампире, авангарде и конструктивизме 1920–30-х, дореволюционных доходных домах и купеческих особняках.",
+  "image": "https://beloliptsev.ru/assets/img/portrait-osebe.jpg",
+  "url": "https://beloliptsev.ru/o-sebe/",
+  "knowsAbout": ["Сталинские высотки Москвы","Сталинский ампир 1940-50-х","Конструктивизм Москвы","Авангард и конструктивизм 1920–30-х","Дореволюционные доходные дома Москвы","Купеческие особняки","Премиум-вторичка ЦАО","Юридическая проверка квартиры","Ипотечное согласование","Архитектура Москвы XIX–XX веков","Преддоговорная работа","закрытые сделки"],
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "name": "Аттестат «Эксперт» (уровень ЭН) РГР", "credentialCategory": "professional_certification", "identifier": "19 из 1080 риэлторов Москвы", "recognizedBy": { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" } },
+    { "@type": "EducationalOccupationalCredential", "name": "РГР Топ-3 из 1080 риэлторов Москвы", "credentialCategory": "professional_ranking", "recognizedBy": { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" } },
+    { "@type": "EducationalOccupationalCredential", "name": "Действительный член Гильдии Риэлторов Москвы (ГРМ)", "credentialCategory": "professional_membership", "recognizedBy": { "@type": "Organization", "name": "Гильдия Риэлторов Москвы", "url": "https://grmos.ru" } },
+    { "@type": "EducationalOccupationalCredential", "name": "Член комитета по контролю над риелторами РГР", "credentialCategory": "professional_governance", "recognizedBy": { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" } }
+  ],
+  "telephone": "+79608125730",
+  "email": "solomon_estate@mail.ru",
+  "sameAs": ["https://t.me/realtor_expert_beloliptsev"],
+  "award": ["РГР Топ-3 из 1080 риэлторов Москвы","Аттестат «Эксперт» уровня ЭН Российской Гильдии Риэлторов (19 из 1080)"],
+  "memberOf": [
+    { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" },
+    { "@type": "Organization", "name": "Гильдия Риэлторов Москвы", "url": "https://grmos.ru" },
+    { "@type": "Organization", "name": "Комитет по контролю над риелторами Российской Гильдии Риэлторов", "url": "https://reestr.rgr.ru" }
+  ],
+  "worksFor": { "@type": "RealEstateAgent", "@id": "https://beloliptsev.ru/#organization", "name": "Белолипцев Владимир Александрович — частная практика" }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+<script src="/brand-fonts-loader.js"></script>
+<link rel="stylesheet" href="/styles/motion-plus.css">
+</head>
+<body class="st ds-scope">
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+
+<template id="__bundler_thumbnail" data-bg-color="#272F42">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#272F42"/>
+    <circle cx="600" cy="350" r="120" fill="none" stroke="#EDECEB" stroke-width="6"/>
+    <text x="600" y="372" text-anchor="middle" fill="#EDECEB" font-family="Georgia, serif" font-size="64">ВБ</text>
+    <text x="600" y="660" text-anchor="middle" fill="#BB5C3C" font-family="Georgia, serif" font-size="26" letter-spacing="4">РГР ТОП-4 · 23 ГОДА</text>
+  </svg>
+</template>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 13 13"><path fill="currentColor" fill-rule="nonzero" d="M 13 6.5 L 13.3 6.9 L 13.833 6.5 L 13.3 6.1 L 13 6.5 Z M 8.667 0 L 8.167 0 C 8.167 3.53 10.559 5.294 12.7 6.9 L 13 6.5 L 13.3 6.1 C 11.108 4.456 9.167 2.97 9.167 0 L 8.667 0 Z M 13 6.5 L 12.7 6.1 C 10.559 7.706 8.167 9.47 8.167 13 L 8.667 13 L 9.167 13 C 9.167 10.03 11.108 8.544 13.3 6.9 L 13 6.5 Z M 13 6.5 L 13 6 L 0 6 L 0 6.5 L 0 7 L 13 7 L 13 6.5 Z"></path></symbol>
+  <symbol id="i-spark" viewBox="0 0 22 22"><path fill="currentColor" fill-rule="nonzero" d="M 16.646 9.017 C 14.949 8.39 13.61 7.051 12.981 5.354 L 10.999 0 L 9.017 5.354 C 8.39 7.051 7.051 8.388 5.354 9.017 L 0 10.999 L 5.354 12.981 C 7.051 13.608 8.39 14.949 9.017 16.646 L 10.999 22 L 12.981 16.646 C 13.61 14.948 14.949 13.608 16.646 12.981 L 22 10.999 L 16.646 9.017 Z"></path></symbol>
+</svg>
+
+<header class="st-topbar st-topbar--solid">
+  <div class="st-wrap st-pad">
+    <div class="st-topbar__row">
+      <a class="brand" href="/" aria-label="Белолипцев Владимир — на&nbsp;главную"><img src="/assets/logo-full-light.svg" alt="Белолипцев Владимир"></a>
+      <div class="st-topbar__right">
+        <a class="st-topbar__phone" href="tel:+79608125730">+7 960 812 57 30</a>
+        <button class="st-menu-btn" id="menuBtn" aria-label="Открыть меню"><span class="bars"><i></i><i></i><i></i></span>МЕНЮ</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== S1 · ГЕРО / АВТОРИТЕТ (слоистый, 16.06.2026) ====================== -->
+<section class="os-hero" data-screen-label="S1 · Геро">
+  <img class="os-hero__img" src="/assets/img/portrait-osebe.jpg" alt="Белолипцев Владимир Александрович — частный брокер премиум-вторички ЦАО Москвы, риэлтор РГР Топ-3&nbsp;из&nbsp;1080">
+  <aside class="os-hero__meta"><b>23&nbsp;года</b>в&nbsp;премиум-вторичке ЦАО<br>·<br>по&nbsp;рекомендации</aside>
+  <div class="os-hero__plate">
+    <p class="os-hero__eyebrow">Частный брокер ЦАО · с&nbsp;2004 года</p>
+    <h1 class="os-hero__h1">Белолипцев<span class="ln2">Владимир Александрович</span></h1>
+    <p class="os-hero__role">Частный <span class="em">брокер</span> премиум-вторички ЦАО — сталинки, авангард и конструктивизм, доходные дома.</p>
+    <p class="os-hero__creed">Один человек на&nbsp;каждой сделке: от&nbsp;первого показа до&nbsp;регистрации права. Меня находят по&nbsp;рекомендации и&nbsp;остаются на&nbsp;годы.</p>
+    <div class="os-hero__reg"><span>РГР Топ-3&nbsp;/&nbsp;1080</span><span>«Эксперт» 19/1080</span><span>ГРМ</span></div>
+    <a class="st-btn st-btn--orange os-hero__cta" href="#cta"><span class="st-btn__lab">Личная консультация</span><span class="st-btn__cap"><svg><use href="#i-arr"></use></svg></span></a>
+  </div>
+</section>
+<script>
+/* Прозрачная шапка над геро → navy после геро */
+(function(){var h=document.querySelector('.st-topbar--solid'),s=document.querySelector('.os-hero');if(!h||!s)return;
+function u(){h.classList.toggle('is-solid',window.scrollY>(s.offsetHeight-h.offsetHeight-10));}
+u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u);})();
+</script>
+
+<!-- ====================== S2 · КТО Я ====================== -->
+<section class="st-section st-section--paper" data-screen-label="S2 · Кто я">
+  <div class="st-wrap st-pad">
+    <div class="st-secthead reveal">
+      <h2 class="st-h2">Кто я и&nbsp;чем занимаюсь</h2>
+    </div>
+    <div class="st-def__cols reveal" style="border-top:0;margin-top:0">
+      <p class="lux-lead">Меня зовут Белолипцев Владимир Александрович. Я частный риэлтор Москвы со&nbsp;специализацией на&nbsp;премиум-вторичной недвижимости Центрального административного округа. В&nbsp;фокусе моей профессиональной деятельности — четыре архитектурных пласта премиум-сегмента: сталинские высотки ЦАО, сталинский ампир 1940–50-х, авангард и конструктивизм 1920–30-х (конструктивизм и&nbsp;постконструктивизм) и&nbsp;дореволюционные доходные дома с&nbsp;купеческими особняками XIX — начала XX веков.</p>
+      <p>Я работаю в&nbsp;этом сегменте 23&nbsp;года — практика началась в&nbsp;2004&nbsp;году. За&nbsp;это время провёл более 1000&nbsp;консультаций по&nbsp;премиум-вторичке ЦАО и&nbsp;закрыл более 500&nbsp;сделок. Каждая сделка для&nbsp;меня — не&nbsp;транзакция, а&nbsp;ответственная профессиональная задача: подобрать нужное жильё, провести проверку безопасно, защитить интересы на&nbsp;переговорах, обеспечить юридическую и&nbsp;финансовую корректность сделки. В&nbsp;премиум-сегменте репутация и&nbsp;квалификация важнее тактической эффективности: здесь не&nbsp;работают шаблоны — нужна узкая, верифицируемая экспертиза.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== S3 · ТРИ ЭПИЗОДА ====================== -->
+<section class="st-section st-section--paper" data-screen-label="S3 · Три эпизода" style="padding-top:0">
+  <div class="st-wrap st-pad">
+    <div class="st-secthead reveal">
+      <h2 class="st-h2">Три эпизода из&nbsp;практики</h2>
+    </div>
+    <div class="reveal os-ep-lente" data-stagger>
+      <div class="os-ep">
+        <div class="os-ep__yr">2004&nbsp;год · Пречистенка</div>
+        <div>
+          <div class="os-ep__h">Дореволюционный особняк с&nbsp;деревянными перекрытиями</div>
+          <p class="os-ep__p">В&nbsp;2004&nbsp;году я провёл первую сделку с&nbsp;премиум-вторичкой на&nbsp;Пречистенке — особняк начала XX века с&nbsp;деревянными перекрытиями. Тогда я впервые столкнулся с&nbsp;тем, что&nbsp;общерыночные риэлторские правила в&nbsp;премиум-сегменте не&nbsp;работают: банковская оценка занижала стоимость на&nbsp;30%, потому что&nbsp;не&nbsp;учитывала архитектурную ценность, а&nbsp;юридическая проверка должна была охватить переходы прав с&nbsp;1990-х. Этот опыт определил мою специализацию.</p>
+        </div>
+      </div>
+      <div class="os-ep">
+        <div class="os-ep__yr">2018–2020 · Дом на&nbsp;набережной</div>
+        <div>
+          <div class="os-ep__h">Наследственная сделка в&nbsp;третьем поколении · 18&nbsp;месяцев</div>
+          <p class="os-ep__p">Одна из&nbsp;самых сложных сделок в&nbsp;моей практике — наследственная история в&nbsp;Доме на&nbsp;набережной 2018–2020&nbsp;годов. Семья наследников в&nbsp;третьем поколении, спорные доли, охранное обязательство по&nbsp;объекту культурного наследия федерального значения, ипотека покупателя через&nbsp;ВТБ Private — закрыли за&nbsp;18&nbsp;месяцев. Этот кейс научил меня закладывать минимум 6&nbsp;месяцев на&nbsp;любые сделки с&nbsp;наследственным фондом в&nbsp;исторических зданиях ЦАО.</p>
+        </div>
+      </div>
+      <div class="os-ep">
+        <div class="os-ep__yr">Личный контекст</div>
+        <div>
+          <div class="os-ep__h">«Стиль и&nbsp;эпоху» Гинзбурга читал до&nbsp;риэлторства</div>
+          <p class="os-ep__p">Интерес к&nbsp;архитектуре пришёл задолго до&nbsp;риэлторства. Я рос в&nbsp;среде, где обсуждали разницу между Жолтовским и&nbsp;Иофаном, читали «Стиль и&nbsp;эпоху» Гинзбурга. Когда я начинал работать в&nbsp;недвижимости в&nbsp;начале 2000-х, выбор премиум-сегмента ЦАО с&nbsp;акцентом на&nbsp;сталинский ампир и&nbsp;авангард и конструктивизм был не&nbsp;маркетинговым — это была профессиональная страсть. Когда я рассказываю про&nbsp;дом, где мы смотрим квартиру, я начинаю с&nbsp;биографии архитектора и&nbsp;истории заказчика — а&nbsp;потом возвращаюсь к&nbsp;юридике и&nbsp;перекрытиям.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== S4 · РЕГАЛИИ + ТАЙМЛАЙН ====================== -->
+<section class="st-section st-section--paper" data-screen-label="S4 · Регалии" style="padding-top:0">
+  <div class="st-wrap st-pad">
+    <div class="st-secthead reveal">
+      <h2 class="st-h2">Регалии — все верифицируются в&nbsp;открытых реестрах</h2>
+    </div>
+    <div class="os-seals reveal">
+      <div class="os-seal">
+        <div class="os-seal__tag">Топ-10</div>
+        <div class="os-seal__sub">РГР</div>
+        <img class="os-seal__photo" src="/assets/img/regalia-1.jpg" alt="Белолипцев Владимир" loading="lazy">
+        <p class="os-seal__desc">3&nbsp;место в&nbsp;рейтинге Российской Гильдии Риэлторов</p>
+      </div>
+      <div class="os-seal">
+        <div class="os-seal__tag">Топ-20</div>
+        <div class="os-seal__sub">Аттестат «Эксперт»</div>
+        <img class="os-seal__photo" src="/assets/img/regalia-2.jpg" alt="Белолипцев Владимир" loading="lazy">
+        <p class="os-seal__desc">уровень ЭН — менее 2% риэлторов Москвы</p>
+      </div>
+      <div class="os-seal">
+        <div class="os-seal__tag">ГРМ</div>
+        <div class="os-seal__sub">Деловой Клуб</div>
+        <img class="os-seal__photo" src="/assets/img/regalia-3.jpg" alt="Белолипцев Владимир" loading="lazy">
+        <p class="os-seal__desc">Действительный член Гильдии Риэлторов Москвы</p>
+      </div>
+      <div class="os-seal">
+        <div class="os-seal__tag">Гильдия</div>
+        <div class="os-seal__sub">российских адвокатов</div>
+        <img class="os-seal__photo" src="/assets/img/regalia-4.jpg" alt="Белолипцев Владимир" loading="lazy">
+        <p class="os-seal__desc">Куратор комитета по&nbsp;работе с&nbsp;партнерами ГРМ</p>
+      </div>
+    </div>
+    <div class="mz-epoch reveal" style="margin-top:60px">
+      <div class="mz-epoch__row"><div class="mz-epoch__year">~2004</div><div><p class="mz-epoch__note">Первая премиум-сделка на&nbsp;Пречистенке.</p></div></div>
+      <div class="mz-epoch__row"><div class="mz-epoch__year">~2007</div><div><p class="mz-epoch__note">Первая сделка в&nbsp;сталинской высотке (Котельническая).</p></div></div>
+      <div class="mz-epoch__row"><div class="mz-epoch__year">~2012</div><div><p class="mz-epoch__note">Аттестация в&nbsp;системе РГР первого уровня.</p></div></div>
+      <div class="mz-epoch__row"><div class="mz-epoch__year">2018+</div><div><p class="mz-epoch__note">Аттестат «Эксперт» уровня ЭН · позиция №19/1080.</p></div></div>
+      <div class="mz-epoch__row"><div class="mz-epoch__year">2018–2020</div><div><p class="mz-epoch__note">Сложная наследственная сделка в&nbsp;Доме на&nbsp;набережной.</p></div></div>
+      <div class="mz-epoch__row"><div class="mz-epoch__year">2020+</div><div><p class="mz-epoch__note">Вход в&nbsp;РГР Топ-3 Москвы.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== S5 · ЧЕТЫРЕ ПЛАСТА ====================== -->
+<section class="st-section st-section--paper" data-screen-label="S5 · Четыре пласта" style="padding-top:0">
+  <div class="st-wrap st-pad">
+    <div class="st-secthead reveal">
+      <h2 class="st-h2">Четыре пласта премиум-вторички ЦАО</h2>
+    </div>
+    <div class="kh-grid2 reveal os-pillars-lente" data-stagger>
+      <div class="kh-card">
+        <div class="kh-card__name">Сталинские высотки ЦАО</div>
+        <p class="kh-card__note">К&nbsp;сталинским высоткам я пришёл через&nbsp;первую сделку на&nbsp;Котельнической набережной примерно в&nbsp;2007&nbsp;году. Сделка с&nbsp;наследниками советской интеллигенции — длинные истории владения через&nbsp;государственное распределение жилья 1940–50-х, наследственные права в&nbsp;третьем-четвёртом поколении, преобладанию закрытых сделоке. Семь высоток + Дом на&nbsp;набережной стали основной зоной работы.</p>
+        <p class="os-ep__links"><a href="/visotki/">Сталинские высотки</a> · <a href="/visotki/kotelnicheskaya/">Котельническая</a> · <a href="/modernizm/dom-na-naberezhnoy/">Дом на&nbsp;набережной</a></p>
+      </div>
+      <div class="kh-card">
+        <div class="kh-card__name">Авангард и конструктивизм 1920–30-х годов</div>
+        <p class="kh-card__note">Авангард и конструктивизм стал моим вторым фокусом после реставрации Дома Наркомфина в&nbsp;2017–2020 — я начал получать запросы от&nbsp;клиентов с&nbsp;международным контекстом. Это другой клиент: он не&nbsp;ищет «квартиру в&nbsp;центре», он ищет конкретный авторский замысел в&nbsp;работающем виде. Дом Наркомфина, Дом учёных, Дом на&nbsp;набережной Иофана.</p>
+        <p class="os-ep__links"><a href="/modernizm/">Авангард и конструктивизм</a> · <a href="/modernizm/dom-narkomfina/">Дом Наркомфина</a> · <a href="/modernizm/dom-uchenykh/">Дом учёных</a>
+        <a href="/modernizm/dom-na-naberezhnoy/">Дом на&nbsp;набережной</a></p>
+      </div>
+      <div class="kh-card">
+        <div class="kh-card__name">Сталинский ампир Фрунзенской, Якиманки, Кутузовского</div>
+        <p class="kh-card__note">К&nbsp;сталинскому ампиру я пришёл через&nbsp;работу с&nbsp;покупателями, которым нужна была ликвидность плюс архитектурный статус. Парадная застройка Фрунзенской набережной (Хамовники), Краснопресненской, Большой Якиманки. Монолитные перекрытия (хорошая ипотечная пригодность), щедрые метражи, потолки 3,2–3,8&nbsp;метра.</p>
+        <p class="os-ep__links"><a href="/stalinki/">Сталинки ЦАО</a> · <a href="/cao/khamovniki/">Хамовники</a></p>
+      </div>
+      <div class="kh-card">
+        <div class="kh-card__name">Дореволюционные особняки и&nbsp;доходные дома</div>
+        <p class="kh-card__note">Пречистенка, Остоженка, Большая Ордынка, Большая Полянка, переулки Хамовников и&nbsp;Замоскворечья. Сложные юридические истории (от&nbsp;купеческих и&nbsp;дворянских фамилий через&nbsp;советскую национализацию и&nbsp;приватизацию 1990-х), охранные обязательства памятников, часто — деревянные перекрытия. Самый «архитектурный» сегмент.</p>
+        <p class="os-ep__links"><a href="/cao/khamovniki/">Хамовники</a> · <a href="/cao/zamoskvoreche/">Замоскворечье</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== S6 · ФИЛОСОФИЯ ====================== -->
+<section class="st-section st-section--dark" data-screen-label="S6 · Философия">
+  <div class="st-wrap st-pad">
+    <div class="st-secthead reveal">
+      <h2 class="st-h2">Философия работы</h2>
+    </div>
+    <div class="bld-stat3 reveal os-phil-lente" data-stagger>
+      <div class="bld-stat3__c"><div class="bld-stat3__n" style="font-size:40px">01</div><div class="bld-stat3__t">Личное сопровождение</div><div class="bld-stat3__d">Каждая сделка от&nbsp;первого звонка до&nbsp;получения ключей — под&nbsp;моим личным сопровождением. Не&nbsp;передаю работу помощникам. Клиент работает с&nbsp;одним контактным лицом.</div></div>
+      <div class="bld-stat3__c"><div class="bld-stat3__n" style="font-size:40px">02</div><div class="bld-stat3__t">Прозрачность регалий</div><div class="bld-stat3__d">Все мои профессиональные регалии — публично верифицируемы. История работы открыта для&nbsp;проверки. Не&nbsp;использую непроверяемые ссылки или устные утверждения.</div></div>
+      <div class="bld-stat3__c"><div class="bld-stat3__n" style="font-size:40px">03</div><div class="bld-stat3__t">Честность в&nbsp;оценках</div><div class="bld-stat3__d">Если объект стоит своих денег — скажу прямо. Если не&nbsp;стоит — тоже скажу прямо. Если запрос не&nbsp;соответствует моей специализации — честно говорю об&nbsp;этом и&nbsp;рекомендую коллег.</div></div>
+    </div>
+    <div class="bld-stat3 reveal os-phil-lente" data-stagger style="margin-top:44px">
+      <div class="bld-stat3__c" style="padding-top:44px"><div class="bld-stat3__n" style="font-size:40px">04</div><div class="bld-stat3__t">Глубокий аудит</div><div class="bld-stat3__d">Каждый объект перед сделкой проходит детальный аудит: ЕГРН за&nbsp;10+ лет, юридический анализ, технический аудит, архитектурно-исторический аудит (охранный статус).</div></div>
+      <div class="bld-stat3__c" style="padding-top:44px"><div class="bld-stat3__n" style="font-size:40px">05</div><div class="bld-stat3__t">Доступ к&nbsp;закрытому рынку</div><div class="bld-stat3__d">Значительная часть лучших объектов премиум-сегмента продаётся через&nbsp;закрытые каналы. Доступ — критическая часть экспертизы, основанная на&nbsp;23&nbsp;годах профессиональных связей.</div></div>
+      <div class="bld-stat3__c" style="padding-top:44px"><div class="bld-stat3__n" style="font-size:40px">06</div><div class="bld-stat3__t">Защита интересов клиента</div><div class="bld-stat3__d">Я работаю на&nbsp;стороне клиента, без&nbsp;скрытых интересов и&nbsp;без&nbsp;двойной комиссии. Все коммерческие условия прозрачны и&nbsp;согласованы до&nbsp;начала сотрудничества.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== S7 · CTA ====================== -->
+<section class="st-section sd-contact" id="cta" data-screen-label="CTA · Контакты">
+  <div class="st-wrap st-pad">
+    <div class="sd-contact__grid">
+      <div class="sd-contact__intro reveal">
+        <h2 class="sd-contact__h">30&nbsp;минут.<br>Без&nbsp;обязательств.</h2>
+        <p class="sd-contact__lead">Я доступен для&nbsp;трёх типов клиентов: покупателей премиум-вторичной недвижимости ЦАО — физических лиц и&nbsp;семей; продавцов премиум-объектов, желающих максимизировать стоимость продажи; инвесторов, рассматривающих премиум-вторичку как&nbsp;класс активов.</p>
+      </div>
+      <form class="sd-contact__form reveal" onsubmit="event.preventDefault();alert('Заявка отправлена. Свяжусь с&nbsp;вами в&nbsp;течение рабочего дня.');return false;">
+        <div class="sd-field sd-field--half"><label for="f-name">Имя</label><input id="f-name" type="text" autocomplete="name"></div>
+        <div class="sd-field sd-field--half"><label for="f-tel">Телефон</label><input id="f-tel" type="tel" autocomplete="tel"></div>
+        <div class="sd-field"><label for="f-mail">Почта</label><input id="f-mail" type="email" autocomplete="email"></div>
+        <div class="sd-field"><label for="f-req">Запрос (здание, район, бюджет, сроки)</label><input id="f-req" type="text"></div>
+        <label class="sd-contact__priv" style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" name="consent" checked style="margin-top:.3em;flex:none"><span>Соглашаюсь с&nbsp;<a href="/politika-konfidentsialnosti/">политикой конфиденциальности</a> и&nbsp;обработкой персональных данных.</span></label>
+        <button class="st-btn st-btn--navy" type="submit"><span class="st-btn__lab">Отправить</span><span class="st-btn__cap"><svg><use href="#i-arr"></use></svg></span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ФУТЕР ====================== -->
+<footer class="st-foot">
+  <span class="st-foot__wave"></span>
+  <div class="st-wrap st-pad st-foot__in">
+    <div class="st-foot__brand">
+      <span style="display:inline-flex;align-items:baseline;gap:18px;flex-wrap:wrap"><img src="/assets/logo-full-light.svg" alt="Белолипцев Владимир"><span style="font-family:var(--font-marker);color:var(--yellow);font-weight:400;line-height:.9;font-size:clamp(26px,2.6vw,42px);letter-spacing:.01em;display:inline-block">лично</span></span>
+      <p>Частный риэлтор Москвы. Премиум-вторичка ЦАО: сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома. 23&nbsp;года, 500+ закрытых сделок.</p>
+    </div>
+    <div class="st-foot__cols">
+      <div>
+        <h4>Высотки</h4>
+        <a href="/visotki/">Все сталинские высотки</a>
+        <a href="/visotki/kotelnicheskaya/">Котельническая наб.</a>
+        <a href="/visotki/">Кудринская площадь</a>
+        <a href="/visotki/">Площадь Красные Ворота</a>
+        <a href="/visotki/gostinitsa-ukraina/">Гостиница «Украина»</a>
+        <a href="/visotki/mgu/">Главный корпус МГУ</a>
+        <a href="/visotki/gostinitsa-leningradskaya/">Гостиница «Ленинградская»</a>
+      </div>
+      <div>
+        <h4>Авангард и&nbsp;Конструктивизм</h4>
+        <a href="/modernizm/">Весь авангард 1920–30-х</a>
+        <a href="/modernizm/dom-na-naberezhnoy/">Дом на&nbsp;набережной</a>
+        <a href="/modernizm/">Дом Моссельпрома</a>
+        <a href="/modernizm/dom-narkomfina/">Дом Наркомфина</a>
+        <a href="/modernizm/">Жилой дом Госстраха</a>
+        <a href="/modernizm/">Дом «Военный строитель»</a>
+        <a href="/modernizm/">Жилой дом Жургаза</a>
+        <a href="/modernizm/">Дом «Обрабстрой»</a>
+      </div>
+      <div>
+        <h4>Сталинки</h4>
+        <a href="/stalinki/">Все сталинки ЦАО</a>
+        <a href="/stalinki/">Дом Архитекторов</a>
+        <a href="/stalinki/">Дом Электродного завода</a>
+        <a href="/stalinki/">Дом работников НКВД</a>
+        <a href="/stalinki/">Дом академиков</a>
+        <a href="/stalinki/">Фрунзенская набережная</a>
+        <a href="/stalinki/">Дом МГБ на&nbsp;Земляном Валу</a>
+        <a href="/stalinki/">Дом арх. Жукова</a>
+        <a href="/stalinki/">Дом писателей</a>
+        <a href="/stalinki/">Кутузовский проспект</a>
+        <a href="/stalinki/">Ленинский проспект</a>
+        <a href="/stalinki/">Ленинградский проспект</a>
+        <a href="/stalinki/">Проспект Мира</a>
+      </div>
+      <div>
+        <h4>ЦАО · Районы</h4>
+        <a href="/cao/">Весь ЦАО</a>
+        <a href="/cao/">Арбат</a>
+        <a href="/cao/">Басманный</a>
+        <a href="/cao/zamoskvoreche/">Замоскворечье</a>
+        <a href="/cao/">Красносельский</a>
+        <a href="/cao/">Мещанский</a>
+        <a href="/cao/">Пресненский</a>
+        <a href="/cao/">Таганский</a>
+        <a href="/cao/">Тверской</a>
+        <a href="/cao/khamovniki/">Хамовники</a>
+        <a href="/cao/">Якиманка</a>
+      </div>
+    </div>
+
+  <div class="st-foot__contact">
+      <a href="mailto:solomon_estate@mail.ru" class="st-foot__contact-big">solomon_estate@mail.ru</a>
+      <a href="tel:+79608125730" class="st-foot__contact-big">+7&nbsp;960&nbsp;812&nbsp;57&nbsp;30</a>
+      <div style="flex-basis:100%;height:0"></div>
+      <a href="https://www.cian.ru/agents/12737446/" target="_blank" rel="noopener" class="st-foot__contact-cap"><span>ЦИАН</span><span>#12737446&nbsp;· Суперагент</span></a>
+      <a href="https://t.me/realtor_expert_beloliptsev" target="_blank" rel="noopener" class="st-foot__contact-cap"><span>Telegram</span><span>@realtor_expert_beloliptsev</span></a>
+      
+    </div>  </div>
+  <div class="st-legal">
+    <div class="st-wrap st-pad st-legal__row">
+      <span>© 2026 Белолипцев Владимир. РГР Топ-3&nbsp;из&nbsp;1080&nbsp;риэлторов Москвы. Аттестованный эксперт, сертифицированный брокер.</span>
+      <span><a href="/politika-konfidentsialnosti/">Политика конфиденциальности</a> · <a href="/oferta/">Оферта</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="st-overlay" id="overlay">
+  <div class="st-overlay__top">
+    <img src="/assets/logo-full-light.svg" alt="">
+    <button id="closeBtn">ЗАКРЫТЬ ✕</button>
+  </div>
+  <style>
+    #overlay .mega{margin:auto 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 40px;width:100%}
+    @media(max-width:880px){#overlay .mega{grid-template-columns:repeat(2,1fr);gap:26px 24px}}
+    #overlay .mega-eye{display:block;font-family:'Panama','Golos Text',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#BB5C3C;margin-bottom:16px}
+    #overlay .mega-h{display:block;font-family:'Anticva','Prata',serif;font-size:28px;line-height:1.15;text-transform:uppercase;color:#EDECEB;text-decoration:none;transition:color .3s ease;min-height:64px;margin-bottom:6px}
+    #overlay .mega-s{display:block;font-family:'Panama','Golos Text',sans-serif;font-size:17px;line-height:1.85;color:rgba(237,236,235,.6);text-decoration:none;transition:color .3s ease}
+    #overlay .mega-h:hover,#overlay .mega-s:hover{color:#BB5C3C}
+    #overlay .mega-s + .mega-h,#overlay .mega-h + .mega-h{margin-top:22px}
+  </style>
+  <div class="mega">
+    <div class="mega-col">
+      <a href="/visotki/" class="mega-h">Высотки</a>
+      <a href="/visotki/kotelnicheskaya/" class="mega-s">Котельническая наб.</a>
+      <a href="/visotki/" class="mega-s">Кудринская площадь</a>
+      <a href="/visotki/" class="mega-s">Площадь Красные Ворота</a>
+      <a href="/visotki/gostinitsa-ukraina/" class="mega-s">Гостиница «Украина»</a>
+      <a href="/visotki/mgu/" class="mega-s">Главный корпус МГУ</a>
+      <a href="/visotki/gostinitsa-leningradskaya/" class="mega-s">Гостиница «Ленинградская»</a>
+    </div>
+    <div class="mega-col">
+      <a href="/modernizm/" class="mega-h">Авангард и&nbsp;Конструктивизм</a>
+      <a href="/modernizm/dom-na-naberezhnoy/" class="mega-s">Дом на&nbsp;набережной</a>
+      <a href="/modernizm/" class="mega-s">Дом Моссельпрома</a>
+      <a href="/modernizm/dom-narkomfina/" class="mega-s">Дом Наркомфина</a>
+      <a href="/modernizm/" class="mega-s">Жилой дом Госстраха</a>
+      <a href="/modernizm/" class="mega-s">Дом «Военный строитель»</a>
+      <a href="/modernizm/" class="mega-s">Жилой дом Жургаза</a>
+      <a href="/modernizm/" class="mega-s">Дом «Обрабстрой»</a>
+    </div>
+    <div class="mega-col">
+      <a href="/stalinki/" class="mega-h">Сталинки</a>
+      <a href="/stalinki/" class="mega-s">Дом Архитекторов</a>
+      <a href="/stalinki/" class="mega-s">Дом Электродного завода</a>
+      <a href="/stalinki/" class="mega-s">Дом работников НКВД</a>
+      <a href="/stalinki/" class="mega-s">Дом академиков</a>
+      <a href="/stalinki/" class="mega-s">Фрунзенская набережная</a>
+      <a href="/stalinki/" class="mega-s">Дом МГБ на&nbsp;Земляном Валу</a>
+      <a href="/stalinki/" class="mega-s">Дом арх. Жукова</a>
+      <a href="/stalinki/" class="mega-s">Дом писателей</a>
+      <a href="/stalinki/" class="mega-s">Кутузовский · Ленинский · Ленинградский · Мира</a>
+    </div>
+    <div class="mega-col">
+      <a href="/cao/" class="mega-h">ЦАО · Районы</a>
+      <a href="/cao/" class="mega-s">Арбат</a>
+      <a href="/cao/" class="mega-s">Басманный</a>
+      <a href="/cao/zamoskvoreche/" class="mega-s">Замоскворечье</a>
+      <a href="/cao/" class="mega-s">Красносельский</a>
+      <a href="/cao/" class="mega-s">Мещанский</a>
+      <a href="/cao/" class="mega-s">Пресненский</a>
+      <a href="/cao/" class="mega-s">Таганский</a>
+      <a href="/cao/" class="mega-s">Тверской</a>
+      <a href="/cao/khamovniki/" class="mega-s">Хамовники</a>
+      <a href="/cao/" class="mega-s">Якиманка</a>
+    </div>
+    <div class="mega-col">
+      <a href="/uslugi/" class="mega-h">Услуги</a>
+      <a href="/premium/" class="mega-s">Премиум-сегмент</a>
+      <a href="/investicii/" class="mega-s">Инвестиции</a>
+      <a href="/podkhod/" class="mega-s">Подход · 6 этапов</a>
+      <a href="/o-sebe/" class="mega-s">О себе</a>
+      <a href="/keysy/" class="mega-s">Кейсы</a>
+    </div>
+  </div>
+  <div class="st-overlay__foot">
+    <span>+7 960 812 57 30</span>
+    <span>@realtor_expert_beloliptsev</span>
+    <span>solomon_estate@mail.ru</span>
+  </div>
+</div>
+
+<script>
+  if (window.__loadBrandFonts) { window.__loadBrandFonts('../../').catch(function(){}); }
+  var ov = document.getElementById('overlay');
+  document.getElementById('menuBtn').onclick = function(){ ov.classList.add('open'); };
+  document.getElementById('closeBtn').onclick = function(){ ov.classList.remove('open'); };
+  ov.querySelectorAll('nav a').forEach(function(a){ a.onclick = function(){ ov.classList.remove('open'); }; });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal, [data-stagger]').forEach(function(el){ io.observe(el); });
+</script>
+
+<script>
+/* ENHANCE: каскад-индексы коллекций + фолбэк прогресса чтения (где нет нативного scroll-driven) + синк свёрток */
+(function(){
+  document.querySelectorAll('[data-stagger]').forEach(function(g){
+    [].slice.call(g.children).forEach(function(c,i){ c.style.setProperty('--i', i); });
+  });
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasSDA = window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()');
+  if(!hasSDA && !reduce){
+    var rp = document.getElementById('rp'), tick = false;
+    if(rp){ addEventListener('scroll', function(){ if(tick) return; tick = true;
+      requestAnimationFrame(function(){ var h = document.documentElement; var m = h.scrollHeight - h.clientHeight;
+        rp.style.transform = 'scaleX(' + (m > 0 ? h.scrollTop / m : 0) + ')'; tick = false; }); }, {passive:true}); }
+  }
+  var ds = [].slice.call(document.querySelectorAll('.m-fold'));
+  function sync(){ var open = window.innerWidth > 640; ds.forEach(function(d){ d.open = open; }); }
+  sync(); addEventListener('resize', sync);
+})();
+</script>
+
+<div class="tw-panel" id="twPanel" data-omelette-chrome="">
+  <div class="tw-hd" id="twDrag"><b>Tweaks</b><button class="tw-x" id="twClose" aria-label="Закрыть">✕</button></div>
+  <div class="tw-body">
+    <div class="tw-row">
+      <div class="tw-lbl">Акцент</div>
+      <div class="tw-chips" data-key="accent">
+        <button class="tw-chip" data-val="terracotta" style="--c:#BB5C3C"><span>Терракота</span></button>
+        <button class="tw-chip" data-val="ochre" style="--c:#C28A2E"><span>Охра</span></button>
+        <button class="tw-chip" data-val="mono" style="--c:#3E4C50"><span>Моно</span></button>
+      </div>
+    </div>
+    <div class="tw-row">
+      <div class="tw-lbl">Редакционный ритм</div>
+      <div class="tw-seg" data-key="rhythm">
+        <button data-val="journal">Журнал</button>
+        <button data-val="catalog">Каталог</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{ "accent": "terracotta", "rhythm": "journal" }/*EDITMODE-END*/;
+  var tweaks = Object.assign({}, TWEAK_DEFAULTS);
+  var ACCENTS = { terracotta: ['#BB5C3C', '#AC5336'], ochre: ['#C28A2E', '#A9761F'], mono: ['#3E4C50', '#33403F'] };
+  function applyTweaks(){
+    var root = document.documentElement, body = document.body;
+    var a = ACCENTS[tweaks.accent] || ACCENTS.terracotta;
+    root.style.setProperty('--orange', a[0]); root.style.setProperty('--orange-deep', a[1]);
+    body.classList.toggle('rhythm-catalog', tweaks.rhythm === 'catalog');
+    document.querySelectorAll('#twPanel [data-key]').forEach(function(group){
+      var key = group.getAttribute('data-key');
+      group.querySelectorAll('button').forEach(function(btn){ btn.setAttribute('data-on', btn.getAttribute('data-val') === tweaks[key] ? '1' : '0'); });
+    });
+  }
+  function setTweak(key, val){ tweaks[key] = val; var edits = {}; edits[key] = val;
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: edits }, '*'); applyTweaks(); }
+  document.querySelectorAll('#twPanel [data-key]').forEach(function(group){
+    var key = group.getAttribute('data-key');
+    group.querySelectorAll('button').forEach(function(btn){ btn.addEventListener('click', function(){ setTweak(key, btn.getAttribute('data-val')); }); });
+  });
+  applyTweaks();
+  var twPanel = document.getElementById('twPanel');
+  window.addEventListener('message', function(e){
+    var t = e && e.data && e.data.type;
+    if (t === '__activate_edit_mode') twPanel.classList.add('open');
+    else if (t === '__deactivate_edit_mode') twPanel.classList.remove('open');
+  });
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+  document.getElementById('twClose').addEventListener('click', function(){
+    twPanel.classList.remove('open'); window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  });
+  (function(){
+    var drag = document.getElementById('twDrag'), sx, sy, sr, sb;
+    drag.addEventListener('mousedown', function(e){
+      var r = twPanel.getBoundingClientRect(); sx = e.clientX; sy = e.clientY;
+      sr = window.innerWidth - r.right; sb = window.innerHeight - r.bottom;
+      function mv(ev){ twPanel.style.right = Math.max(8, sr - (ev.clientX - sx)) + 'px'; twPanel.style.bottom = Math.max(8, sb - (ev.clientY - sy)) + 'px'; }
+      function up(){ window.removeEventListener('mousemove', mv); window.removeEventListener('mouseup', up); }
+      window.addEventListener('mousemove', mv); window.addEventListener('mouseup', up);
+    });
+  })();
+</script>
+<script>
+/* Анимация цифр 0-до-значения (вход в экран, easeOut, reduced-motion safe) */
+(function(){
+  var els = Array.prototype.slice.call(document.querySelectorAll('.bld-stat3__n, .st-trust__fact .n, .st-stat__n'));
+  var prepared = [];
+  els.forEach(function(el){
+    var orig = el.textContent; var m = orig.match(/(\d[\d\s]*)/); if(!m) return;
+    var target = parseInt(m[1].replace(/\s/g,''),10); if(!isFinite(target)||target<=0) return;
+    el.__orig = orig; el.__pre = orig.slice(0,m.index); el.__suf = orig.slice(m.index+m[1].length); el.__t = target;
+    prepared.push(el);
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function fmt(n){ return n.toLocaleString('ru-RU'); }
+  function run(el){ var t0=null, dur=1200;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/dur); var e=1-Math.pow(1-p,3);
+      el.textContent = el.__pre + fmt(Math.round(e*el.__t)) + el.__suf;
+      if(p<1) requestAnimationFrame(step); else el.textContent = el.__orig; }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ run(en.target); io.unobserve(en.target); } }); }, { threshold:0.4 });
+  prepared.forEach(function(el){ el.textContent = el.__pre + '0' + el.__suf; io.observe(el); });
+})();
+</script>
+<script defer src="/js/lead-modal.js"></script>
+<script defer src="/js/motion-plus.js"></script><script defer src="/js/ya-map.js"></script>
+</body>
+</html>

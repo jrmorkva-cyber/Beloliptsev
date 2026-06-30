@@ -1,0 +1,119 @@
+---
+/* BaseLayout.astro — html-оболочка всех страниц.
+   - Бренд-канон стилей: сырой <link> на /colors_and_type.css (1:1 с продом,
+     относительные /fonts и /assets целы).
+   - global.css (Tailwind-мост + PRM) — бандлится Vite.
+   - SEO через Seo.astro; JSON-LD — через именованный слот "schema".
+   - View Transitions (ClientRouter) + порт motion.ts на astro:page-load.
+   - Яндекс.Метрика и yandex-verification — из env владельца (пусто → не эмитим). */
+// global.css (Tailwind + PRM) НЕ грузим на 1:1-портах — у прода его нет, tailwind
+// preflight перетёр бы UA-дефолты. Подключается в componentized-лейаутах/на главной.
+import { ClientRouter } from 'astro:transitions';
+import Seo from '../components/seo/Seo.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  lang?: string;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType = 'website',
+  ogTitle,
+  ogDescription,
+  ogImage,
+  lang = 'ru',
+  bodyClass,
+} = Astro.props;
+
+const SITE = Astro.site?.href ?? 'https://beloliptsev.ru/';
+const canonicalURL = canonical
+  ? new URL(canonical, SITE).href
+  : new URL(Astro.url.pathname, SITE).href;
+
+const METRICA_ID = import.meta.env.PUBLIC_YANDEX_METRICA_ID;
+const YANDEX_VERIFICATION = import.meta.env.PUBLIC_YANDEX_VERIFICATION;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#272F42" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-seal.svg" />
+
+    <!-- Бренд-канон: сырой линк (1:1 с продом) -->
+    <link rel="stylesheet" href="/colors_and_type.css" />
+
+    <Seo
+      title={title}
+      description={description}
+      canonicalURL={canonicalURL}
+      ogType={ogType}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+      ogImage={ogImage}
+    />
+
+    {YANDEX_VERIFICATION && <meta name="yandex-verification" content={YANDEX_VERIFICATION} />}
+
+    {/* JSON-LD страницы (BreadcrumbList / FAQPage / RealEstateAgent+Person) */}
+    <slot name="schema" />
+
+    {/* Постраничные стили / доп. теги в <head> (hero.css, page CSS) */}
+    <slot name="head" />
+
+    <ClientRouter />
+
+    {
+      METRICA_ID && (
+        <script type="text/javascript" is:inline define:vars={{ METRICA_ID }}>
+          {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+          ym(METRICA_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});`}
+        </script>
+      )
+    }
+  </head>
+  <body class={bodyClass}>
+    <slot />
+
+    {/* Моушн-движок (motion.ts) НЕ навязывается 1:1-портам: существующие страницы
+       несут свои скрипты (reveal .in / FAQ / счётчики / шрифты). motion.ts
+       подключается отдельно в componentized-лейаутах и на перестроенной главной. */}
+
+    {
+      METRICA_ID && (
+        <Fragment>
+          <script is:inline define:vars={{ METRICA_ID }}>
+            {`document.addEventListener('astro:page-load',function(){
+              if(typeof window.ym!=='undefined'){window.ym(METRICA_ID,'hit',window.location.pathname);}
+            });`}
+          </script>
+          <noscript>
+            <div>
+              <img
+                src={`https://mc.yandex.ru/watch/${METRICA_ID}`}
+                style="position:absolute;left:-9999px"
+                alt=""
+              />
+            </div>
+          </noscript>
+        </Fragment>
+      )
+    }
+  </body>
+</html>

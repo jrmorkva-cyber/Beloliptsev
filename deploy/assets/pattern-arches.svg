@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 220" fill="none" stroke="currentColor" stroke-width="0.6" aria-hidden="true">
+  <g>
+    <path d="M 0 220 Q 27.5 110 55 220"></path>
+    <path d="M 55 220 Q 82.5 110 110 220"></path>
+    <path d="M 0 220 Q 13.75 165 27.5 220"></path>
+    <path d="M 27.5 220 Q 41.25 165 55 220"></path>
+    <path d="M 55 220 Q 68.75 165 82.5 220"></path>
+    <path d="M 82.5 220 Q 96.25 165 110 220"></path>
+    <path d="M 0 110 Q 27.5 0 55 110"></path>
+    <path d="M 55 110 Q 82.5 0 110 110"></path>
+    <path d="M 0 110 Q 13.75 55 27.5 110"></path>
+    <path d="M 27.5 110 Q 41.25 55 55 110"></path>
+    <path d="M 55 110 Q 68.75 55 82.5 110"></path>
+    <path d="M 82.5 110 Q 96.25 55 110 110"></path>
+  </g>
+</svg>

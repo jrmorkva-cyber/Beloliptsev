@@ -1,0 +1,9 @@
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://beloliptsev.ru/sitemap-index.xml

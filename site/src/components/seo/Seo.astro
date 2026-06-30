@@ -1,0 +1,39 @@
+---
+/* Seo.astro — мета + Open Graph (паттерн 1:1 с продом, см. cao--zamoskvoreche.html).
+   canonicalURL уже абсолютный (резолвится в BaseLayout). og:title/description
+   допускают отдельные короткие варианты (как на проде), иначе наследуют title/description. */
+export interface Props {
+  title: string;
+  description: string;
+  canonicalURL: string;
+  ogType?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  siteName?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalURL,
+  ogType = 'website',
+  ogTitle,
+  ogDescription,
+  ogImage,
+  siteName = 'Белолипцев — премиум-вторичка ЦАО Москвы',
+} = Astro.props;
+
+const ogImageURL = ogImage ? new URL(ogImage, canonicalURL).href : undefined;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<meta property="og:type" content={ogType} />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={ogTitle ?? title} />
+<meta property="og:description" content={ogDescription ?? description} />
+<meta property="og:url" content={canonicalURL} />
+{ogImageURL && <meta property="og:image" content={ogImageURL} />}

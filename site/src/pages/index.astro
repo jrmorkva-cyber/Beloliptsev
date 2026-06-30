@@ -1,0 +1,61 @@
+---
+/* / — главная. 1:1 порт канвас-исходника (Figma Dev-Mode транскрипция, #canvas
+   1440×11739, скейл по ширине через fit()). Адаптивная перестройка — трек C (план §8).
+   + Добавлена schema главной (исходник имел JSON-LD=0): WebSite + RealEstateAgent + Person.
+   Данные Person/NAP — выверенные, из существующих страниц (o-sebe). Это SEO-улучшение
+   (невидимо, на лейаут не влияет — высота остаётся 12528). */
+import PortedPage from '../layouts/PortedPage.astro';
+import raw from '../data/index.html?raw';
+
+const homeSchema = `<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://beloliptsev.ru/#website",
+      "url": "https://beloliptsev.ru/",
+      "name": "Белолипцев — премиум-вторичка ЦАО Москвы",
+      "inLanguage": "ru-RU",
+      "publisher": { "@id": "https://beloliptsev.ru/#organization" }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://beloliptsev.ru/#organization",
+      "name": "Белолипцев Владимир Александрович — частная практика",
+      "url": "https://beloliptsev.ru/",
+      "image": "https://beloliptsev.ru/assets/portraits/editorial-bw.png",
+      "telephone": "+7-960-812-57-30",
+      "email": "solomon_estate@mail.ru",
+      "priceRange": "30 000 000 – 500 000 000 рублей",
+      "areaServed": { "@type": "AdministrativeArea", "name": "Центральный административный округ Москвы" },
+      "founder": { "@id": "https://beloliptsev.ru/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://beloliptsev.ru/#person",
+      "name": "Белолипцев Владимир Александрович",
+      "alternateName": ["Владимир Белолипцев", "частный брокер премиум-вторички ЦАО", "Beloliptsev Vladimir"],
+      "jobTitle": "Частный брокер и риэлтор премиум-вторички ЦАО Москвы",
+      "description": "Частный риэлтор Москвы со специализацией на премиум-вторичной недвижимости Центрального административного округа: сталинских высотках, сталинском ампире, модернизме 1920–30-х, дореволюционных доходных домах и купеческих особняках.",
+      "image": "https://beloliptsev.ru/assets/portraits/editorial-bw.png",
+      "url": "https://beloliptsev.ru/o-sebe/",
+      "worksFor": { "@id": "https://beloliptsev.ru/#organization" },
+      "knowsAbout": ["Сталинские высотки Москвы","Сталинский ампир 1940-50-х","Конструктивизм Москвы","Модернизм 1920–30-х","Дореволюционные доходные дома Москвы","Купеческие особняки","Премиум-вторичка ЦАО","Юридическая проверка квартиры","Ипотечное согласование","Архитектура Москвы XIX–XX веков","Преддоговорная работа","Off-market сделки"],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "Аттестат «Эксперт» (уровень ЭН) РГР", "credentialCategory": "professional_certification", "identifier": "19 из 1080 риэлторов Москвы", "recognizedBy": { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" } },
+        { "@type": "EducationalOccupationalCredential", "name": "РГР Топ-3 из 1080 риэлторов Москвы", "credentialCategory": "professional_ranking", "recognizedBy": { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" } },
+        { "@type": "EducationalOccupationalCredential", "name": "Действительный член Гильдии Риэлторов Москвы (ГРМ)", "credentialCategory": "professional_membership", "recognizedBy": { "@type": "Organization", "name": "Гильдия Риэлторов Москвы", "url": "https://grmos.ru" } },
+        { "@type": "EducationalOccupationalCredential", "name": "Член комитета по контролю над риелторами РГР", "credentialCategory": "professional_governance", "recognizedBy": { "@type": "Organization", "name": "Российская Гильдия Риэлторов", "url": "https://reestr.rgr.ru" } }
+      ],
+      "telephone": "+7-960-812-57-30",
+      "email": "solomon_estate@mail.ru"
+    }
+  ]
+}</script>`;
+---
+
+{/* GSAP-сигнатур главной (трек 2). Скрипт — top-level (НЕ через slot): Astro бандлит
+   только нефорвардящиеся <script>; слот-форвард эмитит сырой import → не исполняется.
+   Бандл инжектится в <head> как type=module; init по astro:page-load (ClientRouter есть). */}
+<PortedPage raw={raw} extraSchema={homeSchema} />
+<script>import '../scripts/home-signature';</script>

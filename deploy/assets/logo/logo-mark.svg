@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-label="Белолипцев">
+  
+  <path d="M 50 120 Q 50 50 100 50 Q 150 50 150 120"></path>
+  
+  <circle cx="50" cy="120" r="6"></circle>
+  <circle cx="150" cy="120" r="6"></circle>
+  
+  <path d="M 65 120 Q 65 65 100 65 Q 135 65 135 120" stroke-width="1.5" opacity="0.6"></path>
+  
+  <circle cx="58" cy="80" r="1.6" fill="currentColor" stroke="none"></circle>
+  <circle cx="72" cy="58" r="1.6" fill="currentColor" stroke="none"></circle>
+  <circle cx="128" cy="58" r="1.6" fill="currentColor" stroke="none"></circle>
+  <circle cx="142" cy="80" r="1.6" fill="currentColor" stroke="none"></circle>
+  <circle cx="58" cy="100" r="1.6" fill="currentColor" stroke="none"></circle>
+  <circle cx="142" cy="100" r="1.6" fill="currentColor" stroke="none"></circle>
+  
+  <circle cx="100" cy="110" r="18"></circle>
+  <circle cx="100" cy="110" r="8" fill="currentColor" stroke="none" opacity="0.92"></circle>
+</svg>
