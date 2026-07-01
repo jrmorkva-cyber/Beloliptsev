@@ -1,4 +1,4 @@
-/* ============================================================================
+﻿/* ============================================================================
    /stalinki — Сталинки ЦАО. Стили страницы-хаба.
    Подключается ПОСЛЕ ../../colors_and_type.css и site.css.
    Палитра / типографика / мотивы — строго из эталона (index.html):
@@ -45,7 +45,7 @@
 .st-foot__wave { position: absolute; inset: 0; background: url(../../assets/pattern-waves.png) center/520px;
   opacity: .03; filter: invert(1); pointer-events: none; }
 .st-foot__in { position: relative; z-index: 2; padding-top: 90px; padding-bottom: 70px; }
-.st-foot__brand { display: flex; align-items: flex-start; gap: 120px; flex-wrap: wrap; }
+.st-foot__brand { display: flex; align-items: center; gap: 120px; flex-wrap: wrap; }
 .st-foot__brand img { height: 54px; }
 .st-foot__brand p { max-width: 480px; font-size: 18px; line-height: 1.5; color: var(--on-dark); }
 .st-foot__cols { display: grid; grid-template-columns: repeat(4, auto); gap: 56px; margin-top: 80px; }
@@ -875,8 +875,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .st-foot__contact-cap:hover > span:last-child { opacity: .65; }
 @media (max-width: 640px) { .st-foot__contact { gap: 20px 40px; } .st-foot__contact-big { font-size: clamp(18px,5vw,26px); } }
 /* Issue 1: убрать оранжевые полоски под заголовками секций */
-.ds-scope .st-secthead::after { display: none !important; }
-.st-secthead .st-h2::after { display: none !important; }
+
 
 
 /* Hover на карточках, выравнивание заголовков, уменьшение подзаголовка (2026-06) */
@@ -886,9 +885,9 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 
 
 /* Убрать оранжевые черты (motion-plus draw-on), исправлено (2026-06) */
-.ds-scope .st-secthead::after { display: none !important; }
-.ds-scope .st-secthead.in::after { display: none !important; }
-.ds-scope .st-secthead--center::after { display: none !important; }
+
+
+
 
 /* ============================================================================
    ENHANCE · анимации и мобильный текстовый дизайн (gostinitsa-ukraina, порт эталона).

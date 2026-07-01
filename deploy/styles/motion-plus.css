@@ -6,14 +6,8 @@
 .bld-know__h .st-spark{ display:none; }
 @media (prefers-reduced-motion: no-preference){
 
-  /* 1 · ДОРИСОВКА ХАЙРЛАЙНА под заголовком секции (фирменный «draw-on» главной).
-     Цепляется к .in, который вешает reveal-обсервер страницы. Терракота, слева→направо. */
-  .ds-scope .st-secthead{position:relative}
-  .ds-scope .st-secthead::after{content:"";position:absolute;left:0;bottom:-20px;height:2px;width:84px;
-    background:var(--orange);transform:scaleX(0);transform-origin:left center;
-    transition:transform .85s var(--ease) .12s}
-  .ds-scope .st-secthead.in::after{transform:scaleX(1)}
-  .ds-scope .st-secthead--center::after{left:50%;transform-origin:center;translate:-50% 0}
+  /* 1 · хайрлайн убран по запросу — убрана оранжевая полосочка под заголовками */
+  .ds-scope .st-secthead::after{display:none}
 
   /* 2 · ПОДЧЁРКИВАНИЕ ссылок-стрелок при наведении (тонкая линия слева→направо).
      Только на инлайн/якорных ссылках, не на карточках с собственным ховером. */

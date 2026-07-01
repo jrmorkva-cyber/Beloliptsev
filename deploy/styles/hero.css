@@ -1,4 +1,4 @@
-/* ============================================================================
+﻿/* ============================================================================
    Белолипцев — HERO SYSTEM (.hp-*) · общий слой геро для всех страниц.
    ДНК эталона «О себе»: full-bleed фото → единые градиентные подложки →
    матовая плашка слева → прозрачная шапка → navy при скролле. Каждый тип
@@ -39,12 +39,12 @@
 .hp-hero > .hp-crumbs{position:absolute;top:72px;left:var(--space-6);margin:0;z-index:20}
 .hp-eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--font-label);font-weight:500;
   font-size:13px;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--on-dark-70);margin:0 0 20px}
-.hp-eyebrow::before{content:"";width:38px;height:2px;background:var(--orange);flex:none}
+
 .hp-h1{font-family:var(--font-display);font-weight:400;text-transform:uppercase;color:var(--platinum);
   font-size:clamp(38px,3.4vw,50px);line-height:.92;letter-spacing:-.01em;margin:0;text-wrap:balance;overflow-wrap:break-word}
 .hp-h1 .ln2{display:block;font-size:clamp(13px,1.1vw,16px);line-height:1.2;color:var(--on-dark-70);
   margin-top:4px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hp-desc{font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--on-dark-70);margin:24px 0 0;max-width:40ch;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.hp-desc{font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--on-dark-70);margin:24px 0 0;max-width:40ch;}
 .hp-desc .em{color:var(--orange)}
 .hp-chips{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0}
 .hp-chips span{border:1px solid var(--line-dark);padding:7px 13px;font-family:var(--font-label);
@@ -63,7 +63,7 @@
   font-size:clamp(140px,20vw,320px);color:rgba(234,233,232,.12);letter-spacing:-.02em}
 .hp-spine{position:absolute;z-index:4;right:26px;top:50%;transform:translateY(-50%);
   writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--font-label);font-weight:500;
-  font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--on-dark-70);white-space:nowrap}
+  font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#EDECEB;text-shadow:0 1px 6px rgba(0,0,0,.55);white-space:nowrap}
 
 /* --- сигнатура «хаб»: лента коллекции + счётчик -------------------------- */
 .hp-strip{position:absolute;z-index:4;left:var(--space-6);right:var(--space-6);bottom:var(--space-5);
@@ -107,14 +107,11 @@
 .hp-legfacts div:first-child{border-left:0;padding-left:0}
 .hp-legfacts b{color:var(--platinum);font-weight:500}
 
-/* --- прозрачная шапка → navy при скролле (page .st-topbar--solid) -------- */
-.st-topbar--solid{background:transparent;transition:background .35s var(--ease)}
-.st-topbar--solid::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(27,34,48,.55),rgba(27,34,48,0));transition:opacity .35s var(--ease)}
+/* --- шапка: всегда solid navy + fixed (как на главной) ------------------- */
+.st-topbar--solid{position:fixed;top:0;left:0;right:0;z-index:30;background:var(--pear-ink)}
+.st-topbar--solid::before{display:none}
 .st-topbar--solid.is-solid{background:var(--pear-ink)}
-.st-topbar--solid.is-solid::before{opacity:0}
 .st-topbar .st-wrap{width:100%;max-width:100%}
-@media (prefers-reduced-motion:reduce){.st-topbar--solid{transition:none}}
 
 /* ============================ МОБАЙЛ ====================================== */
 @media (max-width:860px){
@@ -149,4 +146,33 @@
     padding:8px var(--space-4) 30px;border-top:0;z-index:2}
   .hp-legfacts div{flex:none;border-left:0;border-top:1px solid var(--line-dark);padding:14px 0 0}
   .hp-legfacts div:first-child{border-top:0}
+}
+
+
+/* --- back-to-top (mirror) ------------------------------------------------ */
+.st-scroll-top{
+  position:fixed;bottom:32px;right:32px;z-index:200;
+  width:50px;height:50px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(237,236,235,.12);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1.5px solid rgba(39,47,66,.32);
+  cursor:pointer;text-decoration:none;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s var(--ease,cubic-bezier(.22,.61,.36,1)),background .25s,border-color .25s;
+}
+.st-scroll-top.visible{opacity:1;pointer-events:auto}
+.st-scroll-top:hover{
+  background:rgba(39,47,66,.90);
+  border-color:rgba(39,47,66,.90);
+}
+.st-scroll-top svg{
+  width:18px;height:18px;flex:none;fill:none;
+  stroke:rgba(39,47,66,.78);stroke-width:1.8;stroke-linecap:square;
+  transition:stroke .25s,transform .2s var(--ease,cubic-bezier(.22,.61,.36,1));
+}
+.st-scroll-top:hover svg{stroke:rgba(237,236,235,.92);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){
+  .st-scroll-top,.st-scroll-top svg{transition:none}
+  .st-scroll-top:hover svg{transform:none}
 }
