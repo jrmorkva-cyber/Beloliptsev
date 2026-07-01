@@ -22,6 +22,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Fix absolute paths for /Beloliptsev/ subpath
+        run: |
+          B="/Beloliptsev"
+          # HTML — href, src, url() в инлайн-стилях
+          find deploy -name "*.html" | xargs sed -i \
+            -e "s|href=\"/|href=\"$B/|g" \
+            -e "s|src=\"/|src=\"$B/|g" \
+            -e "s|url(\"/|url(\"$B/|g" \
+            -e "s|url('/|url('$B/|g" \
+            -e "s|url(/|url($B/|g"
+          # CSS — url() все варианты кавычек
+          find deploy -name "*.css" | xargs sed -i \
+            -e "s|url(\"/|url(\"$B/|g" \
+            -e "s|url('/|url('$B/|g" \
+            -e "s|url(/|url($B/|g"
+          # JS — строковые пути к ассетам и шрифтам
+          find deploy -name "*.js" | xargs sed -i \
+            -e "s|'/assets/|'$B/assets/|g" \
+            -e "s|\"/assets/|\"$B/assets/|g" \
+            -e "s|'/fonts/|'$B/fonts/|g" \
+            -e "s|\"/fonts/|\"$B/fonts/|g"
+
       - uses: actions/configure-pages@v5
         with:
           enablement: true
