@@ -460,7 +460,7 @@ body { max-width: 100%; }
      ширине (min-content падает до ~245px), перенос по дефису — слово целое
      (break-word, НЕ anywhere — не рвём посреди слова). */
   .st-trust__quote { font-size: clamp(22px, 6vw, 30px); }
-  .st-trust__quote, .st-trust__cols, .st-trust__cols p { min-width: 0; max-width: 100%; overflow-wrap: break-word; }
+  .st-trust__quote, .st-trust__cols, .st-trust__cols p { min-width: 0; max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 }
 
 /* ============================================================================
@@ -592,12 +592,12 @@ body { max-width: 100%; }
 @media (max-width: 480px){
   /* 375-фикс · «30 минут. Без обязательств.» строка «Без обязательств.» при 34px
      не влезала (+17 на 375, +32 на 360). Кегль по ширине вьюпорта. Текст не меняем. */
-  .sd-contact__h { font-size: clamp(26px, 8vw, 34px); overflow-wrap: break-word; }
+  .sd-contact__h { font-size: clamp(26px, 8vw, 34px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
   .sd-contact__grid { overflow: hidden; }
   /* FAQ шеврон: уменьшить gap на совсем узких */
   .st-faq__q { gap: 16px; padding: 26px 0; }
   /* Email/телефон: перенос длинных строк */
-  .sd-contact__big { font-size: clamp(24px, 5.5vw, 34px); word-break: break-all; overflow-wrap: break-word; }
+  .sd-contact__big { font-size: clamp(24px, 5.5vw, 34px); word-break: break-all; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
   .sd-contact__coords { gap: 16px 40px; }
 }
 

@@ -70,7 +70,7 @@
 .st-intro { font-size: 19px; line-height: 1.5; color: var(--ink-60); max-width: 60ch; }
 .st-secthead--center .st-intro { max-width: 52ch; }
 .st-section--dark .st-intro, .st-section--space .st-intro { color: var(--on-dark-70); }
-@media (max-width: 700px){ .st-h2 { font-size: 36px; overflow-wrap: break-word; } .st-secthead { margin-bottom: 46px; } }
+@media (max-width: 700px){ .st-h2 { font-size: 36px; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } .st-secthead { margin-bottom: 46px; } }
 
 /* ---- Сброс (эталон: всё на border-box) ---------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -1051,7 +1051,7 @@ a.kh-card:hover .kh-card__link { color: var(--orange); }
 .sd-contact__caps > div, .sd-contact__caps > a { display: flex; flex-direction: column; gap: 6px; min-width: 200px; text-decoration: none; }
 .sd-cap__k { font-size: 20px; color: var(--ink); opacity: .6; }
 .sd-cap__v { font-size: 20px; font-weight: 700; color: var(--ink); text-transform: uppercase; }
-@media (max-width: 900px){ .sd-contact__grid { grid-template-columns: 1fr; gap: 48px; } .sd-contact__grid > * { min-width: 0; } .sd-contact__h { font-size: clamp(28px,8vw,48px); overflow-wrap: break-word; } .sd-contact__coords { gap: 16px 30px; margin-top: 56px; } .sd-contact__big { font-size: clamp(22px,6vw,34px); overflow-wrap: break-word; word-break: break-all; } }
+@media (max-width: 900px){ .sd-contact__grid { grid-template-columns: 1fr; gap: 48px; } .sd-contact__grid > * { min-width: 0; } .sd-contact__h { font-size: clamp(28px,8vw,48px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } .sd-contact__coords { gap: 16px 30px; margin-top: 56px; } .sd-contact__big { font-size: clamp(22px,6vw,34px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-all; } }
 @media (max-width: 560px){ .sd-contact__form { grid-template-columns: 1fr; } }
 
 /* ============================================================================
@@ -1118,9 +1118,9 @@ a.kh-card:hover .kh-card__link { color: var(--orange); }
   .bld-hero__media, .st-trust__media{ position: relative; top: auto; }
 }
 @media (max-width: 560px){
-  .bld-hero__h1{ font-size: clamp(26px, 7vw, 32px); overflow-wrap: break-word; word-break: normal; }
+  .bld-hero__h1{ font-size: clamp(26px, 7vw, 32px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
   .bld-hero__role{ font-size: clamp(17px, 4.6vw, 21px); margin-top: 26px; }
-  .st-h2{ font-size: clamp(24px, 7vw, 34px); overflow-wrap: break-word; word-break: normal; }
+  .st-h2{ font-size: clamp(24px, 7vw, 34px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
   /* CTA геро на всю ширину */
   .bld-hero__cta{ width: 100%; max-width: 100%; }
   .bld-hero__cta .st-btn{ width: 100%; }

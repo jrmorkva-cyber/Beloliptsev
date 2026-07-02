@@ -15,9 +15,9 @@
 html { overflow-x: hidden; max-width: 100%; }
 body { overflow-x: hidden; max-width: 100%; width: 100%; margin: 0; padding: 0; }
 .bld-hero, .bld-hero__panel { min-width: 0; overflow: hidden; }
-.bld-hero__eyebrow { white-space: normal; overflow-wrap: break-word; }
+.bld-hero__eyebrow { white-space: normal; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 .sd-contact__coords { overflow: hidden; }
-.sd-contact__big { max-width: 100%; overflow-wrap: break-word; word-break: break-all; }
+.sd-contact__big { max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-all; }
 /* Форма контактов: поля не должны распирать грид-колонки (headless Chromium input min-content) */
 .sd-contact__form { overflow: hidden; }
 .sd-field { min-width: 0; }
@@ -33,9 +33,9 @@ body { overflow-x: hidden; max-width: 100%; width: 100%; margin: 0; padding: 0; 
   .bld-hero__cta { width: 100%; max-width: 100%; }
   .bld-hero__cta .st-btn__lab { white-space: normal; word-break: break-word; min-height: 50px; height: auto; padding-top: 10px; padding-bottom: 10px; }
   /* Заголовок контактной формы — перенос */
-  .sd-contact__h { overflow-wrap: break-word; word-break: break-word; font-size: clamp(26px, 7vw, 40px); }
+  .sd-contact__h { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; font-size: clamp(26px, 7vw, 40px); }
   /* Типология/FAQ/Trust — перенос длинных заголовков */
-  .bld-tier__h, .st-faq__q h4, .st-trust__quote { overflow-wrap: break-word; word-break: break-word; }
+  .bld-tier__h, .st-faq__q h4, .st-trust__quote { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
   /* Флекс-потомки FAQ кнопки — min-width:0 чтобы не распирали */
   .st-faq__q h4 { flex: 1 1 0; min-width: 0; }
   .st-trust__quote { max-width: 100%; }
@@ -137,7 +137,7 @@ body { overflow-x: hidden; max-width: 100%; width: 100%; margin: 0; padding: 0; 
 .st-intro { font-size: 19px; line-height: 1.5; color: var(--ink-60); max-width: 60ch; }
 .st-secthead--center .st-intro { max-width: 52ch; }
 .st-section--dark .st-intro, .st-section--space .st-intro { color: var(--on-dark-70); }
-@media (max-width: 700px){ .st-h2 { font-size: 36px; overflow-wrap: break-word; } .st-secthead { margin-bottom: 46px; } }
+@media (max-width: 700px){ .st-h2 { font-size: 36px; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } .st-secthead { margin-bottom: 46px; } }
 
 /* ---- Сброс (эталон: всё на border-box) ---------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -1059,9 +1059,9 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
    ========================================================================== */
 @media (max-width: 640px){
   /* ГЕРО H1 — мобильный потолок (heroH1 цель 26-34): clamp вместо 4.4vw/68px */
-  .bld-hero__h1 { font-size: clamp(26px, 7.4vw, 32px); overflow-wrap: break-word; word-break: normal; line-height: 1.04; }
+  .bld-hero__h1 { font-size: clamp(26px, 7.4vw, 32px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; line-height: 1.04; }
   /* st-h2 секций — мобильный кегль (десктоп 56px остаётся >=641) */
-  .st-h2 { font-size: clamp(24px, 6.6vw, 32px); overflow-wrap: break-word; word-break: normal; }
+  .st-h2 { font-size: clamp(24px, 6.6vw, 32px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
   /* стат-числа не уменьшаем (число-магнит), но потолок под 360 */
   .bld-stat3__n { font-size: clamp(42px, 11vw, 64px); }
   /* проза компактнее на экране, но читаема — тело не режем */

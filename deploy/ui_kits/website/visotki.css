@@ -709,7 +709,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 /* — §2 ГЕРО · мобильный потолок H1 (F4hub: clamp(48px,7.4vw,104px) на 375 = ~28px,
      добавляем явный мобильный потолок и overflow-guard) — */
 @media (max-width: 640px){
-  .st-hero h1 { font-size: clamp(28px, 8vw, 40px); overflow-wrap: break-word; word-break: normal; max-width: 100%; }
+  .st-hero h1 { font-size: clamp(28px, 8vw, 40px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; max-width: 100%; }
   .st-hero__voice { font-size: clamp(16px, 4.4vw, 19px); }
   .st-hero__eyebrow-row span { font-size: 15px; }
 }
@@ -725,7 +725,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 /* — §5 РИТМ · сжать вертикаль грида/секций на мобиле (≤1100/≤560 уже в базе) — */
 @media (max-width: 640px){
   .st-section { overflow: hidden; }
-  .st-h2 { max-width: 100%; overflow-wrap: break-word; word-break: normal; }
+  .st-h2 { max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
   .st-secthead { overflow: hidden; }
   .st-intro { font-size: 16px; line-height: 1.5; }
   .vh-intro { font-size: 16px; line-height: 1.55; }

@@ -851,7 +851,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .sd-contact__form .st-btn { width: 100%; }
 
   /* 9. sd-contact__intro: scrollW>offsetW — детали требуют min-width:0 */
-  .sd-contact__intro > * { min-width: 0; overflow-wrap: break-word; }
+  .sd-contact__intro > * { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 }
 
 /* B4 — .st-near__card h4: длинные названия («Котельническая набережная», «Ленинградская»)
@@ -861,7 +861,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .st-near__card h4 {
     font-size: clamp(20px, 5.6vw, 26px);
     max-width: 18ch;
-    overflow-wrap: break-word;
+    overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto;
   }
 }
 

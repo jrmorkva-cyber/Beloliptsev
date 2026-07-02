@@ -1008,7 +1008,7 @@ a.kh-card:hover .kh-card__link { color: var(--platinum); }
   .sd-contact__intro, .sd-contact__form { min-width: 0; max-width: 100%; overflow: hidden; }
   .sd-contact__grid { overflow: hidden; }
   .st-secthead { overflow: hidden; }
-  .st-h2 { max-width: 100%; overflow-wrap: break-word; }
+  .st-h2 { max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 }
 /* st-wrap: ограничиваем max-width чтобы не вылезать за viewport */
 .st-wrap { min-width: 0; max-width: 100%; }

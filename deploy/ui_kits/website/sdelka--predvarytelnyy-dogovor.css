@@ -449,15 +449,15 @@ html { overflow-x: hidden; }
   .st-trust h2 { font-size: 40px; }
   .st-faq__q h4 { font-size: 21px; }
   /* Мобильный фикс: текстовые блоки не должны расширять grid-трек */
-  .st-h2 { overflow-wrap: break-word; }
+  .st-h2 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
   /* st-trust: внутренний .reveal — ограничиваем по ширине */
   .st-trust > .reveal { max-width: 100%; overflow: hidden; }
   /* st-trust__quote — уменьшаем размер и ограничиваем ширину */
-  .st-trust__quote { font-size: 30px; max-width: 100%; overflow-wrap: break-word; word-break: break-word; }
+  .st-trust__quote { font-size: 30px; max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
   /* sd-contact__h: 48px → 30px на мобиле */
-  .sd-contact__h { font-size: 30px; overflow-wrap: break-word; word-break: break-word; }
+  .sd-contact__h { font-size: 30px; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
   /* sd-contact__big (телефон/email): max-width + overflow-wrap на мобиле */
-  .sd-contact__big { max-width: 100%; overflow-wrap: break-word; word-break: break-word; }
+  .sd-contact__big { max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
 }
 
 /* ============================================================================
@@ -711,7 +711,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   /* Заголовок H1 на мобиле — перенос целым словом (overflow-wrap), без word-break.
      Кегль адаптивный clamp: на 375 ≈30.7px → nbsp-токен «до подписания» (329px@34) влезает
      целиком в строку (≈297px < 319), word-break больше не рвёт «ПОДПИСАНИ|Я». */
-  .bld-hero__h1 { font-size: clamp(28px, 8.2vw, 34px); overflow-wrap: break-word; }
+  .bld-hero__h1 { font-size: clamp(28px, 8.2vw, 34px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
   /* Кнопка max-content может быть шире вьюпорта — ограничиваем; длинный лейбл
      («Записаться на консультацию») переносим на 2 строки, не обрезаем многоточием */
   .bld-hero .st-btn { max-width: 100%; height: auto; align-items: stretch; }
@@ -883,7 +883,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .bld-know__h .st-spark { color: var(--orange); flex: none; margin-top: 7px; }
 .bld-know__h h4 { font-family: var(--font-display); font-weight: 400; font-size: 25px; line-height: 1.05; color: var(--ink); }
 .bld-know__p { font-size: 20px; line-height: 1.5; color: var(--ink); margin-top: 18px; }
-@media (max-width: 760px){ .bld-know { grid-template-columns: 1fr; } .bld-know > * { min-width: 0; } .bld-know__h h4 { min-width: 0; overflow-wrap: break-word; word-break: break-word; } }
+@media (max-width: 760px){ .bld-know { grid-template-columns: 1fr; } .bld-know > * { min-width: 0; } .bld-know__h h4 { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; } }
 
 /* LENINGRADSKAYA · сетка соседних премиум-районов «где покупать рядом» (4 карты) */
 .bld-dist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }

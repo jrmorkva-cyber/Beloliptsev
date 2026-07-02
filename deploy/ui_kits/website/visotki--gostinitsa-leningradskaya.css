@@ -898,7 +898,7 @@ body { overflow-x: hidden; max-width: 100%; }
    Текст не меняем. */
 .bld-know__card { min-width: 0; }
 .bld-know__h { min-width: 0; }
-.bld-know__h h4 { min-width: 0; overflow-wrap: break-word; }
+.bld-know__h h4 { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 
 /* ============================================================================
    MOBILE PORT · F1 (Гостиница «Ленинградская») — геро-H1 рамп + reflow.
@@ -907,8 +907,8 @@ body { overflow-x: hidden; max-width: 100%; }
 
 /* ≤560: ОСНОВНОЙ мобильный брейк — геро-H1 вниз с 40px (цель 26-34) */
 @media (max-width: 560px) {
-  .bld-hero__h1 { font-size: clamp(27px, 7.5vw, 34px); overflow-wrap: break-word; word-break: normal; }
-  .st-h2 { font-size: clamp(24px, 7vw, 34px); overflow-wrap: break-word; word-break: normal; }
+  .bld-hero__h1 { font-size: clamp(27px, 7.5vw, 34px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
+  .st-h2 { font-size: clamp(24px, 7vw, 34px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
   .bld-stat3__n { font-size: clamp(42px, 11vw, 72px); }
   .bld-hero__sub { white-space: normal; }
   .bld-hero__cta { width: 100%; max-width: 100%; }

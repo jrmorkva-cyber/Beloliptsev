@@ -997,9 +997,9 @@ a.kh-card:hover .kh-card__link { color: var(--orange); }
 /* 1. bld-hero: grid-items должны иметь min-width:0 чтобы не распирать 1fr-колонку */
 .bld-hero__panel, .bld-hero__media { min-width: 0; }
 /* 2. sd-contact__h: заголовок CTA-секции — ограничить размер шрифта на узких */
-.sd-contact__h { overflow-wrap: break-word; }
+.sd-contact__h { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 /* 3. sd-contact__big (email/телефон): перенос длинных строк */
-.sd-contact__big { overflow-wrap: break-word; word-break: break-all; min-width: 0; }
+.sd-contact__big { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-all; min-width: 0; }
 @media (max-width: 560px) {
   .sd-contact__h { font-size: clamp(26px, 7vw, 40px); }
   .sd-contact__big { font-size: clamp(22px, 5.8vw, 34px); }

@@ -1141,7 +1141,7 @@ a.kh-card:hover .kh-card__link { color: var(--orange); }
    .sd-contact__h font-size:48px uppercase без overflow-wrap — на 375px не умещается.
    .sd-contact__lead max-width:40ch (~400px) > 375px clientWidth. */
 .sd-contact__intro { min-width: 0; overflow: hidden; }
-.sd-contact__h { overflow-wrap: break-word; word-break: break-word; }
+.sd-contact__h { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
 .sd-contact__lead { max-width: min(40ch, 100%); }
 .sd-contact__coords { overflow: hidden; max-width: 100%; }
 .sd-contact__big { overflow-wrap: anywhere; word-break: break-all; max-width: 100%; }
@@ -1165,10 +1165,10 @@ a.kh-card:hover .kh-card__link { color: var(--orange); }
    .st-trust__quote { max-width:44ch } — 44ch при Panama 20px > 315px доступного контента.
    Добавляем overflow-wrap и max-width:100% для этих элементов на мобиле. */
 @media (max-width: 560px) {
-  .st-h2 { overflow-wrap: break-word; max-width: 100%; }
-  .st-trust__quote { max-width: 100%; overflow-wrap: break-word; word-break: break-word; }
+  .st-h2 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; max-width: 100%; }
+  .st-trust__quote { max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; }
   .st-secthead { overflow: hidden; max-width: 100%; }
-  .kh-card__name { overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+  .kh-card__name { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: break-word; max-width: 100%; }
 }
 
 /* §17 · Hero lead на сервисной странице: сбрасываем моноширину из системного .bld-hero__sub

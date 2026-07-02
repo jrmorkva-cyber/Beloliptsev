@@ -845,18 +845,18 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   /* B1-FIX: убран word-break:break-word (рвал «КОТЕЛЬНИЧЕСКАЯ» мидслово).
      Anticva-капс без переноса по слогам: clamp() уменьшает кегль так, чтобы
      длинное слово (≤13 букв) влезло в строку целиком на 315px-боксе 375. */
-  .bld-hero__h1 { overflow-wrap: break-word; min-width: 0; font-size: clamp(22px, 7vw, 34px); }
-  .st-h2 { overflow-wrap: break-word; min-width: 0; font-size: clamp(20px, 6.5vw, 30px); }
-  .st-trust__quote { overflow-wrap: break-word; min-width: 0; }
-  .st-faq__q h4 { overflow-wrap: break-word; min-width: 0; }
-  .sd-contact__h { overflow-wrap: break-word; }
+  .bld-hero__h1 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; min-width: 0; font-size: clamp(22px, 7vw, 34px); }
+  .st-h2 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; min-width: 0; font-size: clamp(20px, 6.5vw, 30px); }
+  .st-trust__quote { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; min-width: 0; }
+  .st-faq__q h4 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; min-width: 0; }
+  .sd-contact__h { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 
   /* 8. sd-contact__form: жёсткая ширина кнопки 310px распирает трек — сброс на 100% + min-width:0 детям */
   .sd-contact__form > * { min-width: 0; }
   .sd-contact__form .st-btn { width: 100%; }
 
   /* 9. sd-contact__intro: scrollW>offsetW — детям нужен min-width:0 */
-  .sd-contact__intro > * { min-width: 0; overflow-wrap: break-word; }
+  .sd-contact__intro > * { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 }
 
 /* B2-FIX: реколлапс таблицы «7 сестёр» в карточки на узких экранах (≤640).
@@ -882,7 +882,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .vh-table td.name {
     font-size: 16px;
     grid-column: 1 / 2;
-    overflow-wrap: break-word;
+    overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto;
   }
   /* Высота и этажи — компактные колонки справа, с псевдо-лейблами */
   .vh-table td.num {

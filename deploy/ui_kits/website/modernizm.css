@@ -204,7 +204,7 @@ html, body { overflow-x: clip; max-width: 100vw; }
   .st-hstat { padding-right: 24px; margin-right: 24px; }
   .st-hstat__n { font-size: 38px; }
   .st-hero .st-btn { max-width: 100%; }
-  .st-hero .st-btn__lab { white-space: normal; overflow-wrap: break-word; }
+  .st-hero .st-btn__lab { white-space: normal; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 }
 
 /* ============================ S2 · ЧТО СЧИТАЕТСЯ ========================= */
@@ -555,7 +555,7 @@ html, body { overflow-x: clip; max-width: 100vw; }
 .vh-card__tag { position: absolute; top: 0; left: 0; z-index: 2; font-family: var(--font-label); font-weight: 500;
   font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--orange); color: var(--platinum); padding: 8px 13px; }
 .vh-card__tag--soon { background: var(--space); }
-.vh-card__body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; min-width: 0; overflow-wrap: break-word; }
+.vh-card__body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 .vh-card--hero .vh-card__body { padding: 40px; justify-content: center; }
 .vh-card__no { font-family: var(--font-mono); font-size: 13px; color: var(--ink-40); }
 .vh-card__name { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.04; color: var(--ink); margin-top: 8px; }
@@ -629,7 +629,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .mz-cap .nm { color: var(--ink); font-size: 18px; }
 .mz-cap .ad { font-family: var(--font-mono); font-size: 14px; color: var(--ink-60); white-space: nowrap; text-align: right; }
 @media (max-width: 800px){ .mz-index__list { grid-template-columns: 1fr; gap: 0; } .mz-cap .ad { white-space: normal; text-align: left; } }
-@media (max-width: 760px){ .mz-epoch__row > * { min-width: 0; } .mz-epoch__year, .mz-epoch__name, .mz-epoch__note { overflow-wrap: break-word; } }
+@media (max-width: 760px){ .mz-epoch__row > * { min-width: 0; } .mz-epoch__year, .mz-epoch__name, .mz-epoch__note { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } }
 @media (max-width: 560px){ .mz-epoch__row { overflow: hidden; } .mz-epoch__year { word-break: break-word; }
   .st-faq__inner { padding-left: 0; overflow-x: auto; } }
 
@@ -669,7 +669,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .sd-contact { background: var(--paper); color: var(--ink); position: relative; }
 .sd-contact .st-eyebrow { color: var(--ink-60); }
 .sd-contact__grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: 90px; align-items: start; }
-.sd-contact__h { font-family: var(--font-display); font-weight: 400; font-size: 48px; line-height: 1.0; letter-spacing: -.01em; margin: 20px 0 0; color: var(--ink); text-transform: uppercase; overflow-wrap: break-word; }
+.sd-contact__h { font-family: var(--font-display); font-weight: 400; font-size: 48px; line-height: 1.0; letter-spacing: -.01em; margin: 20px 0 0; color: var(--ink); text-transform: uppercase; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 .sd-contact__lead { font-family: var(--font-sans); font-size: 20px; line-height: 1.5; margin-top: 28px; max-width: 40ch; color: var(--ink); }
 .sd-contact__form { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 30px; align-items: end; }
 .sd-field { display: flex; flex-direction: column; gap: 14px; }
@@ -788,18 +788,18 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 /* ≤640: ОСНОВНОЙ мобильный брейк хаба */
 @media (max-width: 640px){
   /* — ГЕРО H1 · мобильный потолок (F4hub: clamp(54px,8.6vw,124px) на 375 грубовато) — */
-  .st-hero h1{ font-size:clamp(28px, 8vw, 40px); margin-top:34px; overflow-wrap:break-word; }
+  .st-hero h1{ font-size:clamp(28px, 8vw, 40px); margin-top:34px; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
   .st-hero__eyebrow-row span{ font-size:15px; }
   .st-hero__lead{ font-size:17px; line-height:1.55; }
   .st-hero__addr{ font-size:16px; line-height:1.5; }
   .st-hero .st-btn{ width:100%; max-width:100%; }
-  .st-hero .st-btn__lab{ white-space:normal; overflow-wrap:break-word; flex:1; min-width:0; padding:12px 20px; height:auto; min-height:50px; font-size:17px; }
+  .st-hero .st-btn__lab{ white-space:normal; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; flex:1; min-width:0; padding:12px 20px; height:auto; min-height:50px; font-size:17px; }
   .st-hero .st-btn__cap{ flex:none; align-self:stretch; }
   .st-hero__anchor{ display:inline-block; margin-top:22px; font-size:15px; color:var(--platinum); }
   .st-hero__anchor .ar{ color:var(--orange); }
 
   /* — заголовки секций: компактный потолок, переносы не рвут слово — */
-  .st-h2{ font-size:clamp(26px, 7vw, 38px); overflow-wrap:break-word; max-width:100%; }
+  .st-h2{ font-size:clamp(26px, 7vw, 38px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; max-width:100%; }
   .st-secthead{ margin-bottom:38px; }
 
   /* — S2 · Три эпохи · таймлайн компактнее (число над текстом) — */

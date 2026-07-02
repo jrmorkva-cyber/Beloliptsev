@@ -711,7 +711,7 @@ html { overflow-x: clip; }
 /* .mz-epoch__row на мобиле: grid-template-columns:1fr → ячейки с min-width:auto
    расширялись под min-content текста (mz-epoch__name длинное название) → right=395 > 375.
    min-width:0 позволяет 1fr ячейкам сжиматься до viewport. */
-@media (max-width: 760px){ .mz-epoch__row > * { min-width: 0; overflow-wrap: break-word; } }
+@media (max-width: 760px){ .mz-epoch__row > * { min-width: 0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; } }
 
 /* .st-faq flex layout: h4{flex:1} имел min-width:auto → min-content≈293px > допустимых 251px
    в кнопке шириной 331px. chev выдавливался за button.right=353 до right=395.
@@ -778,7 +778,7 @@ html { overflow-x: clip; }
 /* — Геро H1 · мобильный потолок (хаб ≤40, плейбук: clamp 28–40) — */
 @media (max-width: 560px){
   .st-hero h1{ font-size:clamp(28px, 8vw, 40px); line-height:.98; max-width:none;
-    overflow-wrap:break-word; word-break:normal; }
+    overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break:normal; }
   .st-hero__eyebrow-row span{ font-size:15px; }
   .st-hero__addr{ max-width:none; }
   /* scrim · контраст текста на фото @375 (само фото не трогаем, усиливаем только затемнение под текстом) */
@@ -823,7 +823,7 @@ html { overflow-x: clip; }
 /* — S6 семь эпох · таймлайн компакт ≤640 (год + название + нота, плотнее) — */
 @media (max-width: 640px){
   .mz-epoch__row{ grid-template-columns:1fr; gap:6px; padding:18px 0; }
-  .mz-epoch__row > *{ min-width:0; overflow-wrap:break-word; }
+  .mz-epoch__row > *{ min-width:0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
   .mz-epoch__year{ font-size:clamp(32px, 8.4vw, 44px); line-height:1; }
   .mz-epoch__name{ font-size:21px; margin-bottom:8px; }
   .mz-epoch__note{ font-size:15px; line-height:1.5; }
@@ -852,7 +852,7 @@ html { overflow-x: clip; }
 /* — overflow-guard (лента-свайп не должна давать горизонтальный скролл страницы) — */
 @media (max-width: 640px){
   .st-section{ overflow:hidden; }
-  .st-h2{ max-width:100%; overflow-wrap:break-word; word-break:normal; }
+  .st-h2{ max-width:100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break:normal; }
 }
 
 /* — Ритм ≤560 · плотнее воздух хаба (цель ~18 экр), десктоп не тронут — */

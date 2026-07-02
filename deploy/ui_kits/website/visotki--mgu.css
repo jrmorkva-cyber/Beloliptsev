@@ -913,12 +913,12 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   /* ГЕРО H1 — мобильный clamp (переопределяет B1 clamp(22px,6.4vw,26px)) */
   .bld-hero__h1 {
     font-size: clamp(27px, 7.5vw, 36px);
-    overflow-wrap: break-word;
+    overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto;
     word-break: normal;
   }
 
   /* ТИПО-РАМП .st-h2 → переопределяем B1 (22px занижен для 560–480 диапазона) */
-  .st-h2 { font-size: clamp(24px, 7vw, 36px); overflow-wrap: break-word; word-break: normal; }
+  .st-h2 { font-size: clamp(24px, 7vw, 36px); overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
 
   /* Бронь: stat-числа — не уменьшать тело */
   .bld-stat3__n { font-size: clamp(42px, 11vw, 72px); }
@@ -1040,7 +1040,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 /* === C1d · Global overflow guard — clip any scroll source at section level === */
 @media (max-width: 640px) {
   .st-section { overflow: hidden; }
-  .st-h2 { max-width: 100%; overflow-wrap: break-word; word-break: normal; }
+  .st-h2 { max-width: 100%; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
   .st-secthead { overflow: hidden; }
 }
 

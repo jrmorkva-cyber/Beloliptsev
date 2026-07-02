@@ -1069,8 +1069,8 @@ a.kh-card:hover .kh-card__link { color: var(--platinum); }
 @media (max-width: 640px){
   body { overflow-x: hidden; max-width: 100vw; }
   .leg-layout > * { min-width: 0; }
-  .leg-head h1 { overflow-wrap: break-word; word-break: normal; }
-  .leg-sec h2 { overflow-wrap: break-word; word-break: normal; }
+  .leg-head h1 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
+  .leg-sec h2 { overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; word-break: normal; }
 }
 
 /* — типографика тела на мобиле (В1 Плейбук) — */
