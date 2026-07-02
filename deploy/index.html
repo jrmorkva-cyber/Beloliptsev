@@ -285,7 +285,7 @@
   .hm-sec--terra{background:var(--Color-3);color:var(--Color-5)}
 
   /* ——— eyebrow + заголовки ——— */
-  .hm-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--Color-3);font-weight:700;margin-bottom:14px}
+  .hm-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--Color-3);font-weight:700;margin-bottom:40px}
   .hm-sec--navy .hm-eyebrow,.hm-sec--space .hm-eyebrow{color:var(--Color-3)}
   .hm-h2{font-family:var(--disp);font-weight:400;text-transform:uppercase;
     font-size:clamp(26px,7.4vw,34px);line-height:1.02;letter-spacing:-.005em;
@@ -327,10 +327,12 @@
 
   /* ——— лента-свайп карточек (scroll-snap) ——— */
   .hm-rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;margin:18px calc(var(--mx)*-1) 0;padding:2px var(--mx) 12px;scrollbar-width:none}
+    -webkit-overflow-scrolling:touch;margin:60px calc(var(--mx)*-1) 0;padding:2px var(--mx) 12px;scrollbar-width:none}
   .hm-rail::-webkit-scrollbar{display:none}
   .hm-rail>*{flex:0 0 78%;scroll-snap-align:start;min-width:0}
   .hm-rail--narrow>*{flex:0 0 64%}
+  /* после чипов рельса уже отделена — не дублируем полный 60px разрыв */
+  .hm-chips + .hm-rail{margin-top:24px}
 
   /* регалия-карточка в ленте */
   .hm-reg{border:1px solid var(--line);background:var(--Color-6);padding:22px 20px;display:flex;flex-direction:column;min-height:200px}
