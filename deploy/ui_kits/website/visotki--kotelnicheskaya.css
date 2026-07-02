@@ -829,8 +829,9 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .bld-persons > *,
   .st-near > * { min-width: 0; }
 
-  /* Aspect-ratio:4/5 + sticky мешает на мобиле — сброс */
-  .st-trust__media { position: relative; aspect-ratio: unset; width: 100%; min-height: 280px; }
+  /* Aspect-ratio:4/5 + sticky мешает на мобиле — сброс (top:auto обязателен, иначе
+     унаследованный top:100px от sticky-правила сдвигает блок вниз и наезжает на текст) */
+  .st-trust__media { position: relative; top: auto; aspect-ratio: unset; width: 100%; min-height: 280px; }
 
   /* sd-contact__h: крупный заголовок 48px uppercase даёт min-content ~510px — уменьшить шрифт */
   .sd-contact__h { font-size: 32px; }
