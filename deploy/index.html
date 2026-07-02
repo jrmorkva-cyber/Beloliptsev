@@ -291,10 +291,8 @@
     font-size:clamp(26px,7.4vw,34px);line-height:1.02;letter-spacing:-.005em;
     color:var(--Color);text-wrap:balance;position:relative}
   .hm-sec--navy .hm-h2,.hm-sec--space .hm-h2,.hm-sec--terra .hm-h2{color:var(--Color-5)}
-  /* Д5 · draw-on подчёркивание */
-  .hm-h2.hm-draw::after{content:"";position:absolute;left:0;bottom:-12px;height:2px;width:56px;
-    background:var(--Color-3);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease) .1s}
-  .hm-h2.hm-draw.in::after{transform:scaleX(1)}
+  /* Д5 · draw-on подчёркивание — отключено (убраны оранжевые полоски под заголовками) */
+  .hm-h2.hm-draw::after{display:none}
   .hm-lead{font-size:18px;line-height:1.6;color:var(--ink-60);text-wrap:pretty;margin-top:14px}
   .hm-sec--navy .hm-lead,.hm-sec--space .hm-lead{color:var(--on-d-60)}
   .hm-p{font-size:17px;line-height:1.62;color:var(--Color);text-wrap:pretty;margin-top:16px}
@@ -479,7 +477,6 @@
 
   @media (prefers-reduced-motion:reduce){
     .home-m .reveal,.home-m [data-stagger]>*{opacity:1!important;transform:none!important;transition:none!important}
-    .hm-h2.hm-draw::after{transition:none;transform:scaleX(1)}
     .hm-progress{display:none!important}
     .hm-acc__body{transition:none}
   }
