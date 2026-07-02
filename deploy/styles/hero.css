@@ -114,8 +114,9 @@
 /* ============================ МОБАЙЛ ====================================== */
 @media (max-width:860px){
   .hp-hero{height:auto;min-height:0;display:flex;flex-direction:column}
-  /* фото выше + отрицательный нижний margin → плашка наезжает на нижний край снимка */
-  .hp-hero__img,.hp-hero__ph{position:relative;height:58vh;flex:none;margin-bottom:-96px}
+  /* фото — в один экран (100vh), отрицательный нижний margin → плашка наезжает на нижний край снимка */
+  .hp-hero__img,.hp-hero__ph{position:relative;height:100vh;flex:none;margin-bottom:-96px}
+  @supports(height:100dvh){ .hp-hero__img,.hp-hero__ph{height:100dvh} }
   .hp-montage{position:relative;height:48vh;flex:none;margin-bottom:-96px}
   .hp-hero__scrim{display:none}
   .hp-year,.hp-spine{display:none}

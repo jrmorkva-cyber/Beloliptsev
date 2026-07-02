@@ -869,7 +869,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .vh-table{ display: none; }
   .vh-table-cards{ display: flex; flex-direction: column; gap: 0; }
   .vh-tc{ padding: 18px 0; border-bottom: 1px solid var(--line-dark); }
-  .vh-tc:first-child{ border-top: 1px solid var(--platinum); }
+  .vh-tc:first-child{ border-top: 1px solid var(--line-dark); }
   .vh-tc__top{ display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
   .vh-tc__name{ font-family: var(--font-display); font-weight: 400; font-size: 20px; line-height: 1.05;
     color: var(--platinum); }
