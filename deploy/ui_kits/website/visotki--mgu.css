@@ -1189,9 +1189,9 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .bld-know__card { min-height: 0; }
 }
 
-/* Финальное уплотнение мобилки: таблица 7 зданий → 2 колонки, вводки/числа компактнее */
+/* Финальное уплотнение мобилки: карточки компактнее (2-колоночная сетка убрана —
+   зигзаг между левой/правой колонкой ломал горизонтальные разделители построчно) */
 @media (max-width: 640px){
-  .vh-table-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 18px; }
   .vh-tc { padding: 12px 0; }
   .vh-tc__name { font-size: 16px; }
   .st-intro { font-size: 16px; line-height: 1.5; }
