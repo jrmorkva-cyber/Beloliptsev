@@ -460,6 +460,97 @@
   </div>
 </footer>
 
+<!-- ====================== МЕНЮ-ОВЕРЛЕЙ ====================== -->
+<div class="st-overlay" id="overlay">
+  <div class="st-overlay__top">
+    <img src="/assets/logo-full-light.svg" alt="">
+    <button id="closeBtn">ЗАКРЫТЬ ✕</button>
+  </div>
+  <style>
+    #overlay .mega{margin:auto 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 40px;width:100%}
+    @media(max-width:880px){#overlay .mega{grid-template-columns:repeat(2,1fr);gap:26px 24px}}
+    #overlay .mega-eye{display:block;font-family:'Panama','Golos Text',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#BB5C3C;margin-bottom:16px}
+    #overlay .mega-h{display:block;font-family:'Anticva','Prata',serif;font-size:28px;line-height:1.15;text-transform:uppercase;color:#EDECEB;text-decoration:none;transition:color .3s ease;min-height:64px;margin-bottom:6px}
+    #overlay .mega-s{display:block;font-family:'Panama','Golos Text',sans-serif;font-size:17px;line-height:1.85;color:rgba(237,236,235,.6);text-decoration:none;transition:color .3s ease}
+    #overlay .mega-h:hover,#overlay .mega-s:hover{color:#BB5C3C}
+    #overlay .mega-s + .mega-h,#overlay .mega-h + .mega-h{margin-top:22px}
+    #overlay .mega-sep{display:block;height:1px;background:rgba(237,236,235,.18);margin:20px 0 14px}
+    #overlay .mega-s.mega-about{font-size:19px;line-height:1.65;color:rgba(237,236,235,.82)}
+  </style>
+  <div class="mega">
+    <div class="mega-col">
+      <a href="/visotki/" class="mega-h">Высотки</a>
+      <a href="/visotki/kotelnicheskaya/" class="mega-s">Котельническая наб.</a>
+      <a href="/visotki/" class="mega-s">Кудринская площадь</a>
+      <a href="/visotki/" class="mega-s">Площадь Красные Ворота</a>
+      <a href="/visotki/gostinitsa-ukraina/" class="mega-s">Гостиница «Украина»</a>
+      <a href="/visotki/mgu/" class="mega-s">Главный корпус МГУ</a>
+      <a href="/visotki/gostinitsa-leningradskaya/" class="mega-s">Гостиница «Ленинградская»</a>
+      <a href="/visotki/mid/" class="mega-s">МИД</a>
+    </div>
+    <div class="mega-col">
+      <a href="/modernizm/" class="mega-h">Авангард</a>
+      <a href="/modernizm/dom-na-naberezhnoy/" class="mega-s">Дом на&nbsp;набережной</a>
+      <a href="/modernizm/dom-narkomfina/" class="mega-s">Дом Наркомфина</a>
+      <a href="/modernizm/" class="mega-s">Жилой дом Госстраха</a>
+      <a href="/modernizm/" class="mega-s">Дом «Военный строитель»</a>
+      <a href="/modernizm/" class="mega-s">Жилой дом Жургаза</a>
+      <a href="/modernizm/" class="mega-s">Дом «Обрабстрой»</a>
+    </div>
+    <div class="mega-col">
+      <a href="/stalinki/" class="mega-h">Сталинки</a>
+      <a href="/stalinki/" class="mega-s">Дом Архитекторов</a>
+      <a href="/stalinki/" class="mega-s">Дом Электродного завода</a>
+      <a href="/stalinki/" class="mega-s">Дом работников НКВД</a>
+      <a href="/stalinki/" class="mega-s">Дом академиков</a>
+      <a href="/stalinki/" class="mega-s">Фрунзенская набережная</a>
+      <a href="/stalinki/" class="mega-s">Дом МГБ на&nbsp;Земляном Валу</a>
+      <a href="/stalinki/" class="mega-s">Дом арх. Жукова</a>
+      <a href="/stalinki/" class="mega-s">Дом писателей</a>
+      <a href="/stalinki/" class="mega-s">Кутузовский · Ленинский · Ленинградский · Мира</a>
+    </div>
+    <div class="mega-col">
+      <a href="/cao/" class="mega-h">ЦАО</a>
+      <a href="/cao/" class="mega-s">Арбат</a>
+      <a href="/cao/" class="mega-s">Басманный</a>
+      <a href="/cao/zamoskvoreche/" class="mega-s">Замоскворечье</a>
+      <a href="/cao/" class="mega-s">Красносельский</a>
+      <a href="/cao/" class="mega-s">Мещанский</a>
+      <a href="/cao/" class="mega-s">Пресненский</a>
+      <a href="/cao/" class="mega-s">Таганский</a>
+      <a href="/cao/" class="mega-s">Тверской</a>
+      <a href="/cao/khamovniki/" class="mega-s">Хамовники</a>
+      <a href="/cao/" class="mega-s">Якиманка</a>
+    </div>
+    <div class="mega-col">
+      <a href="/uslugi/" class="mega-h">Услуги</a>
+      <a href="/uslugi/" class="mega-s">Продажа премиум-объекта</a>
+      <a href="/uslugi/proverka-kvartiry/" class="mega-s">Юридическая проверка квартиры</a>
+      <a href="/uslugi/" class="mega-s">Подбор ипотечной программы</a>
+      <a href="/uslugi/" class="mega-s">Подготовка к&nbsp;сделке</a>
+      <a href="/uslugi/" class="mega-s">Закрытый подбор объектов</a>
+      <a href="/uslugi/" class="mega-s">Сделки с&nbsp;наследственным фондом</a>
+      <a href="/uslugi/" class="mega-s">Историческая экспертиза</a>
+      <a href="/uslugi/" class="mega-s">Покупка квартиры в&nbsp;сталинке</a>
+      <span class="mega-sep"></span><a href="/o-sebe/" class="mega-s mega-about">О&nbsp;себе</a>
+      <a href="/keysy/" class="mega-s mega-about">Кейсы</a>
+    </div>
+  </div>
+  <div class="st-overlay__foot">
+    <span>+7 960 812 57 30</span>
+    <span>@realtor_expert_beloliptsev</span>
+    <span>solomon_estate@mail.ru</span>
+  </div>
+</div>
+<script>
+  var ov = document.getElementById('overlay');
+  var mb = document.getElementById('menuBtn');
+  var cb = document.getElementById('closeBtn');
+  if (ov && mb) { mb.onclick = function(){ ov.classList.add('open'); }; }
+  if (ov && cb) { cb.onclick = function(){ ov.classList.remove('open'); }; }
+</script>
+
+
 <script>
   if (window.__loadBrandFonts) { window.__loadBrandFonts('../../').catch(function(){}); }
   var io = new IntersectionObserver(function(entries){
@@ -482,5 +573,6 @@
 
 <a class="st-scroll-top" href="#" aria-label="Наверх"><svg viewBox="0 0 18 18"><path d="M9 14V4M4.5 8.5L9 4l4.5 4.5"/></svg></a>
 <script src="/js/scroll-top.js" defer></script>
+<script src="/js/mobile-nav-accordion.js" defer></script>
 </body>
 </html>
