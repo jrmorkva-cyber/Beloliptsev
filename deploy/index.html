@@ -412,7 +412,7 @@
   .hm-coords__v{font-size:16px;font-weight:700;text-transform:uppercase;color:var(--Color);overflow-wrap:anywhere}
 
   /* ——— мобильная шапка слоя (лого + бургер) ——— */
-  .hm-top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  .hm-top{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
     padding:14px var(--mx);background:var(--Color);}
   .hm-top__brand img{height:34px;width:auto;display:block}
   .hm-top__menu{display:inline-flex;align-items:center;gap:9px;background:none;border:0;color:var(--Color-5);
@@ -1020,9 +1020,6 @@
     <p class="hm-eyebrow">Кто я</p>
     <h2 class="hm-h2 hm-draw">Белолипцев Владимир Александрович</h2>
     <p class="hm-p">Не&nbsp;агентство и&nbsp;не&nbsp;команда&nbsp;—&nbsp;один человек на&nbsp;каждой сделке от&nbsp;первого показа до&nbsp;регистрации права. Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004&nbsp;года&nbsp;—&nbsp;более 500&nbsp;закрытых сделок в&nbsp;сегменте 30–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки.</p>
-    <div class="hm-card__ph" style="aspect-ratio:4/5;margin-top:22px;max-width:300px">
-      <img src="/assets/img/portrait-formal-hd.png" alt="Белолипцев Владимир Александрович">
-    </div>
     <div class="hm-stats" data-countup>
       <div class="hm-stat"><div class="hm-stat__n">№3</div><div class="hm-stat__l">в&nbsp;РГР Топ-10 из&nbsp;1080 Москвы</div></div>
       <div class="hm-stat"><div class="hm-stat__n">500+</div><div class="hm-stat__l">закрытых сделок 30–500&nbsp;млн&nbsp;рублей</div></div>
@@ -1030,6 +1027,9 @@
       <div class="hm-stat"><div class="hm-stat__n">с&nbsp;2004</div><div class="hm-stat__l">года в&nbsp;премиум-сегменте</div></div>
     </div>
     <a href="#cta" class="hm-btn" style="margin-top:26px"><span class="hm-btn__lab">Заказать консультацию</span><span class="hm-btn__cap"><span class="arr"></span></span></a>
+    <div class="hm-card__ph" style="aspect-ratio:4/5;margin-top:28px;max-width:300px">
+      <img src="/assets/img/portrait-formal-hd.png" alt="Белолипцев Владимир Александрович">
+    </div>
   </section>
 
   <!-- 5 · ЧЕТЫРЕ НАПРАВЛЕНИЯ → лента -->
@@ -1333,11 +1333,9 @@
   .cmodal__panel{position:relative;width:100%;max-width:660px;display:flex;background:var(--Color-6);color:var(--Color);overflow:hidden;animation:cmodalin .4s cubic-bezier(.22,.61,.36,1)}
   @keyframes cmodalin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   /* левая «журнальная» половина&nbsp;—&nbsp;терракота + цитата */
-  .cmodal__aside{flex:0 0 44%;position:relative;overflow:hidden;background:var(--Color-3);color:var(--Color-5);padding:38px 30px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
-  .cmodal__aside::before{content:"";position:absolute;inset:0;pointer-events:none;background:url(/assets/img/pattern-waves.png) center/420px;opacity:.07;filter:invert(1)}
-  .cmodal__spark{position:relative;width:26px;height:26px;background:var(--Color-5);-webkit-mask:url(/assets/icon-sparkle.svg) center/contain no-repeat;mask:url(/assets/icon-sparkle.svg) center/contain no-repeat}
+  .cmodal__aside{flex:0 0 44%;position:relative;overflow:hidden;background:var(--Color-3);color:var(--Color-5);padding:38px 30px 32px;display:flex;flex-direction:column;justify-content:center;gap:30px}
+  .cmodal__aside::before{content:"";position:absolute;inset:0;pointer-events:none;background:url(/assets/img/pattern-waves.png) center/420px;opacity:.12;filter:invert(1)}
   .cmodal__quote{position:relative;font-family:'Anticva','Prata',serif;font-size:23px;line-height:1.2;margin:0}
-  .cmodal__by{position:relative;font-family:'Panama','Golos Text',sans-serif;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(237,236,235,.72)}
   /* правая половина&nbsp;—&nbsp;форма на бумаге */
   .cmodal__main{flex:1;position:relative;padding:40px 36px 34px}
   .cmodal__x{position:absolute;top:13px;right:16px;background:none;border:0;color:var(--Color);font-size:22px;line-height:1;cursor:pointer;opacity:.55;transition:opacity .2s}
@@ -1359,10 +1357,8 @@
   .cmodal__ok{font-family:'Anticva','Prata',serif;text-transform:uppercase;font-size:20px;line-height:1.25;margin-top:6px;color:var(--Color)}
   @media(max-width:600px){
     .cmodal__panel{flex-direction:column;max-width:430px}
-    .cmodal__aside{flex:none;flex-direction:row;align-items:center;justify-content:flex-start;padding:22px 24px;gap:16px}
-    .cmodal__aside::before{width:120px;height:120px;right:-42px;top:-54px}
-    .cmodal__quote{font-size:17px}
-    .cmodal__spark{width:22px;height:22px;flex:none}
+    .cmodal__aside{flex:none;padding:26px 24px}
+    .cmodal__quote{font-size:18px}
     .cmodal__main{padding:28px 24px 26px}
     .cmodal__t{font-size:27px}
   }
@@ -1371,9 +1367,7 @@
   <div class="cmodal__bd" data-close></div>
   <div class="cmodal__panel">
     <aside class="cmodal__aside">
-      <span class="cmodal__spark" aria-hidden="true"></span>
       <blockquote class="cmodal__quote">Премиум-вторичка ЦАО&nbsp;—&nbsp;мой единственный сегмент.</blockquote>
-      <div class="cmodal__by">Владимир Белолипцев</div>
     </aside>
     <div class="cmodal__main">
       <button class="cmodal__x" type="button" data-close aria-label="Закрыть">✕</button>
@@ -1421,10 +1415,10 @@
     #overlay .mega-s + .mega-h,#overlay .mega-h + .mega-h{margin-top:22px}
     #overlay .mega-sep{display:block;height:1px;background:rgba(237,236,235,.18);margin:20px 0 14px}
     #overlay .mega-s.mega-about{font-size:19px;line-height:1.65;color:rgba(237,236,235,.82)}
-    .st-scroll-top{position:fixed;bottom:32px;right:32px;z-index:200;width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:rgba(237,236,235,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1.5px solid rgba(39,47,66,.32);cursor:pointer;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.22,.61,.36,1)}
+    .st-scroll-top{position:fixed;bottom:32px;right:32px;z-index:200;width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:rgba(39,47,66,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1.5px solid rgba(237,236,235,.22);cursor:pointer;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.22,.61,.36,1),background .25s ease}
     .st-scroll-top.visible{opacity:1;pointer-events:auto}
-    .st-scroll-top svg{width:18px;height:18px;flex:none;fill:none;stroke:rgba(237,236,235,.8);stroke-width:1.8;stroke-linecap:square}
-    .st-scroll-top:hover{background:rgba(39,47,66,.9)}
+    .st-scroll-top svg{width:18px;height:18px;flex:none;fill:none;stroke:rgba(237,236,235,.92);stroke-width:1.8;stroke-linecap:square}
+    .st-scroll-top:hover{background:var(--Color-3)}
   </style>
   <div class="mega">
     <div class="mega-col">
