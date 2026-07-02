@@ -49,7 +49,8 @@
 .os-hero .os-hero__cta{margin-top:2px}
 @media (max-width:860px){
   .os-hero{height:auto;min-height:0;display:flex;flex-direction:column}
-  .os-hero__img{position:relative;height:56vh}
+  .os-hero__img{position:relative;height:100vh}
+  @supports(height:100dvh){ .os-hero__img{height:100dvh} }
   .os-hero::after{display:none}
   .os-hero__meta{display:none}
   .os-hero__plate{position:relative;top:auto;left:auto;transform:none;width:auto;padding:36px var(--space-4);
