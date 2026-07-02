@@ -64,6 +64,23 @@
 /* Шапка во всю ширину экрана (как full-bleed геро), а не в узком 1440-контейнере */
 .st-topbar .st-wrap{width:100%;max-width:100%}
 @media (prefers-reduced-motion:reduce){.st-topbar--solid{transition:none}}
+/* Хлебные крошки поверх геро (прямой потомок os-hero) */
+.os-hero > .hp-crumbs{position:absolute;top:72px;left:var(--space-6);margin:0;z-index:20}
+/* S4 · Регалии — перестиль в hm-reg (как на главной) */
+.os-seals{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(39,47,66,.12)}
+.os-reg{padding:24px 22px;display:flex;flex-direction:column;border-right:1px solid rgba(39,47,66,.12)}
+.os-reg:last-child{border-right:0}
+.os-reg__big{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1;color:var(--orange);text-transform:uppercase}
+.os-reg__name{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:clamp(14px,1.3vw,19px);line-height:1.1;color:var(--pear-ink);margin-top:10px}
+.os-reg__note{font-family:var(--font-sans);font-size:14px;line-height:1.5;color:rgba(39,47,66,.6);margin-top:14px;flex:1}
+.os-reg__link{margin-top:16px;font-family:var(--font-label);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);text-decoration:none}
+.os-reg__link:hover{text-decoration:underline}
+@media(max-width:760px){
+  .os-seals{grid-template-columns:repeat(2,1fr)}
+  .os-reg:nth-child(2n){border-right:0}
+  .os-reg:nth-child(n+3){border-top:1px solid rgba(39,47,66,.12)}
+}
+@media(max-width:860px){.os-hero > .hp-crumbs{display:none}}
 </style>
 <link rel="icon" type="image/svg+xml" href="/assets/logo-seal.svg">
 <script type="application/ld+json">{
@@ -140,6 +157,7 @@
 <section class="os-hero" data-screen-label="S1 · Геро">
   <img class="os-hero__img" src="/assets/img/portrait-osebe.jpg" alt="Белолипцев Владимир Александрович&nbsp;—&nbsp;частный брокер премиум-вторички ЦАО Москвы, риэлтор РГР Топ-3&nbsp;из&nbsp;1080">
   <aside class="os-hero__meta"><b>23&nbsp;года</b>в&nbsp;премиум-вторичке ЦАО<br>·<br>по&nbsp;рекомендации</aside>
+  <nav class="hp-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span class="sep">→</span><span>О&nbsp;себе</span></nav>
   <div class="os-hero__plate">
     <p class="os-hero__eyebrow">Частный брокер ЦАО · с&nbsp;2004 года</p>
     <h1 class="os-hero__h1">Белолипцев<span class="ln2">Владимир Александрович</span></h1>
@@ -208,29 +226,29 @@ u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u);})(
       <h2 class="st-h2">Регалии&nbsp;—&nbsp;все верифицируются в&nbsp;открытых реестрах</h2>
     </div>
     <div class="os-seals reveal">
-      <div class="os-seal">
-        <div class="os-seal__tag">Топ-10</div>
-        <div class="os-seal__sub">РГР</div>
-        <img class="os-seal__photo" src="/assets/img/regalia-1.jpg" alt="Белолипцев Владимир" loading="lazy">
-        <p class="os-seal__desc">3&nbsp;место в&nbsp;рейтинге Российской Гильдии Риэлторов</p>
+      <div class="os-reg">
+        <span class="os-reg__big">Топ-10</span>
+        <span class="os-reg__name">РГР</span>
+        <p class="os-reg__note">3&nbsp;место в&nbsp;рейтинге Российской Гильдии Риэлторов</p>
+        <a class="os-reg__link" href="https://reestr.rgr.ru" target="_blank" rel="noopener">reestr.rgr.ru&nbsp;↗</a>
       </div>
-      <div class="os-seal">
-        <div class="os-seal__tag">Топ-20</div>
-        <div class="os-seal__sub">Аттестат «Эксперт»</div>
-        <img class="os-seal__photo" src="/assets/img/regalia-2.jpg" alt="Белолипцев Владимир" loading="lazy">
-        <p class="os-seal__desc">уровень ЭН&nbsp;—&nbsp;менее 2% риэлторов Москвы</p>
+      <div class="os-reg">
+        <span class="os-reg__big">Топ-20</span>
+        <span class="os-reg__name">Аттестат «Эксперт»</span>
+        <p class="os-reg__note">уровень ЭН&nbsp;—&nbsp;менее 2% риэлторов Москвы</p>
+        <a class="os-reg__link" href="https://reestr.rgr.ru" target="_blank" rel="noopener">reestr.rgr.ru&nbsp;↗</a>
       </div>
-      <div class="os-seal">
-        <div class="os-seal__tag">ГРМ</div>
-        <div class="os-seal__sub">Деловой Клуб</div>
-        <img class="os-seal__photo" src="/assets/img/regalia-3.jpg" alt="Белолипцев Владимир" loading="lazy">
-        <p class="os-seal__desc">Действительный член Гильдии Риэлторов Москвы</p>
+      <div class="os-reg">
+        <span class="os-reg__big">ГРМ</span>
+        <span class="os-reg__name">Деловой Клуб</span>
+        <p class="os-reg__note">Действительный член Гильдии Риэлторов Москвы</p>
+        <a class="os-reg__link" href="https://reestr.rgr.ru" target="_blank" rel="noopener">reestr.rgr.ru&nbsp;↗</a>
       </div>
-      <div class="os-seal">
-        <div class="os-seal__tag">Гильдия</div>
-        <div class="os-seal__sub">российских адвокатов</div>
-        <img class="os-seal__photo" src="/assets/img/regalia-4.jpg" alt="Белолипцев Владимир" loading="lazy">
-        <p class="os-seal__desc">Куратор комитета по&nbsp;работе с&nbsp;партнерами ГРМ</p>
+      <div class="os-reg">
+        <span class="os-reg__big">Гильдия</span>
+        <span class="os-reg__name">Российских адвокатов</span>
+        <p class="os-reg__note">Куратор комитета по&nbsp;работе с&nbsp;партнёрами ГРМ</p>
+        <a class="os-reg__link" href="https://reestr.rgr.ru" target="_blank" rel="noopener">reestr.rgr.ru&nbsp;↗</a>
       </div>
     </div>
     <div class="mz-epoch reveal" style="margin-top:60px">
@@ -320,7 +338,7 @@ u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u);})(
   <span class="st-foot__wave"></span>
   <div class="st-wrap st-pad st-foot__in">
     <div class="st-foot__brand">
-      <span style="display:inline-flex;align-items:baseline;gap:18px;flex-wrap:wrap"><img src="/assets/logo-full-light.svg" alt="Белолипцев Владимир"><span style="font-family:var(--font-marker);color:var(--yellow);font-weight:400;line-height:.9;font-size:clamp(26px,2.6vw,42px);letter-spacing:.01em;display:inline-block">лично</span></span>
+      <img src="/assets/logo-full-light.svg" alt="Белолипцев Владимир">
       <p>Частный риэлтор Москвы. Премиум-вторичка ЦАО: сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома. 23&nbsp;года, 500+ закрытых сделок.</p>
     </div>
     <div class="st-foot__cols">
@@ -439,7 +457,7 @@ u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u);})(
       <a href="/stalinki/" class="mega-s">Дом МГБ на&nbsp;Земляном Валу</a>
       <a href="/stalinki/" class="mega-s">Дом арх. Жукова</a>
       <a href="/stalinki/" class="mega-s">Дом писателей</a>
-      <a href="/stalinki/" class="mega-s">Кутузовский · Ленинский · Ленинградский · Мира</a>
+      <a href="/stalinki/" class="mega-s">Кутузовский · Ленинский ·<br>Ленинградский · Мира</a>
     </div>
     <div class="mega-col">
       <a href="/cao/" class="mega-h">ЦАО</a>
@@ -506,7 +524,7 @@ u();addEventListener('scroll',u,{passive:true});addEventListener('resize',u);})(
   sync(); addEventListener('resize', sync);
 })();
 </script>
-
+
 <script>
 /* Анимация цифр 0-до-значения (вход в экран, easeOut, reduced-motion safe) */
 (function(){

@@ -91,11 +91,37 @@
     <a class="st-btn st-btn--orange hp-cta" href="#cta"><span class="st-btn__lab">Записаться на&nbsp;консультацию</span><span class="st-btn__cap"><svg><use href="#i-arr"></use></svg></span></a>
   </div>
   <div class="hp-strip">
-    <div class="hp-strip__rail">
-      <a class="hp-strip__item" href="/cao/khamovniki/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-khamovniki.jpg" alt="Хамовники&nbsp;—&nbsp;премиум-вторичка ЦАО Москвы"><b>Хамовники</b></a>
-      <a class="hp-strip__item" href="/cao/zamoskvoreche/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-zamoskvoreche.jpg" alt="Замоскворечье&nbsp;—&nbsp;премиум-вторичка ЦАО Москвы"><b>Замоскворечье</b></a>
+    <div class="hp-strip__count">
+      <b>10</b>
+      <span>районов ЦАО</span>
+      <div style="display:flex;gap:4px;margin-top:10px">
+        <button id="caoPrev" aria-label="Назад" style="width:38px;height:38px;background:rgba(237,236,235,.12);border:1px solid rgba(237,236,235,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--platinum);padding:0;flex:none;transition:background .2s" onmouseenter="this.style.background='var(--orange)'" onmouseleave="this.style.background='rgba(237,236,235,.12)'"><svg width="12" height="12" style="transform:rotate(180deg)"><use href="#i-arr"></use></svg></button>
+        <button id="caoNext" aria-label="Вперёд" style="width:38px;height:38px;background:rgba(237,236,235,.12);border:1px solid rgba(237,236,235,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--platinum);padding:0;flex:none;transition:background .2s" onmouseenter="this.style.background='var(--orange)'" onmouseleave="this.style.background='rgba(237,236,235,.12)'"><svg width="12" height="12"><use href="#i-arr"></use></svg></button>
+      </div>
+    </div>
+    <div class="hp-strip__rail" id="caoRail" style="overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none">
+      <a class="hp-strip__item" href="/cao/khamovniki/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-khamovniki.jpg" alt="Хамовники"><b>Хамовники</b></a>
+      <a class="hp-strip__item" href="/cao/zamoskvoreche/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-zamoskvoreche.jpg" alt="Замоскворечье"><b>Замоскворечье</b></a>
+      <a class="hp-strip__item" href="/cao/yakimanka/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-yakimanka.jpg" alt="Якиманка"><b>Якиманка</b></a>
+      <a class="hp-strip__item" href="/cao/arbat/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-arbat.jpg" alt="Арбат"><b>Арбат</b></a>
+      <a class="hp-strip__item" href="/cao/tverskoy/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-tverskoy.jpg" alt="Тверской"><b>Тверской</b></a>
+      <a class="hp-strip__item" href="/cao/tagansky/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-tagansky.jpg" alt="Таганский"><b>Таганский</b></a>
+      <a class="hp-strip__item" href="/cao/presnensky/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-presnensky.jpg" alt="Пресненский"><b>Пресненский</b></a>
+      <a class="hp-strip__item" href="/cao/krasnoselsky/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-krasnoselsky.jpg" alt="Красносельский"><b>Красносельский</b></a>
+      <a class="hp-strip__item" href="/cao/meshchansky/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-mohovoy.jpg" alt="Мещанский"><b>Мещанский</b></a>
+      <a class="hp-strip__item" href="/cao/basmanny/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-mohovoy.jpg" alt="Басманный"><b>Басманный</b></a>
     </div>
   </div>
+<style>#caoRail::-webkit-scrollbar{display:none}</style>
+<script>(function(){
+  var rail=document.getElementById('caoRail');
+  var prev=document.getElementById('caoPrev');
+  var next=document.getElementById('caoNext');
+  if(!rail||!prev||!next)return;
+  var step=352;
+  next.addEventListener('click',function(){rail.scrollBy({left:step,behavior:'smooth'})});
+  prev.addEventListener('click',function(){rail.scrollBy({left:-step,behavior:'smooth'})});
+})();</script>
 </section>
 
 <!-- ====================== S2 · ЧТО&nbsp;ТАКОЕ ПРЕМИУМ-ВТОРИЧКА ЦАО ====================== -->
@@ -595,7 +621,7 @@
       <a href="/stalinki/" class="mega-s">Дом МГБ на&nbsp;Земляном Валу</a>
       <a href="/stalinki/" class="mega-s">Дом арх. Жукова</a>
       <a href="/stalinki/" class="mega-s">Дом писателей</a>
-      <a href="/stalinki/" class="mega-s">Кутузовский · Ленинский · Ленинградский · Мира</a>
+      <a href="/stalinki/" class="mega-s">Кутузовский · Ленинский ·<br>Ленинградский · Мира</a>
     </div>
     <div class="mega-col">
       <a href="/cao/" class="mega-h">ЦАО</a>
@@ -713,7 +739,7 @@
     function sync(){ var open = window.innerWidth > 640; ds.forEach(function(d){ d.open = open; }); }
     sync(); window.addEventListener('resize', sync); })();
 </script>
-
+
 <script defer src="/js/lead-modal.js"></script>
 <script defer src="/js/motion-plus.js"></script><script defer src="/js/ya-map.js"></script>
 <a class="st-scroll-top" href="#" aria-label="Наверх">
