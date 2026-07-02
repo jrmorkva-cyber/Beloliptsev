@@ -482,9 +482,8 @@
     .hm-acc__body{transition:none}
   }
 
-  /* очень узкие экраны */
+  /* очень узкие экраны — боковой отступ НЕ сужаем (держим 22px как везде на сайте) */
   @media (max-width:380px){
-    .home-m{--mx:18px}
     .hm-rail>*{flex:0 0 84%}
     .hm-stat__n{font-size:clamp(30px,9vw,40px)}
   }
