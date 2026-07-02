@@ -381,9 +381,9 @@
   .hm-acc__chev::before{left:0;top:6px;width:14px;height:2px}
   .hm-acc__chev::after{left:6px;top:0;width:2px;height:14px}
   .hm-acc__item.open .hm-acc__chev::after{transform:scaleY(0)}
-  .hm-acc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+  .hm-acc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease);min-height:0}
   .hm-acc__item.open .hm-acc__body{grid-template-rows:1fr}
-  .hm-acc__bodyin{overflow:hidden}
+  .hm-acc__bodyin{overflow:hidden;min-height:0}
   .hm-acc__bodyin p{font-size:15px;line-height:1.6;color:var(--ink-60);padding:0 0 22px 38px}
   .hm-sec--navy .hm-acc__bodyin p{color:var(--on-d-60)}
 
@@ -421,8 +421,9 @@
   .hm-top__menu .bars i{height:1.5px;background:var(--Color-5);display:block}
 
   /* ——— геро ——— */
-  .hm-hero{position:relative;min-height:84vh;display:flex;flex-direction:column;justify-content:flex-end;
+  .hm-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
     padding:0 var(--mx) 40px;overflow:hidden;background:#15182f}
+  @supports(min-height:100dvh){ .hm-hero{min-height:100dvh} }
   .hm-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hm-hero__veil{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,6,.82) 14%,rgba(10,8,6,.4) 52%,rgba(10,8,6,.12) 100%)}
   .hm-hero__in{position:relative;z-index:2}
@@ -442,10 +443,10 @@
   .hm-foot__in{position:relative;z-index:2}
   .hm-foot__brand img{height:46px;width:auto}
   .hm-foot__about{font-size:15px;line-height:1.55;color:var(--on-d);margin-top:22px}
-  .hm-foot__cols{margin-top:36px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px}
-  .hm-fcol{padding:22px 0;border-top:1px solid var(--line-d)}
-  .hm-fcol h4{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--Color-5);margin-bottom:14px}
-  .hm-fcol a{display:block;font-size:15px;color:var(--on-d);opacity:.82;margin-bottom:11px}
+  .hm-foot__acc{margin-top:28px}
+  .hm-foot .hm-acc,.hm-foot .hm-acc__item{border-color:var(--line-d)}
+  .hm-foot .hm-acc__bodyin{display:flex;flex-direction:column}
+  .hm-foot .hm-acc__bodyin a{display:block;font-size:15px;line-height:1.5;color:var(--on-d);opacity:.82;padding:7px 0 7px 38px}
   .hm-foot__legal{position:relative;z-index:2;background:var(--Color-3);margin:40px calc(var(--mx)*-1) 0;padding:16px var(--mx)}
   .hm-foot__legal p{font-size:13px;line-height:1.5;color:var(--Color-5)}
   .hm-foot__legal p+p{margin-top:8px;opacity:.85}
@@ -524,6 +525,34 @@
   .hero100__cta:hover .arr{transform:rotate(-45deg) translateX(6px)}
   @media (max-width:980px){ .hero100__main{flex-direction:column;align-items:flex-start;gap:24px} .hero100__right{max-width:520px} }
   @media (max-width:760px){ .hero100{display:none} }
+
+  /* ===== мобильное меню — аккордеон (замена десктоп-mega-меню на ≤760px) ===== */
+  .hm-ovm{position:fixed;inset:0;z-index:70;background:var(--Color);color:var(--Color-5);
+    transform:translateY(-100%);transition:transform .5s var(--ease);
+    display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain}
+  .hm-ovm.is-open{transform:translateY(0)}
+  @media (min-width:761px){ .hm-ovm{display:none!important} }
+  .hm-ovm__top{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;
+    padding:14px 22px;background:var(--Color)}
+  .hm-ovm__top img{height:34px;display:block}
+  .hm-ovm__close{background:none;border:0;color:var(--Color-5);font-family:var(--sans);font-size:14px;
+    letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:8px}
+  .hm-ovm__body{padding:6px 22px 36px}
+  .hm-mnav{border-top:1px solid var(--line-d)}
+  .hm-mnav__item{border-bottom:1px solid var(--line-d)}
+  .hm-mnav__row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:19px 0}
+  .hm-mnav__link{flex:1;min-width:0;font-family:var(--disp);font-weight:400;text-transform:uppercase;
+    font-size:20px;line-height:1.1;color:var(--Color-5)}
+  .hm-mnav__chevbtn{flex:none;background:none;border:0;padding:10px;margin:-10px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center}
+  .hm-mnav__chevbtn .hm-acc__chev{margin-top:0}
+  .hm-mnav__list{display:block}
+  .hm-mnav__list a{display:block;font-size:15px;line-height:1.5;color:var(--on-d-60);padding:7px 0}
+  .hm-mnav__list a:last-child{padding-bottom:18px}
+  .hm-ovm__extra{display:flex;flex-direction:column;border-bottom:1px solid var(--line-d);padding-bottom:2px}
+  .hm-ovm__extra a{padding:16px 0;border-top:1px solid var(--line-d);font-family:var(--disp);font-weight:400;
+    text-transform:uppercase;font-size:17px;color:var(--Color-5)}
+  .hm-ovm__contact{display:flex;flex-direction:column;gap:11px;margin-top:26px;font-size:14px;color:var(--on-d-60)}
 </style>
 <link rel="stylesheet" href="/styles/motion-plus.css">
 </head>
@@ -992,10 +1021,10 @@
   <section class="hm-sec hm-sec--navy reveal" id="about-m">
     <p class="hm-eyebrow">Кто я</p>
     <h2 class="hm-h2 hm-draw">Белолипцев Владимир Александрович</h2>
+    <p class="hm-p">Не&nbsp;агентство и&nbsp;не&nbsp;команда&nbsp;—&nbsp;один человек на&nbsp;каждой сделке от&nbsp;первого показа до&nbsp;регистрации права. Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004&nbsp;года&nbsp;—&nbsp;более 500&nbsp;закрытых сделок в&nbsp;сегменте 30–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки.</p>
     <div class="hm-card__ph" style="aspect-ratio:4/5;margin-top:22px;max-width:300px">
       <img src="/assets/img/portrait-formal-hd.png" alt="Белолипцев Владимир Александрович">
     </div>
-    <p class="hm-p">Не&nbsp;агентство и&nbsp;не&nbsp;команда&nbsp;—&nbsp;один человек на&nbsp;каждой сделке от&nbsp;первого показа до&nbsp;регистрации права. Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004&nbsp;года&nbsp;—&nbsp;более 500&nbsp;закрытых сделок в&nbsp;сегменте 30–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки.</p>
     <div class="hm-stats" data-countup>
       <div class="hm-stat"><div class="hm-stat__n">№3</div><div class="hm-stat__l">в&nbsp;РГР Топ-10 из&nbsp;1080 Москвы</div></div>
       <div class="hm-stat"><div class="hm-stat__n">500+</div><div class="hm-stat__l">закрытых сделок 30–500&nbsp;млн&nbsp;рублей</div></div>
@@ -1221,57 +1250,65 @@
     <div class="hm-foot__in">
       <div class="hm-foot__brand"><img src="/assets/logo-full-light.svg" alt="Белолипцев Владимир"></div>
       <p class="hm-foot__about">Индивидуальный риэлтор-эксперт в&nbsp;Москве. Премиум-вторичка ЦАО: сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома. 23&nbsp;года, 500+&nbsp;закрытых сделок.</p>
-      <div class="hm-foot__cols">
-        <div class="hm-fcol">
-          <h4>Высотки</h4>
-          <a href="/visotki/">Все сталинские высотки</a>
-          <a href="/visotki/kotelnicheskaya/">Котельническая наб.</a>
-          <a href="/visotki/">Кудринская площадь</a>
-          <a href="/visotki/">Площадь Красные Ворота</a>
-          <a href="/visotki/gostinitsa-ukraina/">Гостиница «Украина»</a>
-          <a href="/visotki/mgu/">Главный корпус МГУ</a>
-          <a href="/visotki/gostinitsa-leningradskaya/">Гостиница «Ленинградская»</a>
-        <a href="/visotki/mid/">МИД</a>
+      <div class="hm-acc hm-foot__acc">
+        <div class="hm-acc__item">
+          <button class="hm-acc__q"><span class="hm-acc__t">Высотки</span><span class="hm-acc__chev"></span></button>
+          <div class="hm-acc__body"><div class="hm-acc__bodyin">
+            <a href="/visotki/">Все сталинские высотки</a>
+            <a href="/visotki/kotelnicheskaya/">Котельническая наб.</a>
+            <a href="/visotki/">Кудринская площадь</a>
+            <a href="/visotki/">Площадь Красные Ворота</a>
+            <a href="/visotki/gostinitsa-ukraina/">Гостиница «Украина»</a>
+            <a href="/visotki/mgu/">Главный корпус МГУ</a>
+            <a href="/visotki/gostinitsa-leningradskaya/">Гостиница «Ленинградская»</a>
+            <a href="/visotki/mid/">МИД</a>
+          </div></div>
         </div>
-        <div class="hm-fcol">
-          <h4>Авангард</h4>
-          <a href="/modernizm/">Весь авангард 1920–30-х</a>
-          <a href="/modernizm/dom-na-naberezhnoy/">Дом на&nbsp;набережной</a>
-          <a href="/modernizm/dom-narkomfina/">Дом Наркомфина</a>
-          <a href="/modernizm/">Жилой дом Госстраха</a>
-          <a href="/modernizm/">Дом «Военный строитель»</a>
-          <a href="/modernizm/">Жилой дом Жургаза</a>
-          <a href="/modernizm/">Дом «Обрабстрой»</a>
+        <div class="hm-acc__item">
+          <button class="hm-acc__q"><span class="hm-acc__t">Авангард</span><span class="hm-acc__chev"></span></button>
+          <div class="hm-acc__body"><div class="hm-acc__bodyin">
+            <a href="/modernizm/">Весь авангард 1920–30-х</a>
+            <a href="/modernizm/dom-na-naberezhnoy/">Дом на&nbsp;набережной</a>
+            <a href="/modernizm/dom-narkomfina/">Дом Наркомфина</a>
+            <a href="/modernizm/">Жилой дом Госстраха</a>
+            <a href="/modernizm/">Дом «Военный строитель»</a>
+            <a href="/modernizm/">Жилой дом Жургаза</a>
+            <a href="/modernizm/">Дом «Обрабстрой»</a>
+          </div></div>
         </div>
-        <div class="hm-fcol">
-          <h4>Сталинки</h4>
-          <a href="/stalinki/">Все сталинки ЦАО</a>
-          <a href="/stalinki/">Дом Архитекторов</a>
-          <a href="/stalinki/">Дом Электродного завода</a>
-          <a href="/stalinki/">Дом работников НКВД</a>
-          <a href="/stalinki/">Дом академиков</a>
-          <a href="/stalinki/">Фрунзенская набережная</a>
-          <a href="/stalinki/">Дом МГБ на&nbsp;Земляном Валу</a>
-          <a href="/stalinki/">Дом арх. Жукова</a>
-          <a href="/stalinki/">Дом писателей</a>
-          <a href="/stalinki/">Кутузовский проспект</a>
-          <a href="/stalinki/">Ленинский проспект</a>
-          <a href="/stalinki/">Ленинградский проспект</a>
-          <a href="/stalinki/">Проспект Мира</a>
+        <div class="hm-acc__item">
+          <button class="hm-acc__q"><span class="hm-acc__t">Сталинки</span><span class="hm-acc__chev"></span></button>
+          <div class="hm-acc__body"><div class="hm-acc__bodyin">
+            <a href="/stalinki/">Все сталинки ЦАО</a>
+            <a href="/stalinki/">Дом Архитекторов</a>
+            <a href="/stalinki/">Дом Электродного завода</a>
+            <a href="/stalinki/">Дом работников НКВД</a>
+            <a href="/stalinki/">Дом академиков</a>
+            <a href="/stalinki/">Фрунзенская набережная</a>
+            <a href="/stalinki/">Дом МГБ на&nbsp;Земляном Валу</a>
+            <a href="/stalinki/">Дом арх. Жукова</a>
+            <a href="/stalinki/">Дом писателей</a>
+            <a href="/stalinki/">Кутузовский проспект</a>
+            <a href="/stalinki/">Ленинский проспект</a>
+            <a href="/stalinki/">Ленинградский проспект</a>
+            <a href="/stalinki/">Проспект Мира</a>
+          </div></div>
         </div>
-        <div class="hm-fcol">
-          <h4>ЦАО</h4>
-          <a href="/cao/">Весь ЦАО</a>
-          <a href="/cao/">Арбат</a>
-          <a href="/cao/">Басманный</a>
-          <a href="/cao/zamoskvoreche/">Замоскворечье</a>
-          <a href="/cao/">Красносельский</a>
-          <a href="/cao/">Мещанский</a>
-          <a href="/cao/">Пресненский</a>
-          <a href="/cao/">Таганский</a>
-          <a href="/cao/">Тверской</a>
-          <a href="/cao/khamovniki/">Хамовники</a>
-          <a href="/cao/">Якиманка</a>
+        <div class="hm-acc__item">
+          <button class="hm-acc__q"><span class="hm-acc__t">ЦАО</span><span class="hm-acc__chev"></span></button>
+          <div class="hm-acc__body"><div class="hm-acc__bodyin">
+            <a href="/cao/">Весь ЦАО</a>
+            <a href="/cao/">Арбат</a>
+            <a href="/cao/">Басманный</a>
+            <a href="/cao/zamoskvoreche/">Замоскворечье</a>
+            <a href="/cao/">Красносельский</a>
+            <a href="/cao/">Мещанский</a>
+            <a href="/cao/">Пресненский</a>
+            <a href="/cao/">Таганский</a>
+            <a href="/cao/">Тверской</a>
+            <a href="/cao/khamovniki/">Хамовники</a>
+            <a href="/cao/">Якиманка</a>
+          </div></div>
         </div>
       </div>
       <div class="hm-coords">
@@ -1451,6 +1488,107 @@
     </div>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:12px 36px;color:rgba(237,236,235,.7);font-size:16px"><span>+7 960 812 57 30</span><span>@realtor_expert_beloliptsev</span><span>solomon_estate@mail.ru</span></div>
+</div>
+
+<!-- мобильное меню — аккордеон по разделам (замена mega-меню на ≤760px) -->
+<div id="overlayM" class="hm-ovm">
+  <div class="hm-ovm__top">
+    <img src="/assets/logo-full-light.svg" alt="Белолипцев Владимир">
+    <button id="hmCloseBtn" class="hm-ovm__close">ЗАКРЫТЬ ✕</button>
+  </div>
+  <div class="hm-ovm__body">
+    <div class="hm-mnav">
+      <div class="hm-mnav__item hm-acc__item">
+        <div class="hm-mnav__row">
+          <a class="hm-mnav__link" href="/visotki/">Высотки</a>
+          <button type="button" class="hm-mnav__chevbtn" aria-label="Показать список"><span class="hm-acc__chev"></span></button>
+        </div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin hm-mnav__list">
+          <a href="/visotki/kotelnicheskaya/">Котельническая наб.</a>
+          <a href="/visotki/">Кудринская площадь</a>
+          <a href="/visotki/">Площадь Красные Ворота</a>
+          <a href="/visotki/gostinitsa-ukraina/">Гостиница «Украина»</a>
+          <a href="/visotki/mgu/">Главный корпус МГУ</a>
+          <a href="/visotki/gostinitsa-leningradskaya/">Гостиница «Ленинградская»</a>
+          <a href="/visotki/mid/">МИД</a>
+        </div></div>
+      </div>
+      <div class="hm-mnav__item hm-acc__item">
+        <div class="hm-mnav__row">
+          <a class="hm-mnav__link" href="/modernizm/">Авангард</a>
+          <button type="button" class="hm-mnav__chevbtn" aria-label="Показать список"><span class="hm-acc__chev"></span></button>
+        </div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin hm-mnav__list">
+          <a href="/modernizm/dom-na-naberezhnoy/">Дом на&nbsp;набережной</a>
+          <a href="/modernizm/dom-narkomfina/">Дом Наркомфина</a>
+          <a href="/modernizm/">Жилой дом Госстраха</a>
+          <a href="/modernizm/">Дом «Военный строитель»</a>
+          <a href="/modernizm/">Жилой дом Жургаза</a>
+          <a href="/modernizm/">Дом «Обрабстрой»</a>
+        </div></div>
+      </div>
+      <div class="hm-mnav__item hm-acc__item">
+        <div class="hm-mnav__row">
+          <a class="hm-mnav__link" href="/stalinki/">Сталинки</a>
+          <button type="button" class="hm-mnav__chevbtn" aria-label="Показать список"><span class="hm-acc__chev"></span></button>
+        </div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin hm-mnav__list">
+          <a href="/stalinki/">Дом Архитекторов</a>
+          <a href="/stalinki/">Дом Электродного завода</a>
+          <a href="/stalinki/">Дом работников НКВД</a>
+          <a href="/stalinki/">Дом академиков</a>
+          <a href="/stalinki/">Фрунзенская набережная</a>
+          <a href="/stalinki/">Дом МГБ на&nbsp;Земляном Валу</a>
+          <a href="/stalinki/">Дом арх. Жукова</a>
+          <a href="/stalinki/">Дом писателей</a>
+          <a href="/stalinki/">Кутузовский · Ленинский · Ленинградский · Мира</a>
+        </div></div>
+      </div>
+      <div class="hm-mnav__item hm-acc__item">
+        <div class="hm-mnav__row">
+          <a class="hm-mnav__link" href="/cao/">ЦАО</a>
+          <button type="button" class="hm-mnav__chevbtn" aria-label="Показать список"><span class="hm-acc__chev"></span></button>
+        </div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin hm-mnav__list">
+          <a href="/cao/">Арбат</a>
+          <a href="/cao/">Басманный</a>
+          <a href="/cao/zamoskvoreche/">Замоскворечье</a>
+          <a href="/cao/">Красносельский</a>
+          <a href="/cao/">Мещанский</a>
+          <a href="/cao/">Пресненский</a>
+          <a href="/cao/">Таганский</a>
+          <a href="/cao/">Тверской</a>
+          <a href="/cao/khamovniki/">Хамовники</a>
+          <a href="/cao/">Якиманка</a>
+        </div></div>
+      </div>
+      <div class="hm-mnav__item hm-acc__item">
+        <div class="hm-mnav__row">
+          <a class="hm-mnav__link" href="/uslugi/">Услуги</a>
+          <button type="button" class="hm-mnav__chevbtn" aria-label="Показать список"><span class="hm-acc__chev"></span></button>
+        </div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin hm-mnav__list">
+          <a href="/uslugi/">Продажа премиум-объекта</a>
+          <a href="/uslugi/proverka-kvartiry/">Юридическая проверка квартиры</a>
+          <a href="/uslugi/">Подбор ипотечной программы</a>
+          <a href="/uslugi/">Подготовка к&nbsp;сделке</a>
+          <a href="/uslugi/">Закрытый подбор объектов</a>
+          <a href="/uslugi/">Сделки с&nbsp;наследственным фондом</a>
+          <a href="/uslugi/">Историческая экспертиза</a>
+          <a href="/uslugi/">Покупка квартиры в&nbsp;сталинке</a>
+        </div></div>
+      </div>
+    </div>
+    <div class="hm-ovm__extra">
+      <a href="/o-sebe/">О&nbsp;себе</a>
+      <a href="/keysy/">Кейсы</a>
+    </div>
+    <div class="hm-ovm__contact">
+      <a href="tel:+79608125730">+7 960 812 57 30</a>
+      <a href="https://t.me/realtor_expert_beloliptsev" target="_blank" rel="noopener">@realtor_expert_beloliptsev</a>
+      <a href="mailto:solomon_estate@mail.ru">solomon_estate@mail.ru</a>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -2088,9 +2226,19 @@
     var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var ovEl=document.getElementById('overlay');
 
-    // — мобильная кнопка меню → переиспользуем #overlay —
+    // — мобильная кнопка меню → отдельный аккордеон-оверлей #overlayM —
     var mb=document.getElementById('hmMenuBtn');
-    if(mb && ovEl){ mb.addEventListener('click',function(){ ovEl.style.transform='translateY(0)'; }); }
+    var ovm=document.getElementById('overlayM');
+    var ovmClose=document.getElementById('hmCloseBtn');
+    if(mb && ovm){ mb.addEventListener('click',function(){ ovm.classList.add('is-open'); }); }
+    if(ovmClose && ovm){ ovmClose.addEventListener('click',function(){ ovm.classList.remove('is-open'); }); }
+    if(ovm){
+      // раздел-заголовок ведёт на страницу и закрывает меню; шеврон только раскрывает список
+      ovm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ ovm.classList.remove('is-open'); }); });
+      ovm.querySelectorAll('.hm-mnav__chevbtn').forEach(function(btn){
+        btn.addEventListener('click',function(){ btn.closest('.hm-mnav__item').classList.toggle('open'); });
+      });
+    }
 
     // — карта якорей десктоп→мобайл (оверлей метит в canvas-id, на мобиле ведём в слой) —
     var MAP={ '#about':'#about-m', '#znak':'#znak-m', '#case':'#case-m', '#cta':'#cta-m' };
