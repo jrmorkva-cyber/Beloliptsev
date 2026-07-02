@@ -536,71 +536,7 @@
     document.querySelectorAll('.st-faq__item.open .st-faq__body').forEach(function(b){ b.style.maxHeight = b.scrollHeight + 'px'; });
   });
 </script>
-
-<div class="tw-panel" id="twPanel" data-omelette-chrome="">
-  <div class="tw-hd" id="twDrag"><b>Tweaks</b><button class="tw-x" id="twClose" aria-label="Закрыть">✕</button></div>
-  <div class="tw-body">
-    <div class="tw-row">
-      <div class="tw-lbl">Акцент</div>
-      <div class="tw-chips" data-key="accent">
-        <button class="tw-chip" data-val="terracotta" style="--c:#BB5C3C"><span>Терракота</span></button>
-        <button class="tw-chip" data-val="ochre" style="--c:#C28A2E"><span>Охра</span></button>
-        <button class="tw-chip" data-val="mono" style="--c:#3E4C50"><span>Моно</span></button>
-      </div>
-    </div>
-    <div class="tw-row">
-      <div class="tw-lbl">Редакционный ритм</div>
-      <div class="tw-seg" data-key="rhythm">
-        <button data-val="journal">Журнал</button>
-        <button data-val="catalog">Каталог</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  var TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{ "accent": "terracotta", "rhythm": "journal" }/*EDITMODE-END*/;
-  var tweaks = Object.assign({}, TWEAK_DEFAULTS);
-  var ACCENTS = { terracotta: ['#BB5C3C', '#AC5336'], ochre: ['#C28A2E', '#A9761F'], mono: ['#3E4C50', '#33403F'] };
-  function applyTweaks(){
-    var root = document.documentElement, body = document.body;
-    var a = ACCENTS[tweaks.accent] || ACCENTS.terracotta;
-    root.style.setProperty('--orange', a[0]); root.style.setProperty('--orange-deep', a[1]);
-    body.classList.toggle('rhythm-catalog', tweaks.rhythm === 'catalog');
-    document.querySelectorAll('#twPanel [data-key]').forEach(function(group){
-      var key = group.getAttribute('data-key');
-      group.querySelectorAll('button').forEach(function(btn){ btn.setAttribute('data-on', btn.getAttribute('data-val') === tweaks[key] ? '1' : '0'); });
-    });
-    document.querySelectorAll('.st-faq__item.open .st-faq__body').forEach(function(b){ b.style.maxHeight = b.scrollHeight + 'px'; });
-  }
-  function setTweak(key, val){ tweaks[key] = val; var edits = {}; edits[key] = val;
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: edits }, '*'); applyTweaks(); }
-  document.querySelectorAll('#twPanel [data-key]').forEach(function(group){
-    var key = group.getAttribute('data-key');
-    group.querySelectorAll('button').forEach(function(btn){ btn.addEventListener('click', function(){ setTweak(key, btn.getAttribute('data-val')); }); });
-  });
-  applyTweaks();
-  var twPanel = document.getElementById('twPanel');
-  window.addEventListener('message', function(e){
-    var t = e && e.data && e.data.type;
-    if (t === '__activate_edit_mode') twPanel.classList.add('open');
-    else if (t === '__deactivate_edit_mode') twPanel.classList.remove('open');
-  });
-  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-  document.getElementById('twClose').addEventListener('click', function(){
-    twPanel.classList.remove('open'); window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
-  });
-  (function(){
-    var drag = document.getElementById('twDrag'), sx, sy, sr, sb;
-    drag.addEventListener('mousedown', function(e){
-      var r = twPanel.getBoundingClientRect(); sx = e.clientX; sy = e.clientY;
-      sr = window.innerWidth - r.right; sb = window.innerHeight - r.bottom;
-      function mv(ev){ twPanel.style.right = Math.max(8, sr - (ev.clientX - sx)) + 'px'; twPanel.style.bottom = Math.max(8, sb - (ev.clientY - sy)) + 'px'; }
-      function up(){ window.removeEventListener('mousemove', mv); window.removeEventListener('mouseup', up); }
-      window.addEventListener('mousemove', mv); window.addEventListener('mouseup', up);
-    });
-  })();
-</script>
+
 
 <script>
 /* ENHANCE: каскад-индексы коллекций + фолбэк прогресса чтения (где нет нативного scroll-driven) */
