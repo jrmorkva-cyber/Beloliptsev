@@ -636,6 +636,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .vh-fact { padding: 42px 40px 0 40px; border-left: 1px solid var(--line-dark); }
 .vh-fact:first-child { border-left: 0; padding-left: 0; }
 .vh-fact__mark { color: var(--orange); margin-bottom: 22px; }
+.vh-fact__mark .st-spark { display: block; }
 .vh-fact h3 { font-family: var(--font-display); font-weight: 400; font-size: 25px; line-height: 1.05; color: var(--platinum); }
 .vh-fact p { font-size: 16px; line-height: 1.62; color: var(--on-dark-70); margin-top: 16px; }
 .vh-fact p b { color: var(--platinum); font-weight: 700; }

@@ -225,11 +225,8 @@
 .st-stat__n { font-family: var(--font-display); font-weight: 400; font-size: 54px; line-height: .96;
   letter-spacing: -.01em; color: var(--platinum); }
 .st-stat__l { font-size: 16px; line-height: 1.4; color: var(--on-dark-70); margin-top: 16px; }
-@media (max-width: 880px){ .st-stats { grid-template-columns: 1fr 1fr; }
-  .st-stat:nth-child(3n+1){ border-left: 1px solid var(--line-dark); padding-left: 40px; }
-  .st-stat:nth-child(2n+1){ border-left: 0; padding-left: 0; } .st-stat__n { font-size: 42px; } }
-@media (max-width: 540px){ .st-stats { grid-template-columns: 1fr; }
-  .st-stat, .st-stat:nth-child(n){ border-left: 0; padding-left: 0; } }
+@media (max-width: 880px){ .st-stats { grid-template-columns: 1fr; }
+  .st-stat, .st-stat:nth-child(n){ border-left: 0; padding-left: 0; } .st-stat__n { font-size: 42px; } }
 
 /* ============================ S3 · ТРИ ТИПА ============================== */
 .st-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
