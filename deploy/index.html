@@ -52,7 +52,7 @@
   .cform-ok{color:var(--Color);font-size:24px;font-family:var(--disp);text-transform:uppercase;display:none}
   .cform-ok.show{display:block}
   #stage{position:relative;width:100%;overflow:hidden;background:var(--Color-5)}
-  #canvas{position:absolute;top:0;left:0;width:1440px;height:11582px;transform-origin:top left;background:var(--Color-5)}
+  #canvas{position:absolute;top:0;left:0;width:1440px;height:11940px;transform-origin:top left;background:var(--Color-5)}
   .a{position:absolute}
   .disp{font-family:var(--disp);font-weight:400;text-transform:uppercase}
   .up{text-transform:uppercase}
@@ -916,7 +916,7 @@
   <!-- ====== ФУТЕР&nbsp;—&nbsp;поднят на 320px (был 11469), нахлёст-ревил снизу-вверх (#footWrap) ====== -->
   <div class="a" id="footAnchor" style="left:0;top:10686px;width:1px;height:1px"></div>
   <div id="footWrap" style="position:absolute;left:0;top:0;width:1440px;height:0;will-change:transform">
-  <div class="a" style="left:0;top:10686px;width:1440px;height:854px;background:var(--Color-2)"></div>
+  <div class="a" style="left:0;top:10686px;width:1440px;height:1194px;background:var(--Color-2)"></div>
   <div class="a" style="left:0;top:10736px;width:1440px;height:804px;background:linear-gradient(180deg,#39474A 0%,rgba(57,71,74,0) 100%)"></div>
   <div class="a" style="left:0;top:10736px;width:1440px;height:846px;background:url(/assets/img/pattern-waves.png) center top/520px;opacity:.03;filter:invert(1)"></div>
   <div class="a" style="left:70px;top:10828px;width:1271px;display:flex;flex-direction:column;gap:54px">
@@ -939,7 +939,7 @@
       <a href="https://yandex.ru/maps/?text=Москва-Сити" target="_blank" rel="noopener" class="ft-c" style="width:220px"><span style="display:block;opacity:.6;color:var(--Color-5);font-size:16px">Офис</span><span class="up" style="display:block;color:var(--Color-5);font-size:18px;font-weight:700">Москва-Сити · по&nbsp;записи</span></a>
     </div>
   </div>
-  <div class="a" style="left:0;top:11540px;width:1440px;height:42px;background:var(--Color-3);display:flex;align-items:center;padding:0 71px 0 70px">
+  <div class="a" style="left:0;top:11880px;width:1440px;height:42px;background:var(--Color-3);display:flex;align-items:center;padding:0 71px 0 70px">
     <div style="width:1300px;display:flex;justify-content:space-between;align-items:center"><span style="color:var(--Color-5);font-size:16px">© 2026 Белолипцев Владимир. РГР Топ-3 из&nbsp;1080 риэлторов Москвы. Аттестованный эксперт, сертифицированный брокер.</span><span style="color:var(--Color-5);font-size:16px"><a href="/politika-konfidentsialnosti/" style="color:inherit;text-decoration:underline">Политика конфиденциальности</a> · <a href="/oferta/" style="color:inherit;text-decoration:underline">Оферта</a></span></div>
   </div>
   </div>
@@ -1591,7 +1591,7 @@
 
 <script>
   const canvas=document.getElementById('canvas'),stage=document.getElementById('stage');
-  function fit(){const s=window.innerWidth/1440;canvas.style.transform='scale('+s+')';canvas.style.top=(-863*s)+'px';stage.style.height=((11582-863)*s)+'px';}
+  function fit(){const s=window.innerWidth/1440;canvas.style.transform='scale('+s+')';canvas.style.top=(-863*s)+'px';stage.style.height=((11940-863)*s)+'px';}
   fit();window.addEventListener('resize',fit);
   const ov=document.getElementById('overlay');
   document.getElementById('menuBtn').onclick=()=>ov.style.transform='translateY(0)';
@@ -1853,7 +1853,7 @@
       raf=0;
       const vh=window.innerHeight, top=anc.getBoundingClientRect().top;
       let p=(vh-top)/(vh*0.55); p=p<0?0:(p>1?1:p);   // 0 — якорь у низа экрана, 1 — поднялся на 45%
-      wrap.style.transform = 'translateY('+((1-p)*190).toFixed(1)+'px)';
+      wrap.style.transform = 'translateY('+((1-p)*60).toFixed(1)+'px)';
     }
     window.addEventListener('scroll',()=>{ if(!raf) raf=requestAnimationFrame(apply); },{passive:true});
     window.addEventListener('resize',()=>{ if(!raf) raf=requestAnimationFrame(apply); },{passive:true});
