@@ -918,7 +918,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .st-foot__contact-cap:hover > span:last-child { opacity: .65; }
 @media (max-width: 640px) { .st-foot__contact { gap: 20px 40px; } .st-foot__contact-big { font-size: clamp(18px,5vw,26px); } }
 /* Убрать оранжевые черты (motion-plus draw-on), исправлено (2026-06) */
-
-
-
-
+/* st-stats overflow-guard */
+.st-stats{max-width:100%}
+.st-stat{min-width:0}
+.st-stat__n{overflow-wrap:break-word}

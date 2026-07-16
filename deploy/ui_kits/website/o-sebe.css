@@ -1254,7 +1254,20 @@ a.kh-card:hover .kh-card__link { color: var(--orange); }
 .st-foot__contact-cap:hover > span:last-child { opacity: .65; }
 @media (max-width: 640px) { .st-foot__contact { gap: 20px 40px; } .st-foot__contact-big { font-size: clamp(18px,5vw,26px); } }
 /* Убрать оранжевые черты (motion-plus draw-on), исправлено (2026-06) */
+.bld-stat3__n.bld-stat3__n--text{font-size:clamp(23px,2.7vw,30px);line-height:1.12;letter-spacing:-.01em}
 
-
-
-
+/* хлебные крошки — видимые на тёмном геро (страница не грузит hero.css) */
+.hp-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 18px;font-family:var(--font-label,"Panama",sans-serif);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(237,236,235,.86);text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.hp-crumbs a{color:rgba(237,236,235,.86);text-decoration:none;transition:color .25s ease}
+.hp-crumbs a:hover{color:#EDECEB}
+.hp-crumbs .sep{color:var(--orange,#BB5C3C)}
+/* bld-stat3 overflow-guard v2 */
+.bld-stat3{max-width:100%}
+.bld-stat3__c{min-width:0}
+.bld-stat3__n{overflow-wrap:break-word}
+/* st-stats overflow-guard */
+.st-stats{max-width:100%}
+.st-stat{min-width:0}
+.st-stat__n{overflow-wrap:break-word}
+/* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
+.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px,3vw,38px)}

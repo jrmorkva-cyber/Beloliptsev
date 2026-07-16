@@ -225,8 +225,11 @@
 .st-stat__n { font-family: var(--font-display); font-weight: 400; font-size: 54px; line-height: .96;
   letter-spacing: -.01em; color: var(--platinum); }
 .st-stat__l { font-size: 16px; line-height: 1.4; color: var(--on-dark-70); margin-top: 16px; }
-@media (max-width: 880px){ .st-stats { grid-template-columns: 1fr; }
-  .st-stat, .st-stat:nth-child(n){ border-left: 0; padding-left: 0; } .st-stat__n { font-size: 42px; } }
+@media (max-width: 880px){ .st-stats { grid-template-columns: 1fr 1fr; }
+  .st-stat:nth-child(3n+1){ border-left: 1px solid var(--line-dark); padding-left: 40px; }
+  .st-stat:nth-child(2n+1){ border-left: 0; padding-left: 0; } .st-stat__n { font-size: 42px; } }
+@media (max-width: 540px){ .st-stats { grid-template-columns: 1fr; }
+  .st-stat, .st-stat:nth-child(n){ border-left: 0; padding-left: 0; } }
 
 /* ============================ S3 · ТРИ ТИПА ============================== */
 .st-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -874,7 +877,9 @@ html { overflow-x: clip; }
 .st-foot__contact-cap:hover > span:last-child { opacity: .65; }
 @media (max-width: 640px) { .st-foot__contact { gap: 20px 40px; } .st-foot__contact-big { font-size: clamp(18px,5vw,26px); } }
 /* Убрать оранжевые черты (motion-plus draw-on), исправлено (2026-06) */
-
-
-
-
+/* st-stats overflow-guard */
+.st-stats{max-width:100%}
+.st-stat{min-width:0}
+.st-stat__n{overflow-wrap:break-word}
+/* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
+.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px,3vw,38px)}

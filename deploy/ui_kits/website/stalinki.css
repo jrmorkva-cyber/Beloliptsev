@@ -805,3 +805,7 @@ body { max-width: 100%; }
 .st-cap .ad { font-family: var(--font-mono); font-size: 14px; color: var(--ink-60); white-space: nowrap; text-align: right; }
 @media (max-width: 800px){ .st-more__list { grid-template-columns: 1fr; gap: 0; } .st-cap .ad { white-space: normal; text-align: left; } }
 @media (max-width: 600px){ .st-more { padding: 24px 20px; } .st-more__head { font-size: 24px; } .st-more__sub { font-size: 15px; margin-bottom: 16px; } .st-cap { padding: 12px 0; } }
+/* st-stats overflow-guard */
+.st-stats{max-width:100%}
+.st-stat{min-width:0}
+.st-stat__n{overflow-wrap:break-word}

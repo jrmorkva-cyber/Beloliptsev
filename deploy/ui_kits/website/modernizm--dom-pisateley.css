@@ -995,3 +995,14 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .m-fold .reveal{ opacity:1!important; transform:none!important; transition:none!important; }
   .m-fold .mz-epoch__row{ opacity:1!important; transform:none!important; transition:none!important; }
 }
+.bld-stat3__n.bld-stat3__n--text{font-size:clamp(23px,2.7vw,30px);line-height:1.12;letter-spacing:-.01em}
+/* bld-stat3 overflow-guard v2 */
+.bld-stat3{max-width:100%}
+.bld-stat3__c{min-width:0}
+.bld-stat3__n{overflow-wrap:break-word}
+/* st-stats overflow-guard */
+.st-stats{max-width:100%}
+.st-stat{min-width:0}
+.st-stat__n{overflow-wrap:break-word}
+/* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
+.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px,3vw,38px)}
