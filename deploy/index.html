@@ -2394,5 +2394,6 @@
 <a class="st-scroll-top" href="#" aria-label="Наверх">
   <svg viewBox="0 0 18 18"><path d="M9 14V4M4.5 8.5L9 4l4.5 4.5"/></svg>
 </a>
-<script src="/js/scroll-top.js" defer></script></body>
+<script src="/js/scroll-top.js" defer></script><script>/* hero100 Ken Burns зум при скролле (motion ≤2/5) */(function(){var s=document.querySelector(".hero100"),img=s&&s.querySelector(".hero100__bg");if(!img)return;if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;img.style.willChange="transform";var tk=false;function u(){tk=false;var t=-s.getBoundingClientRect().top/innerHeight;t=t<0?0:(t>1?1:t);img.style.transform="scale("+(1+t*0.12).toFixed(4)+")";}function o(){if(!tk){tk=true;requestAnimationFrame(u);}}u();addEventListener("scroll",o,{passive:true});addEventListener("resize",o);})();</script>
+</body>
 </html>
