@@ -90,7 +90,7 @@
     <a class="st-btn st-btn--orange hp-cta" href="#cta"><span class="st-btn__lab">13&nbsp;адресов авангарда Москвы</span><span class="st-btn__cap"><svg><use href="#i-arr"></use></svg></span></a>
   </div>
   <div class="hp-strip">
-    <div class="hp-strip__rail">
+    <div class="hp-strip__rail" style="overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex:1;min-width:0">
       <a class="hp-strip__item" href="/modernizm/dom-narkomfina/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-narkomfina.jpg" alt="Дом Наркомфина&nbsp;—&nbsp;Гинзбург, 1928–1930"><b>Наркомфина</b></a>
       <a class="hp-strip__item" href="/modernizm/dom-uchenykh/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-uchenykh.jpg" alt="Дом учёных РАН&nbsp;—&nbsp;Пречистенка, 16"><b>Дом&nbsp;учёных</b></a>
       <a class="hp-strip__item" href="/modernizm/dom-na-naberezhnoy/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-naberezhnoy.jpg" alt="Дом на набережной&nbsp;—&nbsp;Иофан, 1928–1931"><b>На&nbsp;набережной</b></a>
@@ -99,6 +99,7 @@
       <a class="hp-strip__item" href="/modernizm/dom-pertsovoy/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-pertsovoy.jpg" alt="Дом Перцовой&nbsp;—&nbsp;русский модерн, Хамовники"><b>Перцовой</b></a>
       <a class="hp-strip__item" href="/modernizm/dom-zholtovskogo/" style="text-decoration:none;color:inherit"><img src="/assets/img/card-mohovoy.jpg" alt="Дом на Моховой&nbsp;—&nbsp;Жолтовский, 1932–1934"><b>На&nbsp;Моховой</b></a>
     </div>
+    <div class="hp-strip__nav" style="display:flex;gap:6px;flex:none;align-self:center;margin-left:16px"><button class="hp-strip__arrow" data-dir="-1" aria-label="Назад" style="width:40px;height:40px;background:rgba(237,236,235,.1);border:1px solid rgba(237,236,235,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--platinum);padding:0;transition:background .2s,border-color .2s" onmouseenter="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseleave="this.style.background='rgba(237,236,235,.1)';this.style.borderColor='rgba(237,236,235,.22)'"><svg width="12" height="12" style="transform:rotate(180deg)"><use href="#i-arr"></use></svg></button><button class="hp-strip__arrow" data-dir="1" aria-label="Вперёд" style="width:40px;height:40px;background:rgba(237,236,235,.1);border:1px solid rgba(237,236,235,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--platinum);padding:0;transition:background .2s,border-color .2s" onmouseenter="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseleave="this.style.background='rgba(237,236,235,.1)';this.style.borderColor='rgba(237,236,235,.22)'"><svg width="12" height="12"><use href="#i-arr"></use></svg></button></div>
   </div>
 </section>
 
@@ -651,6 +652,9 @@
   <svg viewBox="0 0 18 18"><path d="M9 14V4M4.5 8.5L9 4l4.5 4.5"/></svg>
 </a>
 <script src="/js/scroll-top.js" defer></script>
-<script src="/js/mobile-nav-accordion.js" defer></script></body>
+<script src="/js/mobile-nav-accordion.js" defer></script>
+<style>.hp-strip__rail::-webkit-scrollbar{display:none}</style>
+<script>(function(){var r=document.querySelector('.hp-strip__rail'),n=document.querySelector('.hp-strip__nav');if(!r||!n)return;n.querySelectorAll('.hp-strip__arrow').forEach(function(b){b.addEventListener('click',function(){r.scrollBy({left:(+b.dataset.dir)*Math.min(r.clientWidth*0.8,440),behavior:'smooth'});});});function u(){n.style.display=r.scrollWidth>r.clientWidth+4?'flex':'none';}u();addEventListener('resize',u);})();</script>
+</body>
 </html>
 

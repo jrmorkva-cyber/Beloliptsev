@@ -176,3 +176,10 @@
   .st-scroll-top,.st-scroll-top svg{transition:none}
   .st-scroll-top:hover svg{transform:none}
 }
+/* strip card hover */
+.hp-strip__item{transition:transform .3s var(--ease)}
+.hp-strip__item img{transition:filter .3s var(--ease),border-color .3s var(--ease)}
+.hp-strip__item:hover{transform:translateY(-6px)}
+.hp-strip__item:hover img{filter:brightness(1.12);border-color:var(--orange)}
+.hp-strip__item b{transition:color .25s var(--ease)}
+.hp-strip__item:hover b{color:var(--orange)}
