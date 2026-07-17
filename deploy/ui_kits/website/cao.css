@@ -594,7 +594,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .mz-epoch { border-top: 1px solid var(--line); }
 .mz-epoch__row { display: grid; grid-template-columns: minmax(0,210px) 1fr; gap: 44px; padding: 40px 0;
   border-bottom: 1px solid var(--line); align-items: start; }
-.mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 4.6vw, 66px);
+.mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 38px);
   line-height: 1.02; letter-spacing: -.01em; color: var(--orange); }
 .mz-epoch__name { font-family: var(--font-display); font-weight: 400; font-size: 27px; line-height: 1.04; color: var(--ink); margin-bottom: 14px; }
 .mz-epoch__note { font-size: 20px; line-height: 1.5; color: var(--ink); max-width: 74ch; }
@@ -824,7 +824,7 @@ html { overflow-x: clip; }
 @media (max-width: 640px){
   .mz-epoch__row{ grid-template-columns:1fr; gap:6px; padding:18px 0; }
   .mz-epoch__row > *{ min-width:0; overflow-wrap: break-word; -webkit-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
-  .mz-epoch__year{ font-size:clamp(32px, 8.4vw, 44px); line-height:1; }
+  .mz-epoch__year{ font-size:clamp(26px, 3vw, 38px); line-height:1; }
   .mz-epoch__name{ font-size:21px; margin-bottom:8px; }
   .mz-epoch__note{ font-size:15px; line-height:1.5; }
   .mz-epoch__link, .mz-epoch__dash{ margin-top:10px; }
@@ -882,4 +882,4 @@ html { overflow-x: clip; }
 .st-stat{min-width:0}
 .st-stat__n{overflow-wrap:break-word}
 /* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
-.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px,3vw,38px)}
+.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px, 3vw, 38px)}

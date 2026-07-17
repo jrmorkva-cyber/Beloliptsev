@@ -600,7 +600,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .mz-epoch { border-top: 1px solid var(--line); }
 .mz-epoch__row { display: grid; grid-template-columns: minmax(0,210px) 1fr; gap: 44px; padding: 40px 0;
   border-bottom: 1px solid var(--line); align-items: start; }
-.mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 4.6vw, 66px);
+.mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 38px);
   line-height: 1.02; letter-spacing: -.01em; color: var(--orange); }
 .mz-epoch__name { font-family: var(--font-display); font-weight: 400; font-size: 27px; line-height: 1.04; color: var(--ink); margin-bottom: 14px; }
 .mz-epoch__note { font-size: 20px; line-height: 1.5; color: var(--ink); max-width: 74ch; }
@@ -676,8 +676,8 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .bld-stat3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); }
 .bld-stat3__c { padding: 44px 40px 0 0; border-left: 1px solid var(--line-dark); padding-left: 40px; }
 .bld-stat3__c:first-child { border-left: 0; padding-left: 0; }
-.bld-stat3__n { font-family: var(--font-display); font-weight: 400; font-size: clamp(56px, 6.5vw, 92px);
-  line-height: .9; letter-spacing: -.02em; color: var(--orange); }
+.bld-stat3__n { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 2.6vw, 32px);
+  line-height: 1.08; letter-spacing: -.02em; color: var(--orange); }
 .bld-stat3__t { font-family: var(--font-display); font-weight: 400; font-size: 21px; color: var(--platinum); margin-top: 18px; }
 .bld-stat3__d { font-size: 15px; line-height: 1.55; color: var(--on-dark-70); margin-top: 12px; }
 .bld-cols-dark { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 56px; }
@@ -1044,7 +1044,7 @@ a.kh-card:hover .kh-card__link { color: var(--platinum); }
   [data-stagger]>*{ opacity:1!important; transform:none!important; transition:none!important; }
   .read-progress{ display:none; }
 }
-.bld-stat3__n.bld-stat3__n--text{font-size:clamp(23px,2.7vw,30px);line-height:1.12;letter-spacing:-.01em}
+.bld-stat3__n.bld-stat3__n--text{font-size:clamp(26px,2.6vw,32px);line-height:1.12;letter-spacing:-.01em}
 /* bld-stat3 overflow-guard v2 */
 .bld-stat3{max-width:100%}
 .bld-stat3__c{min-width:0}
@@ -1054,4 +1054,4 @@ a.kh-card:hover .kh-card__link { color: var(--platinum); }
 .st-stat{min-width:0}
 .st-stat__n{overflow-wrap:break-word}
 /* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
-.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px,3vw,38px)}
+.mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px, 3vw, 38px)}
