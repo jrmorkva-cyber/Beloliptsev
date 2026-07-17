@@ -602,8 +602,8 @@ a.st-trust__cap:hover .n { color: var(--orange); }
 .vh-card--hero .vh-card__body { padding: 40px; justify-content: center; }
 /* П6 (§3-S5): порядковый номер карточки убран (visotki≠modernizm — год не несёт, ловушка (а) N/A). */
 .vh-card__no { display: none; font-family: var(--font-mono); font-size: 13px; color: var(--ink-40); }
-.vh-card__name { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.04; color: var(--ink); margin-top: 8px; }
-.vh-card--hero .vh-card__name { font-size: 40px; }
+.vh-card__name { font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.04; color: var(--ink); margin-top: 8px; overflow-wrap: break-word; }
+.vh-card--hero .vh-card__name { font-size: clamp(26px, 2.8vw, 36px); }
 .vh-card__addr { font-family: var(--font-sans); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-top: 12px; }
 .vh-card__spec { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--ink-60); }
 .vh-card__spec b { color: var(--ink); font-weight: 400; }
@@ -618,6 +618,9 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .vh-card--hero { grid-column: span 2; flex-direction: column; }
   .vh-card--hero .vh-card__photo { width: 100%; min-height: 0; aspect-ratio: 16/9; } }
 @media (max-width: 640px){ .vh-grid { grid-template-columns: 1fr; } .vh-card--hero { grid-column: span 1; } }
+/* Featured card: stack раньше, чтобы длинный заголовок не обрезался в узком body */
+@media (max-width: 1220px){ .vh-card--hero { flex-direction: column; }
+  .vh-card--hero .vh-card__photo { width: 100%; min-height: 0; aspect-ratio: 16/9; } }
 
 /* S4 · Сравнительная таблица 9 зданий */
 .vh-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }

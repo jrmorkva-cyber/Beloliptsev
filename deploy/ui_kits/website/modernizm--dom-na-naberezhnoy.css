@@ -664,7 +664,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 
 /* S2 · Три эпохи — индекс-таймлайн (сухая модернистская сетка) */
 .mz-epoch { border-top: 1px solid var(--line); }
-.mz-epoch__row { display: grid; grid-template-columns: 210px 1fr; gap: 44px; padding: 40px 0;
+.mz-epoch__row { display: grid; grid-template-columns: minmax(0,210px) 1fr; gap: 44px; padding: 40px 0;
   border-bottom: 1px solid var(--line); align-items: start; }
 .mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 4.6vw, 66px);
   line-height: 1.02; letter-spacing: -.01em; color: var(--orange); }
