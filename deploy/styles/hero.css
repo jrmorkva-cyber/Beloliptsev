@@ -183,3 +183,33 @@
 .hp-strip__item:hover img{filter:brightness(1.12);border-color:var(--orange)}
 .hp-strip__item b{transition:color .25s var(--ease)}
 .hp-strip__item:hover b{color:var(--orange)}
+
+
+/* ===== Геро: лента миниатюр не должна накрывать текст и кнопку ============
+   Плашка центрировалась по всей высоте геро, лента прижата к низу и занимает
+   ~177px — на ноутбуке (низкий экран) они пересекались, и лента ложилась
+   поверх кнопки. Два движения:
+   1) на страницах с лентой центрируем плашку в пространстве НАД ней;
+   2) вертикальные размеры геро привязываем к высоте экрана, чтобы плашка
+      не перерастала доступное место (по ширине всё оставляем как было).
+   Сдвиг считаем так, чтобы плашка встала по центру между крошками и лентой:
+   (место_ленты − место_крошек) / 2. Просто «поднять на пол-ленты» мало —
+   плашка тогда наезжает сверху на хлебные крошки. */
+.hp-hero--strip{ --hp-strip-space: clamp(140px, 22vh, 180px); --hp-crumbs-space: 104px; }
+.hp-hero--strip .hp-plate{
+  transform: translateY(calc(-50% - (var(--hp-strip-space) - var(--hp-crumbs-space)) / 2));
+}
+
+@media (max-height: 820px){
+  .hp-plate{ padding: clamp(20px, 3.4vh, 46px) clamp(26px, 3.2vw, 44px); }
+  .hp-eyebrow{ margin-bottom: clamp(9px, 1.6vh, 20px); }
+  .hp-h1{ font-size: min(clamp(38px, 3.4vw, 50px), 6.4vh); }
+  .hp-desc{ margin-top: clamp(12px, 2.4vh, 24px); }
+  .hp-chips{ margin-top: clamp(12px, 2.4vh, 24px); }
+  .hp-cta{ margin-top: clamp(14px, 2.8vh, 28px); }
+  .hp-stats{ margin-top: clamp(14px, 2.6vh, 26px); padding-top: clamp(10px, 2vh, 20px); }
+  .hp-stats + .hp-cta{ margin-top: clamp(14px, 2.6vh, 26px); }
+  /* лента тоже поджимается — иначе она съедает почти треть низкого экрана */
+  .hp-strip__item img{ height: min(clamp(72px, 8vw, 104px), 12vh); }
+  .hp-strip__count b{ font-size: min(clamp(40px, 4vw, 64px), 8vh); }
+}
