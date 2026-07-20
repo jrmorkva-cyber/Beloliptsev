@@ -924,3 +924,11 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
    Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
 @media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }
 
+
+/* Список адресов: после сверки с таблицей владельца адреса стали длинными
+   (архитекторы + годы). Прижатые вправо, они сжимали названия в две строки
+   и налезали на соседнюю колонку. Ставим описание ПОД названием, влево —
+   так же, как на хабе ЦАО. */
+.mz-cap{ display: block; }
+.mz-cap .nm{ display: block; }
+.mz-cap .ad{ display: block; text-align: left; white-space: normal; margin-top: 6px; }
