@@ -895,3 +895,10 @@ html { overflow-x: clip; }
    Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
 @media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }
 
+
+/* «Другие адреса рядом с ЦАО»: описание здесь — длинная фраза, а не короткий
+   адрес. Справа в строку она разъезжалась рваным флагом, поэтому ставим её
+   ПОД заголовком и выравниваем по левому краю. */
+.mz-cap{ display: block; }
+.mz-cap .nm{ display: block; }
+.mz-cap .ad{ display: block; text-align: left; white-space: normal; margin-top: 6px; }
