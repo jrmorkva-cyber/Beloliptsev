@@ -509,10 +509,15 @@
   .hero100__menu:hover{color:var(--Color-3)}
   .hero100__bars{width:13px;display:flex;flex-direction:column;gap:3px}
   .hero100__bars i{height:1.5px;background:currentColor;display:block}
-  .hero100__tags{display:flex;justify-content:space-between;gap:20px;padding:0 clamp(28px,4.8vw,70px);margin-top:auto;margin-bottom:70px;color:#fff;text-transform:uppercase;font-size:clamp(15px,1.4vw,20px);letter-spacing:.04em}
-  .hero100__main{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;padding:clamp(24px,2.6vw,40px) clamp(28px,4.8vw,70px) clamp(40px,4.6vw,64px)}
-  .hero100__h1{color:var(--Color-5);font-size:clamp(38px,4.6vw,66px);line-height:1.06;text-transform:uppercase;font-family:var(--disp);font-weight:400;max-width:21ch}
-  .hero100__name{color:var(--Color-6);font-size:clamp(22px,1.8vw,32px);margin-top:clamp(16px,2vw,28px)}
+  /* Вертикальный ритм геро завязан не только на ширину, но и на ВЫСОТУ экрана.
+     Раньше кегль заголовка считался от 4.6vw: на ноутбуке (низкий экран) он
+     оставался крупным, уходил в три строки и выдавливал плашки-триггеры вверх —
+     «АВАНГАРД» ложился прямо на лицо. Ограничение по vh держит композицию
+     одинаковой на любом разрешении. */
+  .hero100__tags{display:flex;justify-content:space-between;gap:20px;padding:0 clamp(28px,4.8vw,70px);margin-top:auto;margin-bottom:clamp(26px,6.5vh,70px);color:#fff;text-transform:uppercase;font-size:clamp(15px,1.4vw,20px);letter-spacing:.04em}
+  .hero100__main{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;padding:clamp(16px,2.2vh,40px) clamp(28px,4.8vw,70px) clamp(28px,5vh,64px)}
+  .hero100__h1{color:var(--Color-5);font-size:min(clamp(38px,4.6vw,66px),7.6vh);line-height:1.06;text-transform:uppercase;font-family:var(--disp);font-weight:400;max-width:21ch}
+  .hero100__name{color:var(--Color-6);font-size:min(clamp(22px,1.8vw,32px),3.4vh);margin-top:clamp(10px,1.8vh,28px)}
   .hero100__right{flex:none;max-width:360px}
   .hero100__rlabel{color:#fff;font-size:18px;margin-bottom:8px}
   .hero100__rtext{color:#fff;font-size:18px;line-height:1.4;margin-bottom:26px}
