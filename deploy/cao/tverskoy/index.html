@@ -118,32 +118,8 @@
     </div>
     <div class="kh-geo reveal">
       <div class="kh-map">
-        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <path class="m-layer m-river" d="M 10 330 Q 200 385 360 300 T 595 250"></path>
-          <path class="m-layer m-bound" d="M 20 92 Q 300 18 580 112"></path>
-          <g class="m-layer m-street">
-            <path d="M 70 120 L 430 250"></path>
-            <path d="M 56 162 L 408 292"></path>
-            <path d="M 120 88 L 205 330"></path>
-            <path d="M 58 320 Q 220 360 384 286"></path>
-            <path d="M 250 108 L 332 340"></path>
-          </g>
-          <g class="m-layer m-lane">
-            <path d="M 120 150 L 168 172"></path>
-            <path d="M 150 138 L 196 160"></path>
-            <path d="M 134 172 L 182 194"></path>
-            <path d="M 168 126 L 214 148"></path>
-          </g>
-          <g class="m-layer m-metro">
-            <circle cx="96" cy="150" r="5"></circle>
-            <circle cx="240" cy="210" r="5"></circle>
-            <circle cx="200" cy="300" r="5"></circle>
-            <circle cx="330" cy="250" r="5"></circle>
-            <circle cx="430" cy="300" r="5"></circle>
-            <circle cx="150" cy="110" r="5"></circle>
-          </g>
-        </svg>
-        <span class="kh-map__cap">Схема района · наведите на&nbsp;легенду</span>
+        <div class="ya-map" data-yamap data-center="55.7600,37.6100" data-zoom="13" data-points='[{"c":[55.748,37.612],"t":"Дома Жолтовского · Моховая 13"}]'></div>
+        <span class="kh-map__cap">Интерактивная карта района&nbsp;·&nbsp;метки&nbsp;—&nbsp;premium-адреса</span>
         <span class="st-crop tl" style="top:18px;left:18px"></span>
         <span class="st-crop br" style="bottom:18px;right:18px"></span>
       </div>
@@ -590,5 +566,6 @@
 <a class="st-scroll-top" href="#" aria-label="Наверх"><svg viewBox="0 0 18 18"><path d="M9 14V4M4.5 8.5L9 4l4.5 4.5"/></svg></a>
 <script src="/js/scroll-top.js" defer></script>
 <script src="/js/mobile-nav-accordion.js" defer></script>
+<script defer src="/js/ya-map.js"></script>
 </body>
 </html>
