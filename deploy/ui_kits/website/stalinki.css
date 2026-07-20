@@ -415,8 +415,8 @@ body { max-width: 100%; }
 @media (max-width: 900px){
   .st-addr { grid-template-columns: 84px 1fr auto; gap: 20px; }
   .st-addr__note { display: none; }
-  .st-addr__meta { text-align: right; white-space: nowrap; overflow: hidden; }
-  .st-addr__meta .years { max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
+  .st-addr__meta { text-align: right; white-space: normal; overflow: visible; }
+  .st-addr__meta .years { max-width: none; overflow: visible; text-overflow: clip; }
 }
 /* Адрес-строки: при 700px — однострочный стек */
 @media (max-width: 700px){

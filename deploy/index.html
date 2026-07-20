@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<!-- @dsCard group="Brand" name="Сайт · Главная (UI Kit)" subtitle="Полная главная страница&nbsp;—&nbsp;hero, о себе, услуги, контакт" viewport="1280x760" -->
+<!-- @dsCard group="Brand" name="Сайт · Главная (UI Kit)" subtitle="Полная главная страница&nbsp;— hero, о себе, услуги, контакт" viewport="1280x760" -->
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -26,10 +26,10 @@
   .ft-c{text-decoration:none;transition:opacity .25s ease,transform .25s ease;display:inline-block}
   .ft-c:hover{opacity:.62}
   .ft-c.ft-big:hover{opacity:1;transform:translateY(-2px)}
-  /* Телефон в шапке&nbsp;—&nbsp;кликабельный, ховер на терракоту */
+  /* Телефон в шапке&nbsp;— кликабельный, ховер на терракоту */
   .lnk-tel{text-decoration:none;transition:color .25s ease;white-space:nowrap}
   .lnk-tel:hover{color:var(--Color-3)!important}
-  /* «Что обо мне говорят»&nbsp;—&nbsp;кнопка-ссылка с ховером (черта тянется, текст → терракота, стрелка) */
+  /* «Что обо мне говорят»&nbsp;— кнопка-ссылка с ховером (черта тянется, текст → терракота, стрелка) */
   .lnk-about{text-decoration:none;display:flex;align-items:center;cursor:pointer}
   .lnk-about .lnk-about__bar{width:2px;height:50px;background:var(--Color-3);transition:height .3s cubic-bezier(.22,.61,.36,1)}
   .lnk-about .lnk-about__t{margin-left:31px;color:var(--Color-5);font-size:20px;line-height:22px;transition:color .25s ease;white-space:nowrap}
@@ -41,7 +41,7 @@
   @keyframes swapIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   .swap-in{animation:swapIn .4s cubic-bezier(.22,.61,.36,1) both}
   @media (prefers-reduced-motion: reduce){ .swap-in{animation:none} }
-  /* Канвас-форма (десктоп)&nbsp;—&nbsp;реальные поля поверх линий */
+  /* Канвас-форма (десктоп)&nbsp;— реальные поля поверх линий */
   .cform-in{background:transparent;border:0;border-bottom:1px solid var(--Color);font-family:var(--sans);font-size:20px;color:var(--Color);padding:0 0 8px;outline:none;border-radius:0}
   .cform-in::placeholder{color:var(--Color);opacity:.5}
   .cform-in:focus{border-bottom-color:var(--Color-3)}
@@ -59,7 +59,7 @@
   /* стрелка-чеврон как в макете */
   .arr{width:14px;height:14px;background:var(--Color-5);-webkit-mask:url(/assets/icon-arrow.svg) center/contain no-repeat;mask:url(/assets/icon-arrow.svg) center/contain no-repeat;transform:rotate(-45deg)}
   .spark{clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
-  /* ПОДХОД&nbsp;—&nbsp;фиксированный блок, скроллится только правая колонка преимуществ */
+  /* ПОДХОД&nbsp;— фиксированный блок, скроллится только правая колонка преимуществ */
   .podhod-adv{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
   .podhod-adv::-webkit-scrollbar{width:0;height:0;display:none}
   .podhod-adv .disp{font-size:28px!important;line-height:30px!important}
@@ -67,7 +67,7 @@
   .podhod-more .lab{flex:1;height:50px;background:var(--Color);display:flex;align-items:center;padding-left:24px;color:var(--Color-5);font-size:20px;line-height:1}
   .podhod-more .cap{width:50px;height:50px;background:var(--c1);display:flex;align-items:center;justify-content:center}
   .podhod-hint{transition:opacity .3s}
-  /* Аккордеон услуг&nbsp;—&nbsp;раскрывается поэтапно по мере скролла страницы */
+  /* Аккордеон услуг&nbsp;— раскрывается поэтапно по мере скролла страницы */
   .svc-row{overflow:hidden;transition:top .55s cubic-bezier(.22,.61,.36,1),height .55s cubic-bezier(.22,.61,.36,1)}
   .svc-row .svc-d,.svc-row .svc-b{opacity:0;transform:translateY(10px);transition:opacity .45s ease .08s,transform .45s ease .08s;pointer-events:none}
   .svc-row.is-open .svc-d,.svc-row.is-open .svc-b{opacity:1;transform:none;pointer-events:auto}
@@ -82,19 +82,19 @@
   .btn-anim .arr{transition:transform .42s cubic-bezier(.22,.61,.36,1)}
   .btn-anim:hover .arr{transform:rotate(-45deg) translate(4px,-4px)}
   /* canvas-кнопки (абсолютные div): кап = 2-й div растёт влево (scaleX от правого края;
-     стрелка&nbsp;—&nbsp;отдельный 4-й div, не тянется), текст = 3-й div сдвигается вправо */
+     стрелка&nbsp;— отдельный 4-й div, не тянется), текст = 3-й div сдвигается вправо */
   .btn-anim>div:nth-child(2){transform-origin:right center;transition:transform .42s cubic-bezier(.22,.61,.36,1),filter .3s ease}
   .btn-anim>div:nth-child(3){transition:transform .42s cubic-bezier(.22,.61,.36,1)}
   .btn-anim:hover>div:nth-child(2){transform:scaleX(1.3);filter:brightness(.86)}
   .btn-anim:hover>div:nth-child(3){transform:translateX(8px)}
-  /* flex-кнопки: кап растёт шириной, лейбл&nbsp;—&nbsp;левым паддингом */
+  /* flex-кнопки: кап растёт шириной, лейбл&nbsp;— левым паддингом */
   .hero100__cta-cap,.case-cta__cap,.podhod-more .cap,.hm-btn__cap{transition:width .42s cubic-bezier(.22,.61,.36,1),filter .3s ease}
   .hero100__cta-lab,.case-cta__lab,.podhod-more .lab,.hm-btn__lab{transition:padding .42s cubic-bezier(.22,.61,.36,1)}
   .hero100__cta:hover .hero100__cta-cap,.case-cta:hover .case-cta__cap,.podhod-more:hover .cap{width:64px;filter:brightness(.86)}
   .hero100__cta:hover .hero100__cta-lab,.case-cta:hover .case-cta__lab,.podhod-more:hover .lab{padding-left:34px}
   .hm-btn:hover .hm-btn__cap{width:66px;filter:brightness(.86)}
   .hm-btn:hover .hm-btn__lab{padding-left:30px}
-  /* svc-b&nbsp;—&nbsp;инлайн-стили (width/flex заданы атрибутом), переопределяем через !important */
+  /* svc-b&nbsp;— инлайн-стили (width/flex заданы атрибутом), переопределяем через !important */
   .svc-b>span{transition:width .42s cubic-bezier(.22,.61,.36,1),padding .42s cubic-bezier(.22,.61,.36,1),filter .3s ease}
   .svc-b:hover>span:last-child{width:64px!important;filter:brightness(.86)}
   .svc-b:hover>span:first-child{padding-left:36px!important}
@@ -102,7 +102,7 @@
   #filtTabs .filt-tab:not(.is-on):hover{opacity:.6!important}
   .car-ctrl{transition:opacity .25s ease}
   .car-ctrl:hover{opacity:1!important}
-  /* «К услугам»&nbsp;—&nbsp;стрелка: лёгкий нудж вправо + заметный сдвиг на ховере */
+  /* «К услугам»&nbsp;— стрелка: лёгкий нудж вправо + заметный сдвиг на ховере */
   .kus-link .kus-arr{display:inline-block;animation:kusHint 2.6s cubic-bezier(.37,0,.63,1) infinite}
   .kus-link .kus-arr__i{display:inline-block;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
   .kus-link:hover .kus-arr__i{transform:translateX(8px)}
@@ -116,7 +116,7 @@
     .kus-link .kus-arr{animation:none}
     .kus-link .kus-arr__i{transition:none;transform:none}
   }
-  /* Знаковые адреса&nbsp;—&nbsp;интерактивный таймлайн */
+  /* Знаковые адреса&nbsp;— интерактивный таймлайн */
   .znak-img{opacity:0;transition:opacity .7s ease}
   .znak-img.is-on{opacity:1}
   .znak-star{transition:background .45s ease,transform .45s cubic-bezier(.22,.61,.36,1)}
@@ -128,13 +128,13 @@
   @media (prefers-reduced-motion: reduce){
     .znak-img,.znak-star,.znak-date,.znak-name,.znak-sub,#znakProg{transition:none}
   }
-  /* Кейс «Гостиница Украина»&nbsp;—&nbsp;появление блока в духе Monarque/Bellevoire:
+  /* Кейс «Гостиница Украина»&nbsp;— появление блока в духе Monarque/Bellevoire:
      фото поднимается clip-reveal'ом + медленный зум, заголовок выезжает построчно
      из маски, остальной контент всплывает со сдвигом. Блок ложится поверх «Знаковых
      адресов» (z-index выше), кромка-хайрлайн обозначает наслоение карточки. */
   .case-sec{z-index:4}
   /* H09: декоративные фон-слои кейса (фото/градиент/кромка-«рельса») не должны
-     перехватывать клики&nbsp;—&nbsp;иначе на проде кнопки в .case-grid (CTA/нав) «не кликаются». */
+     перехватывать клики&nbsp;— иначе на проде кнопки в .case-grid (CTA/нав) «не кликаются». */
   .case-bg{pointer-events:none}
   .case-edge{position:absolute;left:0;top:0;width:1440px;height:1px;
     background:rgba(39,47,66,.18);z-index:5;pointer-events:none}
@@ -148,7 +148,7 @@
   .cl-rise{opacity:0;transform:translateY(30px);
     transition:opacity .9s ease,transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i,0)*80ms)}
   .case-sec.is-in .cl-rise{opacity:1;transform:none}
-  /* Кейс-карусель&nbsp;—&nbsp;адаптивная сетка по эталону: 2 колонки 41% + центр-гэп, поля 64 */
+  /* Кейс-карусель&nbsp;— адаптивная сетка по эталону: 2 колонки 41% + центр-гэп, поля 64 */
   .case-grid{position:absolute;inset:0;z-index:6;display:grid;box-sizing:border-box;
     grid-template-columns:minmax(0,41%) minmax(0,41%);justify-content:space-between;
     grid-template-rows:auto auto 160px auto 88px auto 1fr;padding:72px 64px 0}
@@ -165,13 +165,13 @@
   .case-nav{grid-column:2;grid-row:6;justify-self:end;align-self:start;display:flex;gap:10px}
   .case-nav__btn{width:50px;height:50px;background:var(--c2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .25s ease}
   .case-nav__btn:not(.case-nav__btn--next){opacity:.5}
-  /* Траст-карточки&nbsp;—&nbsp;въезжают поочерёдно слева направо */
+  /* Траст-карточки&nbsp;— въезжают поочерёдно слева направо */
   .trust-card{position:absolute;left:0;top:0;width:1440px;height:1700px;pointer-events:none;
     opacity:0;transform:translateX(-64px);
     transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);
     will-change:opacity,transform}
   .trust-card.is-in{opacity:1;transform:none}
-  /* Траст-карточки: кликабельны, при наведении&nbsp;—&nbsp;подъём всей карточки + зум фото */
+  /* Траст-карточки: кликабельны, при наведении&nbsp;— подъём всей карточки + зум фото */
   .trust-link{cursor:pointer}
   .trust-card > *{transition:transform .4s cubic-bezier(.22,.61,.36,1)}
   .trust-link:hover,
@@ -205,7 +205,7 @@
     .case-ph{clip-path:none!important;transform:none!important}
     .cl-mask>span,.cl-rise{transform:none!important;opacity:1!important}
   }
-  /* Появление фото&nbsp;—&nbsp;плавный fade + Ken-Burns зум (управляется инлайном в JS) */
+  /* Появление фото&nbsp;— плавный fade + Ken-Burns зум (управляется инлайном в JS) */
   @media (prefers-reduced-motion: reduce){
     .photo-rv{opacity:1!important;transform:none!important}
   }
@@ -243,12 +243,12 @@
 </style>
 
 <!-- ============================================================================
-     МОБИЛЬНЫЙ FLOW-СЛОЙ (.home-m)&nbsp;—&nbsp;отдельный поток для ≤760px.
+     МОБИЛЬНЫЙ FLOW-СЛОЙ (.home-m)&nbsp;— отдельный поток для ≤760px.
      Десктоп-canvas (#stage / #canvas 1440×11739) НЕ трогается: на ≤760 он
      display:none, на ≥761 .home-m display:none. Контент дублируется дословно
-     (M≥N). Палитра/типографика&nbsp;—&nbsp;из :root выше (--Color navy, --Color-3 терракота,
+     (M≥N). Палитра/типографика&nbsp;— из :root выше (--Color navy, --Color-3 терракота,
      --disp Anticva капс). Квадрат, хайрлайны @20%, без теней. motion ≤2/5,
-     reduced-motion-safe. Приёмы&nbsp;—&nbsp;_MOBILE-DESIGN-PLAYBOOK.md, эталон visotki--mgu.
+     reduced-motion-safe. Приёмы&nbsp;— _MOBILE-DESIGN-PLAYBOOK.md, эталон visotki--mgu.
      ============================================================================ -->
 <style id="home-m-styles">
   .home-m{display:none}
@@ -367,7 +367,7 @@
   .hm-case__arr--accent{background:var(--c2)}
   .hm-case__count{font-size:13px;letter-spacing:.06em;color:var(--ink-60);font-variant-numeric:tabular-nums}
 
-  /* ——— аккордеон (этапы / услуги)&nbsp;—&nbsp;grid-rows 0fr→1fr ——— */
+  /* ——— аккордеон (этапы / услуги)&nbsp;— grid-rows 0fr→1fr ——— */
   .hm-acc{border-top:1px solid var(--line);margin-top:22px}
   .hm-sec--navy .hm-acc{border-top-color:var(--line-d)}
   .hm-acc__item{border-bottom:1px solid var(--line)}
@@ -395,7 +395,7 @@
     border-bottom:1px solid var(--Color);padding:0 0 10px;outline:none;transition:border-color .35s var(--ease)}
   .hm-field input:focus{border-bottom-color:var(--Color-3)}
   .hm-form__priv{font-size:14px;color:var(--ink-60);line-height:1.45}
-  /* форма на тёмной секции&nbsp;—&nbsp;светлый текст/линии (иначе navy-на-navy не виден) */
+  /* форма на тёмной секции&nbsp;— светлый текст/линии (иначе navy-на-navy не виден) */
   .hm-sec--navy .hm-field label{color:var(--Color-5)}
   .hm-sec--navy .hm-field input{color:var(--Color-5);border-bottom-color:var(--line-d)}
   .hm-sec--navy .hm-field input:focus{border-bottom-color:var(--Color-3)}
@@ -489,12 +489,12 @@
 
   /* Десктоп (≥761): слой целиком display:none. reveal/stagger держим показанными,
      чтобы элементы не висели как opacity:0 в скрытом поддереве (там наблюдатель не
-     срабатывает). Размещено последним&nbsp;—&nbsp;перебивает стартовое .reveal{opacity:0}. */
+     срабатывает). Размещено последним&nbsp;— перебивает стартовое .reveal{opacity:0}. */
   @media (min-width:761px){
     .home-m .reveal,
     .home-m [data-stagger]>*{opacity:1!important;transform:none!important}
   }
-  /* ===== ГЕРО на весь первый экран (десктоп)&nbsp;—&nbsp;вынесен из канваса, без кэпа/уменьшения ===== */
+  /* ===== ГЕРО на весь первый экран (десктоп)&nbsp;— вынесен из канваса, без кэпа/уменьшения ===== */
   .hero100{position:relative;width:100%;height:100vh;min-height:600px;overflow:hidden;background:#15182f;display:flex;flex-direction:column}
   @supports(height:100dvh){ .hero100{height:100dvh} }
   .hero100__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
@@ -640,7 +640,7 @@
     <img class="a" src="/assets/img/regalia-2.jpg" style="left:417px;top:1124px;width:276px;height:389px;object-fit:cover;object-position:50% 12%" alt="Белолипцев Владимир">
     <div class="a disp" style="left:400px;top:1036px;width:310px;text-align:center;color:var(--Color-3);font-size:32px;line-height:24px">ЭН</div>
     <div class="a disp" style="left:400px;top:1068px;width:310px;text-align:center;color:var(--Color);font-size:20px;line-height:1.2">Аттестат «Эксперт»</div>
-    <div class="a" style="left:427px;top:1552px;width:256px;text-align:center;color:var(--Color);font-size:18px;line-height:19.8px">высший уровень аттестации РГР&nbsp;—&nbsp;менее 2% риэлторов Москвы</div>
+    <div class="a" style="left:427px;top:1552px;width:256px;text-align:center;color:var(--Color);font-size:18px;line-height:19.8px">высший уровень аттестации РГР&nbsp;— менее 2% риэлторов Москвы</div>
   </div>
   <div class="trust-card">
     <a class="a trust-link" href="https://reestr.rgr.ru" target="_blank" rel="noopener" style="left:730px;top:1004px;width:310px;height:660px;background:var(--Color-6);pointer-events:auto;display:block;text-decoration:none"></a>
@@ -668,14 +668,14 @@
   <div class="a pg-node" data-pgd="0.5" style="left:940px;top:2722px;width:22px;height:22px;background:var(--Color)"></div>
   <div class="a disp" style="left: 70px; top: 1921px; width: 801px; color: var(--Color); font-size: 68px; line-height: 72px">Премиум-<br>вторичка ЦАО</div>
   <div class="a" style="left:70px;top:2175px;width:822px;color:var(--Color);font-size:24px;line-height:26.4px">Я веду сделки в&nbsp;премиум-сегменте московской вторичной недвижимости
- с&nbsp;2004 года. Специализация&nbsp;—&nbsp;сталинские высотки и&nbsp;сталинский ампир («Семь сестёр», Дом на&nbsp;набережной, Дом учёных), авангард и конструктивизм 1920–30-х (Дом Наркомфина, Центральный Дом архитектора, Центральный Дом литераторов) и&nbsp;дореволюционные доходные дома Хамовников, Остоженки, Пречистенки, Большой Ордынки и&nbsp;других премиум-улиц Центрального административного округа.</div>
+ с&nbsp;2004 года. Специализация&nbsp;— сталинские высотки и&nbsp;сталинский ампир («Семь сестёр», Дом на&nbsp;набережной, Дом учёных), авангард и конструктивизм 1920–30-х (Дом Наркомфина, Центральный Дом архитектора, Центральный Дом литераторов) и&nbsp;дореволюционные доходные дома Хамовников, Остоженки, Пречистенки, Большой Ордынки и&nbsp;других премиум-улиц Центрального административного округа.</div>
   <!-- два тезиса-«принципа»: терракотовый акцент + sparkle, текст дословно -->
   <div class="a" style="left:70px;top:2484px;width:3px;height:168px;background:var(--Color-3)"></div>
   <div class="a spark" style="left:94px;top:2484px;width:18px;height:18px;background:var(--Color-3)"></div>
-  <div class="a" style="left:94px;top:2520px;width:499px;color:var(--Color);font-size:20px;line-height:22px">Покупателю в&nbsp;премиум-сегменте недостаточно знать общие правила рынка&nbsp;—&nbsp;нужно понимать, чем отличается сталинка 1948 года от&nbsp;авангарда и конструктивизма 1928-го, какие банки берут вторичку с&nbsp;деревянными перекрытиями, как&nbsp;проверить юридическую чистоту квартиры с&nbsp;десятилетиями переходов прав.</div>
+  <div class="a" style="left:94px;top:2520px;width:499px;color:var(--Color);font-size:20px;line-height:22px">Покупателю в&nbsp;премиум-сегменте недостаточно знать общие правила рынка&nbsp;— нужно понимать, чем отличается сталинка 1948 года от&nbsp;авангарда и конструктивизма 1928-го, какие банки берут вторичку с&nbsp;деревянными перекрытиями, как&nbsp;проверить юридическую чистоту квартиры с&nbsp;десятилетиями переходов прав.</div>
   <div class="a" style="left:1000px;top:2484px;width:3px;height:168px;background:var(--Color-3)"></div>
   <div class="a spark" style="left:1024px;top:2484px;width:18px;height:18px;background:var(--Color-3)"></div>
-  <div class="a" style="left:1024px;top:2520px;width:344px;color:var(--Color);font-size:20px;line-height:22px">Премиум-вторичка ЦАО&nbsp;—&nbsp;не&nbsp;массовый рынок. Каждая сделка здесь&nbsp;—&nbsp;это работа со&nbsp;зданием, которое имеет историю, архитектора, особенности конструктива и&nbsp;юридическую специфику.</div>
+  <div class="a" style="left:1024px;top:2520px;width:344px;color:var(--Color);font-size:20px;line-height:22px">Премиум-вторичка ЦАО&nbsp;— не&nbsp;массовый рынок. Каждая сделка здесь&nbsp;— это работа со&nbsp;зданием, которое имеет историю, архитектора, особенности конструктива и&nbsp;юридическую специфику.</div>
   <img class="a" src="/assets/img/premium-prose.png" style="left:1096px;top:2053px;width:200px;height:244px;object-fit:cover" alt="">
 
   <!-- ====== О СЕБЕ / КТО Я (Desktop-13, 2819×863) ====== -->
@@ -688,8 +688,8 @@
     <div class="a" style="left:71px;top:49px;width:89px;height:27px;background:#EDECEB"></div>
     <div class="a up" style="left:91px;top:50px;color:var(--Color-3);font-size:20px;font-weight:700">Кто я</div>
     <div class="a disp" style="left: 71px; top: 116px; width: 678px; color: var(--Color-5); font-size: 48px; line-height: 1.2">Белолипцев<br>Владимир Александрович</div>
-    <div class="a" style="left:71px;top:344px;width:372px;color:var(--Color-5);font-size:20px;line-height:1.45">Не агентство и&nbsp;не&nbsp;команда&nbsp;—&nbsp;один<br>человек на&nbsp;каждой сделке от&nbsp;первого<br>показа до&nbsp;регистрации права.</div>
-    <div class="a" style="left:908px;top:59px;width:442px;color:var(--Color);font-size:20px">Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004 года&nbsp;—&nbsp;более 500 закрытых сделок в&nbsp;сегменте <br>50–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки и&nbsp;других районов ЦАО.</div>
+    <div class="a" style="left:71px;top:344px;width:372px;color:var(--Color-5);font-size:20px;line-height:1.45">Не агентство и&nbsp;не&nbsp;команда&nbsp;— один<br>человек на&nbsp;каждой сделке от&nbsp;первого<br>показа до&nbsp;регистрации права.</div>
+    <div class="a" style="left:908px;top:59px;width:442px;color:var(--Color);font-size:20px">Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004 года&nbsp;— более 500 закрытых сделок в&nbsp;сегменте <br>50–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки и&nbsp;других районов ЦАО.</div>
     <div class="a" style="left:1084px;top:375px;width:1px;height:320px;opacity:.2;background:var(--Color)"></div>
     <div class="a" style="left:908px;top:359px;color:var(--Color);font-size:64px">РГР</div>
     <div class="a" style="left:908px;top:447px;width:187px;color:var(--Color);font-size:20px">аттестованный риэлтор-эксперт, реестр</div>
@@ -718,7 +718,7 @@
     <div class="filt-tab" style="height:47px;padding:10px 18px 11px 17px;opacity:.3;background:var(--Color-5);display:flex;align-items:center;cursor:pointer"><span style="color:var(--Color);font-size:17px;line-height:18px;white-space:nowrap">/Премиум-сегмент</span></div>
   </div>
   <div class="a" id="filtNum" style="left:922px;top:4023px;width:30px;color:var(--Color);font-size:24px;line-height:26.4px;text-align:center">01</div>
-  <div class="a" id="filtDesc" style="left:922px;top:4218px;width:423px;color:var(--Color);font-size:20px;line-height:22px;text-align:left">Семь сталинских высоток («Семь сестёр»)&nbsp;—&nbsp;главный архитектурный ансамбль послевоенной Москвы: МГУ, МИД, Гостиница «Украина», Гостиница «Ленинградская», жилые дома на&nbsp;Котельнической набережной 
+  <div class="a" id="filtDesc" style="left:922px;top:4218px;width:423px;color:var(--Color);font-size:20px;line-height:22px;text-align:left">Семь сталинских высоток («Семь сестёр»)&nbsp;— главный архитектурный ансамбль послевоенной Москвы: МГУ, МИД, Гостиница «Украина», Гостиница «Ленинградская», жилые дома на&nbsp;Котельнической набережной 
 и&nbsp;Кудринской площади, высотка у&nbsp;Красных ворот. 7 главных адресов моего портфеля.</div>
   <div class="a" style="left:146px;top:4455px;width:304px;color:var(--Color-5);font-size:20px;line-height:22px">Глубину дают только узкая ниша и&nbsp;опыт работы с&nbsp;2004&nbsp;года</div>
   <a href="/visotki/" id="filtBtn" class="a" style="left:924px;top:4500px;width:418px;height:50px"><div class="a" style="left:0;top:0;width:368px;height:50px;background:var(--Color)"></div><div class="a" style="left:368px;top:0;width:50px;height:50px;background:var(--c1)"></div><div class="a" id="filtBtnLab" style="left:28px;top:14px;color:var(--Color-5);font-size:18px;line-height:1;white-space:nowrap">Перейти к&nbsp;высоткам</div><div class="arr" style="position:absolute;left:386px;top:21px"></div></a>
@@ -778,9 +778,9 @@
     <div class="case-grid">
       <div id="caseEyebrow" class="cl-rise case-eyebrow" style="--i:1">Сделка · март 2025</div>
       <div id="caseTitle" class="disp case-title"><span class="cl-mask"><span style="--i:1">Гостиница</span></span><span class="cl-mask"><span style="--i:2">Украина</span></span></div>
-    <div id="caseDesc" class="cl-rise case-desc" style="--i:0">Сложный кейс&nbsp;—&nbsp;статус помещения требовал отдельной банковской проверки. ВТБ дал автоматический отказ по&nbsp;первой заявке: апартаменты показали как&nbsp;нежилые. Подняли документы 1953 года из&nbsp;архива, переоформили категорию помещения, ипотека одобрена 
+    <div id="caseDesc" class="cl-rise case-desc" style="--i:0">Сложный кейс&nbsp;— статус помещения требовал отдельной банковской проверки. ВТБ дал автоматический отказ по&nbsp;первой заявке: апартаменты показали как&nbsp;нежилые. Подняли документы 1953 года из&nbsp;архива, переоформили категорию помещения, ипотека одобрена 
 со&nbsp;второй попытки. От первого показа 
-до&nbsp;регистрации&nbsp;—&nbsp;67 дней.</div>
+до&nbsp;регистрации&nbsp;— 67 дней.</div>
       <a href="#cta" class="cl-rise case-cta" style="--i:5"><span class="case-cta__lab">Все кейсы 2024-2026</span><span class="case-cta__cap"><span class="arr"></span></span></a>
       <div class="cl-rise case-metrics" style="--i:2">
         <div class="case-metrics__row">
@@ -814,7 +814,7 @@
       <div style="width:310px;height:1px;background:var(--Color-5)"></div>
       <div data-step><div style="color:var(--Color-5);font-size:20px;font-weight:700">03</div><div class="disp" style="color:var(--Color-5);font-size:32px;line-height:34px;margin-top:18px">Переговоры<br>с&nbsp;собственником</div><div style="color:var(--Color-5);font-size:20px;line-height:22px;margin-top:15px;width:265px">Цена, условия, сроки · прямой контакт без&nbsp;посредников</div></div>
       <div style="width:310px;height:1px;background:var(--Color-5)"></div>
-      <div data-step><div style="color:var(--Color-5);font-size:20px;font-weight:700">04</div><div class="disp" style="color:var(--Color-5);font-size:32px;line-height:34px;margin-top:18px">Банк и&nbsp;одобрение ипотеки</div><div style="color:var(--Color-5);font-size:20px;line-height:22px;margin-top:15px;width:265px">Оценка, страховка, согласование&nbsp;—&nbsp;веду <br>до&nbsp;одобрения</div></div>
+      <div data-step><div style="color:var(--Color-5);font-size:20px;font-weight:700">04</div><div class="disp" style="color:var(--Color-5);font-size:32px;line-height:34px;margin-top:18px">Банк и&nbsp;одобрение ипотеки</div><div style="color:var(--Color-5);font-size:20px;line-height:22px;margin-top:15px;width:265px">Оценка, страховка, согласование&nbsp;— веду <br>до&nbsp;одобрения</div></div>
       <div style="width:310px;height:1px;background:var(--Color-5)"></div>
       <div data-step><div style="color:var(--Color-5);font-size:20px;font-weight:700">05</div><div class="disp" style="color:var(--Color-5);font-size:32px;line-height:34px;margin-top:18px">ПДКП<br>и&nbsp;аккредитив</div><div style="color:var(--Color-5);font-size:20px;line-height:22px;margin-top:15px;width:265px">Безопасные расчёты через&nbsp;аккредитив или банковскую ячейку</div></div>
       <div style="width:310px;height:1px;background:var(--Color-5)"></div>
@@ -830,7 +830,7 @@
   <div class="a" id="seg" style="left:0;top:7118px;width:1440px;height:863px;overflow:hidden;background:var(--Color)">
     <div class="seg-inner" style="position:absolute;inset:0">
       <div style="position:absolute;left:0;top:0;width:1440px;height:863px;background:var(--Color)"></div>
-      <img style="position:absolute;left:0;top:0;width:1440px;height:863px;object-fit:cover" src="/assets/img/segment-1.jpg" alt="Премиум-вторичка ЦАО&nbsp;—&nbsp;один сегмент">
+      <img style="position:absolute;left:0;top:0;width:1440px;height:863px;object-fit:cover" src="/assets/img/segment-1.jpg" alt="Премиум-вторичка ЦАО&nbsp;— один сегмент">
       <div style="position:absolute;left:180px;top:340px;width:552px;display:flex;flex-direction:column;align-items:center;gap:30px">
         <div class="disp" style="align-self:stretch;color:var(--Color-5);font-size:64px;line-height:69px"><span style="font-family:var(--font-hand,'Caveat',cursive);color:#EEC936;font-style:normal">мой</span> сегмент</div>
         <div style="align-self:stretch;color:var(--Color-5);font-size:24px">Премиум-вторичка ЦАО · 50–500+&nbsp;млн&nbsp;рублей · сталинки, авангард и конструктивизм 1920–30-х, дореволюционная постройка</div>
@@ -858,7 +858,7 @@
   <div class="a svc-row" data-i="1" style="left:0;top:8524px;width:1442px;height:188px;background:var(--Color-2)">
     <div class="svc-t disp" style="position:absolute;left:69px;top:50px;width:812px;color:var(--Color-5);font-size:48px;line-height:46px">Юридическая проверка квартиры</div>
     <div class="svc-ico" style="position:absolute;left:1347px;top:62px;width:22px;height:22px;background:var(--Color-5);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)"></div>
-    <div class="svc-d" style="position:absolute;left:69px;top:248px;width:682px;color:var(--Color-5);font-size:24px">Проверяю цепочку собственников, обременения, дееспособность продавца, перепланировки и&nbsp;риски оспаривания&nbsp;—&nbsp;до&nbsp;подачи документов в&nbsp;банк.</div>
+    <div class="svc-d" style="position:absolute;left:69px;top:248px;width:682px;color:var(--Color-5);font-size:24px">Проверяю цепочку собственников, обременения, дееспособность продавца, перепланировки и&nbsp;риски оспаривания&nbsp;— до&nbsp;подачи документов в&nbsp;банк.</div>
     <a href="#cta" class="svc-b" style="position:absolute;left:1059px;top:430px;width:310px;height:50px;display:flex"><span style="flex:1;height:50px;background:var(--Color-3);display:flex;align-items:center;padding-left:24px;color:var(--Color-5);font-size:20px;line-height:1">Подробнее</span><span style="width:50px;height:50px;background:var(--c2);display:flex;align-items:center;justify-content:center"><span class="arr"></span></span></a>
   </div>
   <div class="a svc-row" data-i="2" style="left:0;top:8712px;width:1442px;height:188px;background:var(--Color-3)">
@@ -870,13 +870,13 @@
   <div class="a svc-row" data-i="3" style="left:-2px;top:8900px;width:1442px;height:188px;background:var(--Color-2)">
     <div class="svc-t disp" style="position:absolute;left:71px;top:50px;width:812px;color:var(--Color-5);font-size:48px;line-height:46px">Подготовка <br>к&nbsp;сделке</div>
     <div class="svc-ico" style="position:absolute;left:1347px;top:62px;width:22px;height:22px;background:var(--Color-5);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)"></div>
-    <div class="svc-d" style="position:absolute;left:71px;top:248px;width:682px;color:var(--Color-5);font-size:24px">ПДКП, аккредитив или банковская ячейка, регистрация перехода права в&nbsp;Росреестре&nbsp;—&nbsp;безопасные расчёты и&nbsp;чистое оформление.</div>
+    <div class="svc-d" style="position:absolute;left:71px;top:248px;width:682px;color:var(--Color-5);font-size:24px">ПДКП, аккредитив или банковская ячейка, регистрация перехода права в&nbsp;Росреестре&nbsp;— безопасные расчёты и&nbsp;чистое оформление.</div>
     <a href="#cta" class="svc-b" style="position:absolute;left:1059px;top:430px;width:310px;height:50px;display:flex"><span style="flex:1;height:50px;background:var(--Color-3);display:flex;align-items:center;padding-left:24px;color:var(--Color-5);font-size:20px;line-height:1">Подробнее</span><span style="width:50px;height:50px;background:var(--c2);display:flex;align-items:center;justify-content:center"><span class="arr"></span></span></a>
   </div>
   <div class="a svc-row" data-i="4" style="left:0;top:9088px;width:1442px;height:188px;background:var(--Color)">
     <div class="svc-t disp" style="position:absolute;left:69px;top:50px;width:900px;color:var(--Color-5);font-size:48px;line-height:46px">Закрытый подбор <br>объектов</div>
     <div class="svc-ico" style="position:absolute;left:1347px;top:62px;width:22px;height:22px;background:var(--Color-5);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)"></div>
-    <div class="svc-d" style="position:absolute;left:69px;top:248px;width:682px;color:var(--Color-5);font-size:24px">Премиум-сегмент 50–500+ млн&nbsp;рублей редко попадает в&nbsp;публичные базы. Ищу через&nbsp;закрытые брокерские сети и&nbsp;прямые контакты с&nbsp;собственниками&nbsp;—&nbsp;конфиденциально.</div>
+    <div class="svc-d" style="position:absolute;left:69px;top:248px;width:682px;color:var(--Color-5);font-size:24px">Премиум-сегмент 50–500+ млн&nbsp;рублей редко попадает в&nbsp;публичные базы. Ищу через&nbsp;закрытые брокерские сети и&nbsp;прямые контакты с&nbsp;собственниками&nbsp;— конфиденциально.</div>
     <a href="#cta" class="svc-b" style="position:absolute;left:1059px;top:430px;width:310px;height:50px;display:flex"><span style="flex:1;height:50px;background:var(--Color-3);display:flex;align-items:center;padding-left:24px;color:var(--Color-5);font-size:20px;line-height:1">Подробнее</span><span style="width:50px;height:50px;background:var(--c2);display:flex;align-items:center;justify-content:center"><span class="arr"></span></span></a>
   </div>
   <div class="a svc-row" data-i="5" style="left:0;top:9276px;width:1442px;height:188px;background:var(--Color-2)">
@@ -888,7 +888,7 @@
   <div class="a svc-row" data-i="6" style="left:0;top:9464px;width:1442px;height:188px;background:var(--Color-3)">
     <div class="svc-t disp" style="position:absolute;left:69px;top:50px;width:900px;color:var(--Color-5);font-size:48px;line-height:46px">Архитектурно-историческая <br>экспертиза</div>
     <div class="svc-ico" style="position:absolute;left:1347px;top:62px;width:22px;height:22px;background:var(--Color-5);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)"></div>
-    <div class="svc-d" style="position:absolute;left:69px;top:248px;width:682px;color:var(--Color-5);font-size:24px">Для&nbsp;объектов культурного наследия&nbsp;—&nbsp;ОКН-статус, охранные обязательства, тип перекрытий, согласование перепланировок. Отдельная справка для&nbsp;банка.</div>
+    <div class="svc-d" style="position:absolute;left:69px;top:248px;width:682px;color:var(--Color-5);font-size:24px">Для&nbsp;объектов культурного наследия&nbsp;— ОКН-статус, охранные обязательства, тип перекрытий, согласование перепланировок. Отдельная справка для&nbsp;банка.</div>
     <a href="#cta" class="svc-b" style="position:absolute;left:1059px;top:430px;width:310px;height:50px;display:flex"><span style="flex:1;height:50px;background:var(--Color);display:flex;align-items:center;padding-left:24px;color:var(--Color-5);font-size:20px;line-height:1">Подробнее</span><span style="width:50px;height:50px;background:var(--c1);display:flex;align-items:center;justify-content:center"><span class="arr"></span></span></a>
   </div>
   <div class="a svc-row is-open" data-i="0" style="left:0;top:7981px;width:1442px;height:543px;background:var(--Color)">
@@ -913,7 +913,7 @@
   <a href="#" class="a btn-anim" id="sendBtn" style="left:730px;top:10550px;width:310px;height:50px"><div class="a" style="left:0;top:0;width:260px;height:50px;background:var(--Color-3)"></div><div class="a" style="left:260px;top:0;width:50px;height:50px;background:var(--c2)"></div><div class="a" style="left:83px;top:14px;color:var(--Color-5);font-size:20px;line-height:1.1">Отправить</div><div class="arr" style="position:absolute;left:278px;top:21px"></div></a>
   <div class="a cform-ok" id="cfOk" style="left:730px;top:10543px;width:640px">Спасибо! Свяжусь с&nbsp;вами в&nbsp;течение рабочего дня.</div>
 
-  <!-- ====== ФУТЕР&nbsp;—&nbsp;поднят на 320px (был 11469), нахлёст-ревил снизу-вверх (#footWrap) ====== -->
+  <!-- ====== ФУТЕР&nbsp;— поднят на 320px (был 11469), нахлёст-ревил снизу-вверх (#footWrap) ====== -->
   <div class="a" id="footAnchor" style="left:0;top:10686px;width:1px;height:1px"></div>
   <div id="footWrap" style="position:absolute;left:0;top:0;width:1440px;height:0;will-change:transform">
   <div class="a" style="left:0;top:10686px;width:1440px;height:1194px;background:var(--Color-2)"></div>
@@ -947,7 +947,7 @@
 </div></div>
 
 <!-- ============================================================================
-     МОБИЛЬНЫЙ FLOW-СЛОЙ&nbsp;—&nbsp;12 секций потоком. Контент дословно из canvas (M≥N).
+     МОБИЛЬНЫЙ FLOW-СЛОЙ&nbsp;— 12 секций потоком. Контент дословно из canvas (M≥N).
      Виден только ≤760px. Переиспользует #overlay (мобильное меню).
      ============================================================================ -->
 <div class="hm-progress" id="hmProgress"></div>
@@ -988,7 +988,7 @@
       <div class="hm-reg">
         <span class="hm-reg__big">ЭН</span>
         <span class="hm-reg__name">Аттестат «Эксперт»</span>
-        <p class="hm-reg__note">высший уровень аттестации РГР&nbsp;—&nbsp;менее 2% риэлторов Москвы</p>
+        <p class="hm-reg__note">высший уровень аттестации РГР&nbsp;— менее 2% риэлторов Москвы</p>
         <a class="hm-reg__link" href="https://reestr.rgr.ru" target="_blank" rel="noopener">reestr.rgr.ru&nbsp;↗</a>
       </div>
       <div class="hm-reg">
@@ -1010,16 +1010,16 @@
   <section class="hm-sec reveal">
     <p class="hm-eyebrow">Узкая специализация</p>
     <h2 class="hm-h2 hm-draw">Премиум-вторичка ЦАО</h2>
-    <p class="hm-p hm-lead-first">Я&nbsp;веду сделки в&nbsp;премиум-сегменте московской вторичной недвижимости с&nbsp;2004&nbsp;года. Специализация&nbsp;—&nbsp;сталинские высотки и&nbsp;сталинский ампир («Семь сестёр», Дом на&nbsp;набережной, Дом учёных), авангард и конструктивизм 1920–30-х (Дом Наркомфина, Центральный Дом архитектора, Центральный Дом литераторов) и&nbsp;дореволюционные доходные дома Хамовников, Остоженки, Пречистенки, Большой Ордынки и&nbsp;других премиум-улиц Центрального административного округа.</p>
-    <p class="hm-p">Покупателю в&nbsp;премиум-сегменте недостаточно знать общие правила рынка&nbsp;—&nbsp;нужно понимать, чем отличается сталинка 1948&nbsp;года от&nbsp;авангарда и конструктивизма 1928-го, какие банки берут вторичку с&nbsp;деревянными перекрытиями, как&nbsp;проверить юридическую чистоту квартиры с&nbsp;десятилетиями переходов прав.</p>
-    <p class="hm-p">Премиум-вторичка ЦАО&nbsp;—&nbsp;не&nbsp;массовый рынок. Каждая сделка здесь&nbsp;—&nbsp;это работа со&nbsp;зданием, которое имеет историю, архитектора, особенности конструктива и&nbsp;юридическую специфику.</p>
+    <p class="hm-p hm-lead-first">Я&nbsp;веду сделки в&nbsp;премиум-сегменте московской вторичной недвижимости с&nbsp;2004&nbsp;года. Специализация&nbsp;— сталинские высотки и&nbsp;сталинский ампир («Семь сестёр», Дом на&nbsp;набережной, Дом учёных), авангард и конструктивизм 1920–30-х (Дом Наркомфина, Центральный Дом архитектора, Центральный Дом литераторов) и&nbsp;дореволюционные доходные дома Хамовников, Остоженки, Пречистенки, Большой Ордынки и&nbsp;других премиум-улиц Центрального административного округа.</p>
+    <p class="hm-p">Покупателю в&nbsp;премиум-сегменте недостаточно знать общие правила рынка&nbsp;— нужно понимать, чем отличается сталинка 1948&nbsp;года от&nbsp;авангарда и конструктивизма 1928-го, какие банки берут вторичку с&nbsp;деревянными перекрытиями, как&nbsp;проверить юридическую чистоту квартиры с&nbsp;десятилетиями переходов прав.</p>
+    <p class="hm-p">Премиум-вторичка ЦАО&nbsp;— не&nbsp;массовый рынок. Каждая сделка здесь&nbsp;— это работа со&nbsp;зданием, которое имеет историю, архитектора, особенности конструктива и&nbsp;юридическую специфику.</p>
   </section>
 
   <!-- 4 · О СЕБЕ · портрет + 4 числа count-up -->
   <section class="hm-sec hm-sec--navy reveal" id="about-m">
     <p class="hm-eyebrow">Кто я</p>
     <h2 class="hm-h2 hm-draw">Белолипцев Владимир Александрович</h2>
-    <p class="hm-p">Не&nbsp;агентство и&nbsp;не&nbsp;команда&nbsp;—&nbsp;один человек на&nbsp;каждой сделке от&nbsp;первого показа до&nbsp;регистрации права. Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004&nbsp;года&nbsp;—&nbsp;более 500&nbsp;закрытых сделок в&nbsp;сегменте 50–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки и&nbsp;других районов ЦАО.</p>
+    <p class="hm-p">Не&nbsp;агентство и&nbsp;не&nbsp;команда&nbsp;— один человек на&nbsp;каждой сделке от&nbsp;первого показа до&nbsp;регистрации права. Работаю с&nbsp;премиум-вторичкой ЦАО с&nbsp;2004&nbsp;года&nbsp;— более 500&nbsp;закрытых сделок в&nbsp;сегменте 50–500+&nbsp;млн&nbsp;рублей. Сталинские высотки, авангард и конструктивизм 1920–30-х, дореволюционные доходные дома Хамовников, Остоженки, Пречистенки и&nbsp;других районов ЦАО.</p>
     <div class="hm-stats" data-countup>
       <div class="hm-stat"><div class="hm-stat__n">РГР</div><div class="hm-stat__l">аттестованный риэлтор-эксперт, реестр</div></div>
       <div class="hm-stat"><div class="hm-stat__n">500+</div><div class="hm-stat__l">закрытых сделок 50–500&nbsp;млн&nbsp;рублей</div></div>
@@ -1046,7 +1046,7 @@
         <div class="hm-card__body">
           <span class="hm-card__no">01</span>
           <span class="hm-card__name">Сталинские высотки Москвы</span>
-          <p class="hm-card__meta">Семь сталинских высоток («Семь сестёр»)&nbsp;—&nbsp;главный архитектурный ансамбль послевоенной Москвы: МГУ, МИД, Гостиница «Украина», Гостиница «Ленинградская», жилые дома на&nbsp;Котельнической набережной и&nbsp;Кудринской площади, высотка у&nbsp;Красных ворот. 7&nbsp;главных адресов моего портфеля.</p>
+          <p class="hm-card__meta">Семь сталинских высоток («Семь сестёр»)&nbsp;— главный архитектурный ансамбль послевоенной Москвы: МГУ, МИД, Гостиница «Украина», Гостиница «Ленинградская», жилые дома на&nbsp;Котельнической набережной и&nbsp;Кудринской площади, высотка у&nbsp;Красных ворот. 7&nbsp;главных адресов моего портфеля.</p>
         </div>
       </div>
       <div class="hm-card">
@@ -1062,7 +1062,7 @@
         <div class="hm-card__body">
           <span class="hm-card__no">03</span>
           <span class="hm-card__name">Авангард</span>
-          <p class="hm-card__meta">Авангард и конструктивизм 1920–30-х: Дом Наркомфина, Центральный Дом архитектора, Центральный Дом литераторов&nbsp;—&nbsp;памятники авангарда.</p>
+          <p class="hm-card__meta">Авангард и конструктивизм 1920–30-х: Дом Наркомфина, Центральный Дом архитектора, Центральный Дом литераторов&nbsp;— памятники авангарда.</p>
         </div>
       </div>
       <div class="hm-card">
@@ -1133,7 +1133,7 @@
     </div>
     <p class="hm-eyebrow" style="margin-top:22px">Сделка · март&nbsp;2025</p>
     <h2 class="hm-h2 hm-draw">Гостиница «Украина»</h2>
-    <p class="hm-p">Сложный кейс&nbsp;—&nbsp;статус помещения требовал отдельной банковской проверки. ВТБ дал автоматический отказ по&nbsp;первой заявке: апартаменты показали как&nbsp;нежилые. Подняли документы 1953&nbsp;года из&nbsp;архива, переоформили категорию помещения, ипотека одобрена со&nbsp;второй попытки. От&nbsp;первого показа до&nbsp;регистрации&nbsp;—&nbsp;67&nbsp;дней.</p>
+    <p class="hm-p">Сложный кейс&nbsp;— статус помещения требовал отдельной банковской проверки. ВТБ дал автоматический отказ по&nbsp;первой заявке: апартаменты показали как&nbsp;нежилые. Подняли документы 1953&nbsp;года из&nbsp;архива, переоформили категорию помещения, ипотека одобрена со&nbsp;второй попытки. От&nbsp;первого показа до&nbsp;регистрации&nbsp;— 67&nbsp;дней.</p>
     <div class="hm-case__metrics">
       <div class="hm-case__metric"><div class="n">148&nbsp;млн&nbsp;рублей</div><div class="l">Нежилые апартаменты</div></div>
       <div class="hm-case__metric"><div class="n">67&nbsp;дней</div><div class="l">от&nbsp;показа до&nbsp;регистрации</div></div>
@@ -1166,7 +1166,7 @@
       </div>
       <div class="hm-acc__item">
         <button class="hm-acc__q"><span class="hm-acc__no">04</span><span class="hm-acc__t">Банк и&nbsp;одобрение ипотеки</span><span class="hm-acc__chev"></span></button>
-        <div class="hm-acc__body"><div class="hm-acc__bodyin"><p>Оценка, страховка, согласование&nbsp;—&nbsp;веду до&nbsp;одобрения.</p></div></div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin"><p>Оценка, страховка, согласование&nbsp;— веду до&nbsp;одобрения.</p></div></div>
       </div>
       <div class="hm-acc__item">
         <button class="hm-acc__q"><span class="hm-acc__no">05</span><span class="hm-acc__t">ПДКП и&nbsp;аккредитив</span><span class="hm-acc__chev"></span></button>
@@ -1197,7 +1197,7 @@
       </div>
       <div class="hm-acc__item">
         <button class="hm-acc__q"><span class="hm-acc__t">Юридическая проверка квартиры</span><span class="hm-acc__chev"></span></button>
-        <div class="hm-acc__body"><div class="hm-acc__bodyin"><p>Проверяю цепочку собственников, обременения, дееспособность продавца, перепланировки и&nbsp;риски оспаривания&nbsp;—&nbsp;до&nbsp;подачи документов в&nbsp;банк.</p></div></div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin"><p>Проверяю цепочку собственников, обременения, дееспособность продавца, перепланировки и&nbsp;риски оспаривания&nbsp;— до&nbsp;подачи документов в&nbsp;банк.</p></div></div>
       </div>
       <div class="hm-acc__item">
         <button class="hm-acc__q"><span class="hm-acc__t">Подбор ипотечной программы под&nbsp;сталинку</span><span class="hm-acc__chev"></span></button>
@@ -1205,7 +1205,7 @@
       </div>
       <div class="hm-acc__item">
         <button class="hm-acc__q"><span class="hm-acc__t">Подготовка к&nbsp;сделке</span><span class="hm-acc__chev"></span></button>
-        <div class="hm-acc__body"><div class="hm-acc__bodyin"><p>ПДКП, аккредитив или банковская ячейка, регистрация перехода права в&nbsp;Росреестре&nbsp;—&nbsp;безопасные расчёты и&nbsp;чистое оформление.</p></div></div>
+        <div class="hm-acc__body"><div class="hm-acc__bodyin"><p>ПДКП, аккредитив или банковская ячейка, регистрация перехода права в&nbsp;Росреестре&nbsp;— безопасные расчёты и&nbsp;чистое оформление.</p></div></div>
       </div>
       <div class="hm-acc__item">
         <button class="hm-acc__q"><span class="hm-acc__t">Сопровождение ипотечной сделки</span><span class="hm-acc__chev"></span></button>
@@ -1332,11 +1332,11 @@
   .cmodal__bd{position:absolute;inset:0;background:rgba(10,8,6,.62)}
   .cmodal__panel{position:relative;width:100%;max-width:660px;display:flex;background:var(--Color-6);color:var(--Color);overflow:hidden;animation:cmodalin .4s cubic-bezier(.22,.61,.36,1)}
   @keyframes cmodalin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  /* левая «журнальная» половина&nbsp;—&nbsp;терракота + цитата */
+  /* левая «журнальная» половина&nbsp;— терракота + цитата */
   .cmodal__aside{flex:0 0 44%;position:relative;overflow:hidden;background:var(--Color-3);color:var(--Color-5);padding:38px 30px 32px;display:flex;flex-direction:column;justify-content:center;gap:30px}
   .cmodal__aside::before{content:"";position:absolute;inset:0;pointer-events:none;background:url(/assets/img/pattern-waves.png) center/420px;opacity:.12;filter:invert(1)}
   .cmodal__quote{position:relative;font-family:'Anticva','Prata',serif;font-size:23px;line-height:1.2;margin:0}
-  /* правая половина&nbsp;—&nbsp;форма на бумаге */
+  /* правая половина&nbsp;— форма на бумаге */
   .cmodal__main{flex:1;position:relative;padding:40px 36px 34px}
   .cmodal__x{position:absolute;top:13px;right:16px;background:none;border:0;color:var(--Color);font-size:22px;line-height:1;cursor:pointer;opacity:.55;transition:opacity .2s}
   .cmodal__x:hover{opacity:1}
@@ -1367,13 +1367,13 @@
   <div class="cmodal__bd" data-close></div>
   <div class="cmodal__panel">
     <aside class="cmodal__aside">
-      <blockquote class="cmodal__quote">Премиум-вторичка ЦАО&nbsp;—&nbsp;мой единственный сегмент.</blockquote>
+      <blockquote class="cmodal__quote">Премиум-вторичка ЦАО&nbsp;— мой единственный сегмент.</blockquote>
     </aside>
     <div class="cmodal__main">
       <button class="cmodal__x" type="button" data-close aria-label="Закрыть">✕</button>
       <div class="cmodal__eye">Бесплатно · 30&nbsp;минут</div>
       <div class="cmodal__t">Консультация</div>
-      <p class="cmodal__s">Оставьте контакты&nbsp;—&nbsp;свяжусь с&nbsp;вами в&nbsp;течение рабочего дня.</p>
+      <p class="cmodal__s">Оставьте контакты&nbsp;— свяжусь с&nbsp;вами в&nbsp;течение рабочего дня.</p>
       <form class="cmodal__f" id="cmodalForm" onsubmit="return false">
         <input type="text" name="name" placeholder="Имя" autocomplete="name" required>
         <input type="tel" name="phone" placeholder="Телефон" inputmode="tel" autocomplete="tel" required>

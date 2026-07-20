@@ -697,8 +697,8 @@ html { overflow-x: clip; }
 .sd-contact__grid > * { min-width: 0; }
 .vh-grid > * { min-width: 0; }
 /* .mz-cap — flex-строка: .nm + .ad(white-space:nowrap) без min-width:0 расширялась за grid-ячейку */
-.mz-cap { overflow: hidden; }
-.mz-cap .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.mz-cap { overflow: clip; flex-wrap: wrap; }
+.mz-cap .nm { min-width: 0; overflow-wrap: break-word; }
 .mz-cap .ad { flex-shrink: 0; }
 /* .sd-contact__big (email/phone ссылки) без переноса растягивали body. */
 .sd-contact__big { max-width: 100%; overflow-wrap: anywhere; }
@@ -883,3 +883,10 @@ html { overflow-x: clip; }
 .st-stat__n{overflow-wrap:break-word}
 /* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
 .mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px, 3vw, 38px)}
+
+/* Таймлайн: значение-слово («XX век», «реставрация») не должно вылезать
+   за 210px-колонку года и разъезжаться с описанием. Даты — прежний кегль. */
+.mz-epoch__row{ align-items: baseline; }
+.mz-epoch__year{ min-width: 0; overflow-wrap: break-word; hyphens: none; }
+.mz-epoch__year--text{ font-size: clamp(20px, 1.8vw, 25px); line-height: 1.16;
+  letter-spacing: .02em; text-transform: uppercase; }

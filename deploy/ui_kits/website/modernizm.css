@@ -912,3 +912,10 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .st-stat__n{overflow-wrap:break-word}
 /* год-диапазон: влезает в 210px-трек одной строкой (ровный ритм) */
 .mz-epoch__year.mz-epoch__year--range{font-size:clamp(26px, 3vw, 38px)}
+
+/* Таймлайн: значение-слово («XX век», «реставрация») не должно вылезать
+   за 210px-колонку года и разъезжаться с описанием. Даты — прежний кегль. */
+.mz-epoch__row{ align-items: baseline; }
+.mz-epoch__year{ min-width: 0; overflow-wrap: break-word; hyphens: none; }
+.mz-epoch__year--text{ font-size: clamp(20px, 1.8vw, 25px); line-height: 1.16;
+  letter-spacing: .02em; text-transform: uppercase; }
