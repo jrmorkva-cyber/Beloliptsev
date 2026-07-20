@@ -619,7 +619,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
   .vh-card--hero .vh-card__photo { width: 100%; min-height: 0; aspect-ratio: 16/9; } }
 @media (max-width: 640px){ .vh-grid { grid-template-columns: 1fr; } .vh-card--hero { grid-column: span 1; } }
 /* Featured card: stack раньше, чтобы длинный заголовок не обрезался в узком body */
-@media (max-width: 1220px){ .vh-card--hero { flex-direction: column; }
+@media (max-width: 1400px){ .vh-card--hero { flex-direction: column; }
   .vh-card--hero .vh-card__photo { width: 100%; min-height: 0; aspect-ratio: 16/9; } }
 
 /* S4 · Сравнительная таблица 9 зданий */
@@ -925,3 +925,17 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .st-stats{max-width:100%}
 .st-stat{min-width:0}
 .st-stat__n{overflow-wrap:break-word}
+
+/* Подвал: пункты меню не должны ломаться на две строки в 4-колоночной сетке.
+   Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
+@media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }
+
+/* Featured-карточка: тело не ужималось (min-width:auto у flex-элемента) и
+   вылезало за карточку на 118px — текст обрезался. Разрешаем ужиматься. */
+.vh-card--hero .vh-card__body{ min-width: 0; flex: 1 1 auto; }
+
+/* Featured-карточка: фото 56% не оставляло телу места, и длинное имя
+   («КОТЕЛЬНИЧЕСКАЯ») рвалось посреди слова. Перебалансируем 48/52 и чуть
+   поджимаем кегль — имя встаёт целым словом в две строки. */
+.vh-card--hero .vh-card__photo{ width: 48%; }
+.vh-card--hero .vh-card__name{ font-size: clamp(26px, 2.1vw, 30px); }

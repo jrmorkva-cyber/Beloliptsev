@@ -809,3 +809,7 @@ body { max-width: 100%; }
 .st-stats{max-width:100%}
 .st-stat{min-width:0}
 .st-stat__n{overflow-wrap:break-word}
+
+/* Подвал: пункты меню не должны ломаться на две строки в 4-колоночной сетке.
+   Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
+@media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }

@@ -593,7 +593,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 
 /* S2 · Три эпохи — индекс-таймлайн (сухая модернистская сетка) */
 .mz-epoch { border-top: 1px solid var(--line); }
-.mz-epoch__row { display: grid; grid-template-columns: minmax(0,210px) 1fr; gap: 44px; padding: 40px 0;
+.mz-epoch__row { display: grid; grid-template-columns: minmax(0, 240px) 1fr; gap: 44px; padding: 40px 0;
   border-bottom: 1px solid var(--line); align-items: start; }
 .mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 38px);
   line-height: 1.02; letter-spacing: -.01em; color: var(--orange); }
@@ -605,7 +605,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .mz-index { grid-column: 1 / -1; border: 1px solid var(--line); padding: clamp(26px,3vw,40px); background: var(--paper-2); }
 .mz-index__head { font-family: var(--font-display); font-weight: 400; font-size: 23px; color: var(--ink); }
 .mz-index__sub { font-size: 14px; letter-spacing: .04em; color: var(--ink-60); margin: 8px 0 22px; }
-.mz-index__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+.mz-index__list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 56px; }
 .mz-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 15px 0;
   border-top: 1px solid var(--line); font-size: 15px; }
 .mz-cap .nm { color: var(--ink); }
@@ -1066,3 +1066,8 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .mz-epoch__year{ min-width: 0; overflow-wrap: break-word; hyphens: none; }
 .mz-epoch__year--text{ font-size: clamp(20px, 1.8vw, 25px); line-height: 1.16;
   letter-spacing: .02em; text-transform: uppercase; }
+
+/* Подвал: пункты меню не должны ломаться на две строки в 4-колоночной сетке.
+   Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
+@media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }
+

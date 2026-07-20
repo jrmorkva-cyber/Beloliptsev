@@ -592,7 +592,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 
 /* S2 · Три эпохи — индекс-таймлайн (сухая модернистская сетка) */
 .mz-epoch { border-top: 1px solid var(--line); }
-.mz-epoch__row { display: grid; grid-template-columns: minmax(0,210px) 1fr; gap: 44px; padding: 40px 0;
+.mz-epoch__row { display: grid; grid-template-columns: minmax(0, 240px) 1fr; gap: 44px; padding: 40px 0;
   border-bottom: 1px solid var(--line); align-items: start; }
 .mz-epoch__year { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3vw, 38px);
   line-height: 1.02; letter-spacing: -.01em; color: var(--orange); }
@@ -604,7 +604,7 @@ a.vh-card:hover .vh-card__name { color: var(--orange); }
 .mz-index { grid-column: 1 / -1; border: 1px solid var(--line); padding: clamp(26px,3vw,40px); background: var(--paper-2); }
 .mz-index__head { font-family: var(--font-display); font-weight: 400; font-size: 30px; color: var(--ink); }
 .mz-index__sub { font-size: 18px; letter-spacing: .02em; color: var(--ink-60); margin: 10px 0 26px; }
-.mz-index__list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+.mz-index__list { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 56px; }
 .mz-cap { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 16px 0;
   border-top: 1px solid var(--line); font-size: 18px; }
 .mz-cap .nm { color: var(--ink); }
@@ -697,9 +697,9 @@ html { overflow-x: clip; }
 .sd-contact__grid > * { min-width: 0; }
 .vh-grid > * { min-width: 0; }
 /* .mz-cap — flex-строка: .nm + .ad(white-space:nowrap) без min-width:0 расширялась за grid-ячейку */
-.mz-cap { overflow: clip; flex-wrap: wrap; }
+.mz-cap { flex-wrap: wrap; min-width: 0; row-gap: 4px; }
 .mz-cap .nm { min-width: 0; overflow-wrap: break-word; }
-.mz-cap .ad { flex-shrink: 0; }
+.mz-cap .ad { flex: 0 1 auto; min-width: 0; white-space: normal; overflow-wrap: break-word; }
 /* .sd-contact__big (email/phone ссылки) без переноса растягивали body. */
 .sd-contact__big { max-width: 100%; overflow-wrap: anywhere; }
 /* .sd-contact__h (h2, 48px uppercase) имел scrollWidth > offsetWidth из-за
@@ -890,3 +890,8 @@ html { overflow-x: clip; }
 .mz-epoch__year{ min-width: 0; overflow-wrap: break-word; hyphens: none; }
 .mz-epoch__year--text{ font-size: clamp(20px, 1.8vw, 25px); line-height: 1.16;
   letter-spacing: .02em; text-transform: uppercase; }
+
+/* Подвал: пункты меню не должны ломаться на две строки в 4-колоночной сетке.
+   Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
+@media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }
+
