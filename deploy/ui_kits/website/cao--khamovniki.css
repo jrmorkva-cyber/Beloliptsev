@@ -1439,3 +1439,8 @@ html{overflow-x:clip}
    Разметка ячеек (price--na там, где цифры нет) оставлена: если акцент
    понадобится вернуть под реальные цены, хватит снять это правило. */
 .kh-matrix .val.price::after{ display: none; }
+
+/* Созвон 20.07: заголовки колонок подвала должны вести на свои разделы. */
+.st-foot__cols h4 a, .hm-foot__acc h4 a{ color: inherit; text-decoration: none;
+  transition: color .25s var(--ease); }
+.st-foot__cols h4 a:hover, .hm-foot__acc h4 a:hover{ color: var(--orange); }

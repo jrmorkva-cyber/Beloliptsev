@@ -1032,3 +1032,8 @@ a.kh-card:hover .kh-card__link { color: var(--platinum); }
    Только на широких экранах — ниже 900px колонка узкая и перенос необходим. */
 @media (min-width: 901px){ .st-foot__cols a{ white-space: nowrap; } }
 
+
+/* Созвон 20.07: заголовки колонок подвала должны вести на свои разделы. */
+.st-foot__cols h4 a, .hm-foot__acc h4 a{ color: inherit; text-decoration: none;
+  transition: color .25s var(--ease); }
+.st-foot__cols h4 a:hover, .hm-foot__acc h4 a:hover{ color: var(--orange); }
