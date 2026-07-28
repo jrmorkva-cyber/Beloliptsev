@@ -12,10 +12,15 @@ Usage: python qa-lint.py            # все целевые страницы
 """
 import re, glob, os, sys
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # ...\Белолипцев
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # корень репо
+# Рита 28.07: пути вели на старое дерево (website/ui_kits, HANDOFF-RITA/pages) —
+# в этом репо их нет, линтер сканировал 0 страниц (ложный «0 находок»).
+# Перенаправлено на актуальный слой PortedPage — тот же, что у test_pages.
+# Прежние пути оставлены для истории:
+#   os.path.join(BASE, "website", "ui_kits", "website"),
+#   os.path.join(BASE, "HANDOFF-RITA", "pages"),
 DIRS = [
-    os.path.join(BASE, "website", "ui_kits", "website"),
-    os.path.join(BASE, "HANDOFF-RITA", "pages"),
+    os.path.join(BASE, "site", "src", "data"),
 ]
 EXCLUDE = ("_sketch", "backup", "animation-demo", "prototype",
            "_mobile-frame", "_hero-palette", "standalone")
