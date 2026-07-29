@@ -10,30 +10,15 @@ Usage:
     python test_pages.py [dir]         # по умолчанию astro/src/data (канон Риты)
     python test_pages.py --json        # + машиночитаемый итог
 """
-import os, sys, re, json, glob
+import os, sys, re, json
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _lib.textextract import visible_frags, strip_ent   # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_DIR = os.path.join(BASE, "astro", "src", "data")
+DEFAULT_DIR = os.path.join(BASE, "deploy")   # канон = дерево, которое уезжает в прод
 EXCLUDE = ("_sketch", "backup", "animation-demo", "prototype", "_mobile-frame", "_hero-palette", "standalone")
-
-# ── видимый текст: фрагменты с СОХРАНЁННЫМИ сущностями (для типографики) ───
-def visible_frags(html):
-    out, inblock = [], None
-    for raw in html.splitlines():
-        low = raw.lower()
-        if inblock:
-            if (inblock == "comment" and "-->" in low) or (f"</{inblock}>" in low): inblock = None
-            continue
-        if "<!--" in low and "-->" not in low: inblock = "comment"; continue
-        if "<script" in low and "</script>" not in low: inblock = "script"; continue
-        if "<style" in low and "</style>" not in low: inblock = "style"; continue
-        parts = re.findall(r">([^<]+)(?:<|$)", raw)
-        h = re.match(r"^([^<]*)<", raw)
-        if h: parts.append(h.group(1))
-        out.extend(p for p in parts if p.strip())
-    return out
-
-def strip_ent(t): return re.sub(r"&[a-zA-Z]+;|&#\d+;", " ", t)
+EXCLUDE_DIR = ("node_modules", ".git", "_astro", ".claude", "deka", "otchet")
 
 MEANING = [
     ("гео-негатив", re.compile(r"ЮЗАО|\bне\s+ЦАО|\bвне\s+ЦАО|\bне\s+в\s+ЦАО|\bне\s+в\s+центре", re.I)),
@@ -94,26 +79,43 @@ def check(html, fname):
     add("WARN", "нет запрещ. цветов", not bool(FORBIDDEN_COLOR.search(html)))
     return R
 
+def find_pages(root):
+    """Рекурсивный обход: в deploy/ страницы лежат как <slug>/index.html."""
+    out = []
+    for dp, dns, fns in os.walk(root):
+        dns[:] = [x for x in dns if x not in EXCLUDE_DIR]
+        for fn in fns:
+            if fn.endswith(".html") and not any(x in fn for x in EXCLUDE):
+                out.append(os.path.join(dp, fn))
+    return sorted(out)
+
+
+def page_id(path, root):
+    """deploy/cao/arbat/index.html → cao/arbat ; site/src/data/cao.html → cao.html"""
+    rel = os.path.relpath(path, root).replace("\\", "/")
+    return rel[:-len("/index.html")] if rel.endswith("/index.html") else rel
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     d = args[0] if args else DEFAULT_DIR
-    files = [f for f in sorted(glob.glob(os.path.join(d, "*.html")))
-             if not any(x in os.path.basename(f) for x in EXCLUDE)]
+    files = find_pages(d)
     if not files:
         print(f"нет .html в {d}"); return 2
     print(f"=== ТЕСТ-ГЕЙТ: {len(files)} страниц · {d} ===\n")
     crit_fail = warn_fail = 0
     fail_detail = []
     for f in files:
+        pid = page_id(f, d)
         html = open(f, encoding="utf-8").read()
-        R = check(html, os.path.basename(f))
+        R = check(html, pid)
         cf = [r for r in R if r[0] == "CRIT" and not r[2]]
         wf = [r for r in R if r[0] == "WARN" and not r[2]]
         crit_fail += len(cf); warn_fail += len(wf)
         mark = "❌" if cf else ("⚠️ " if wf else "✅")
-        print(f"{mark} {os.path.basename(f):<42} CRIT {len([r for r in R if r[0]=='CRIT' and r[2]])}/{len([r for r in R if r[0]=='CRIT'])}  WARN-fail {len(wf)}")
+        print(f"{mark} {pid:<48} CRIT {len([r for r in R if r[0]=='CRIT' and r[2]])}/{len([r for r in R if r[0]=='CRIT'])}  WARN-fail {len(wf)}")
         for lvl, name, ok, det in cf:
-            print(f"      ❌ CRIT {name}  {det}"); fail_detail.append((os.path.basename(f), name, det))
+            print(f"      ❌ CRIT {name}  {det}"); fail_detail.append((pid, name, det))
         for lvl, name, ok, det in wf:
             print(f"      ⚠️  {name}  {det}")
     print(f"\n=== ИТОГ: CRIT-провалов {crit_fail} · WARN-провалов {warn_fail} ===")

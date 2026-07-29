@@ -75,6 +75,30 @@ UNIT = re.compile(r"(\d)\s(млрд|млн|тыс|м²|км²|км|кварти�
 def fix_nbsp(html):
     return re.sub(r">([^<]*)<", lambda m: ">" + UNIT.sub(r"\1&nbsp;\2", m.group(1)) + "<", html)
 
+# ── защита микроразметки ─────────────────────────────────────────────────────
+# Литеральная замена ("Landmark" → "Ориентир") однажды съела тип schema.org
+# LandmarkOrHistoricalBuilding в 9 файлах, превратив его в
+# "ОриентирOrHistoricalBuilding". Блоки JSON-LD выносим из-под замен целиком:
+# микроразметка — машинный контракт, а не видимая копия, англицизмы там законны.
+LD_BLOCK = re.compile(r'<script[^>]*type="application/ld\+json"[^>]*>.*?</script>', re.S | re.I)
+
+
+def protect_ld(html):
+    """Вырезает JSON-LD, возвращает (текст-с-плейсхолдерами, список блоков)."""
+    blocks = []
+
+    def take(m):
+        blocks.append(m.group(0))
+        return f"\x00LD{len(blocks) - 1}\x00"
+
+    return LD_BLOCK.sub(take, html), blocks
+
+
+def restore_ld(html, blocks):
+    for i, b in enumerate(blocks):
+        html = html.replace(f"\x00LD{i}\x00", b)
+    return html
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     dry = "--dry" in sys.argv
@@ -90,6 +114,7 @@ def main():
     changed = total = 0
     for f in files:
         s = open(f, encoding="utf-8").read()
+        s, ld_blocks = protect_ld(s)          # микроразметка под замены не попадает
         n = 0
         for a, b in REPL:
             c = s.count(a)
@@ -97,6 +122,8 @@ def main():
                 s = s.replace(a, b); n += c
         before_nbsp = s
         s = fix_nbsp(s)
+        s = restore_ld(s, ld_blocks)
+        before_nbsp = restore_ld(before_nbsp, ld_blocks)
         nb = len(UNIT.findall("".join(re.findall(r">([^<]*)<", before_nbsp)))) - \
              len(UNIT.findall("".join(re.findall(r">([^<]*)<", s))))
         n += max(0, nb)

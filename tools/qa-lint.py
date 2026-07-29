@@ -10,7 +10,10 @@ Usage: python qa-lint.py            # все целевые страницы
        python qa-lint.py B          # только смысл
        python qa-lint.py <file...>  # конкретные файлы
 """
-import re, glob, os, sys
+import re, os, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _lib.textextract import strip_same_line_blocks, visible_parts_line, strip_ent  # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # корень репо
 # Рита 28.07: пути вели на старое дерево (website/ui_kits, HANDOFF-RITA/pages) —
@@ -19,9 +22,12 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # корен
 # Прежние пути оставлены для истории:
 #   os.path.join(BASE, "website", "ui_kits", "website"),
 #   os.path.join(BASE, "HANDOFF-RITA", "pages"),
+# Канон = deploy/ (уезжает в прод), site/src/data — Astro-порт, проверяем оба.
 DIRS = [
+    os.path.join(BASE, "deploy"),
     os.path.join(BASE, "site", "src", "data"),
 ]
+EXCLUDE_DIR = ("node_modules", ".git", "_astro", ".claude", "deka", "otchet")
 EXCLUDE = ("_sketch", "backup", "animation-demo", "prototype",
            "_mobile-frame", "_hero-palette", "standalone")
 
@@ -57,23 +63,21 @@ def gather():
     if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         return [a for a in sys.argv[1:] if os.path.exists(a)]
     for d in DIRS:
-        for f in sorted(glob.glob(os.path.join(d, "*.html"))):
-            b = os.path.basename(f)
-            if any(x in b for x in EXCLUDE):
-                continue
-            files.append(f)
-    return files
+        if not os.path.isdir(d):
+            continue
+        for dp, dns, fns in os.walk(d):          # рекурсия: в deploy/ это <slug>/index.html
+            dns[:] = [x for x in dns if x not in EXCLUDE_DIR]
+            for fn in fns:
+                if fn.endswith(".html") and not any(x in fn for x in EXCLUDE):
+                    files.append(os.path.join(dp, fn))
+    return sorted(files)
 
-def visible_parts(line):
-    """Список видимых текст-фрагментов строки, HTML-сущности СОХРАНЕНЫ (для типографики)."""
-    line = re.sub(r"<!--.*?-->", "", line)            # single-line comments
-    parts = re.findall(r">([^<]+)(?:<|$)", line)       # text between tags
-    head = re.match(r"^([^<]*)<", line)                # leading text before first tag
-    if head: parts.append(head.group(1))
-    return parts
 
-def strip_ent(txt):
-    return re.sub(r"&[a-zA-Z]+;|&#\d+;", " ", txt)    # сущности → пробел (для латиница/смысл-проверок)
+def label(path):
+    """Короткое имя страницы в отчёте: deploy/cao/arbat/index.html → deploy:cao/arbat"""
+    rel = os.path.relpath(path, BASE).replace("\\", "/")
+    rel = rel.replace("site/src/data/", "site:").replace("deploy/", "deploy:")
+    return rel[:-len("/index.html")] if rel.endswith("/index.html") else rel
 
 def main():
     only = None
@@ -85,6 +89,7 @@ def main():
         inblock = None
         with open(f, encoding="utf-8") as fh:
             for i, raw in enumerate(fh, 1):
+                raw = strip_same_line_blocks(raw)   # фикс однострочных script/style/комментариев
                 low = raw.lower()
                 if inblock:
                     if (inblock == "comment" and "-->" in low) or (f"</{inblock}>" in low):
@@ -93,7 +98,7 @@ def main():
                 if "<!--" in low and "-->" not in low: inblock = "comment"; continue
                 if "<script" in low and "</script>" not in low: inblock = "script"; continue
                 if "<style" in low and "</style>" not in low: inblock = "style"; continue
-                parts = visible_parts(raw)
+                parts = visible_parts_line(raw)
                 vt_raw = " ".join(parts)               # сущности сохранены (для A)
                 vt = strip_ent(vt_raw)                  # сущности → пробел (для B)
                 if not vt.strip():
@@ -125,10 +130,11 @@ def main():
         hs = by_file[f]
         if not hs:
             continue
-        print(f"\n  {os.path.basename(f)}")
+        print(f"\n  {label(f)}")
         for h in hs:
             print(f"    L{h[1]:<5} {h[2]:<26} «{h[3]}»  | {h[4]}")
-    return 0
+    # ГЕЙТ: раньше main() безусловно возвращал 0 при любом числе находок.
+    return 1 if hits else 0
 
 if __name__ == "__main__":
     sys.exit(main())
