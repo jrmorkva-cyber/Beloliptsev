@@ -78,9 +78,23 @@ def main():
 
         if d.get("points_broken"):
             crit.append(f"{pid}: data-points не парсится (сломанный JSON)")
-        if c and pts and far(c, pts[0][:2]):
-            crit.append(f"{pid}: центр карты ≠ метка ({c} vs {pts[0][:2]})")
-        if c and sch and far(c, sch):
+        # Центр обязан совпадать с меткой только когда метка ОДНА. На странице
+        # района меток несколько, и центр там — центр области, а не первая точка;
+        # прежняя версия проверки давала на таких страницах ложные провалы.
+        if c and pts and len(pts) == 1 and far(c, pts[0][:2]):
+            crit.append(f"{pid}: центр карты ≠ единственная метка ({c} vs {pts[0][:2]})")
+        if c and pts and len(pts) > 1:
+            lat = sum(p[0] for p in pts) / len(pts)
+            lon = sum(p[1] for p in pts) / len(pts)
+            if abs(c[0] - lat) > 0.02 or abs(c[1] - lon) > 0.03:
+                warn.append(f"{pid}: центр далеко от облака меток ({c} vs среднее {round(lat,4)},{round(lon,4)})")
+        # Микроразметка описывает здание страницы. При одной метке она обязана
+        # совпасть с центром; при нескольких — совпасть с ЛЮБОЙ из меток
+        # (своё здание в наборе), а не с центром облака точек.
+        if sch and pts:
+            if not any(not far(sch, p[:2]) for p in pts):
+                crit.append(f"{pid}: schema geo не совпадает ни с одной меткой ({sch})")
+        elif c and sch and far(c, sch):
             crit.append(f"{pid}: schema geo ≠ карта ({sch} vs {c})")
         for tag, xy in (("center", c), ("schema", sch)):
             if xy and not (MOSCOW[0] <= xy[0] <= MOSCOW[1] and MOSCOW[2] <= xy[1] <= MOSCOW[3]):
@@ -94,8 +108,12 @@ def main():
                 warn.append(f"{pid}: подпись метки «{label}» не бьётся с адресом «{addr}»")
 
     for xy, ids in seen.items():
-        if len(ids) > 1:
-            crit.append(f"дубль координат {xy}: {', '.join(ids)}")
+        # Дубль координат ловим только между страницами ЗДАНИЙ: страница района
+        # законно центрируется на своём знаковом доме, и совпадение с его
+        # собственной страницей — не ошибка, а правильная связка.
+        buildings = [i for i in ids if not i.startswith("cao")]
+        if len(buildings) > 1:
+            crit.append(f"дубль координат {xy}: {', '.join(buildings)}")
 
     if as_csv:
         print("page;address;center;point;schema;label")
