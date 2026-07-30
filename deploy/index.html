@@ -1832,22 +1832,7 @@
     const io=new IntersectionObserver(es=>es.forEach(e=>{inView=e.isIntersecting; inView?play():stop();}),{threshold:.25});
     io.observe(document.getElementById('znakBg')||prog);
   })();
-  // МОЙ СЕГМЕНТ — параллакс: блок уходит вверх быстрее скролла; overflow:hidden на обёртке
-  //                клипит содержимое, следующая секция не «видит» тянущееся фото.
-  (function(){
-    const wrap=document.getElementById('seg'), inner=wrap&&wrap.querySelector('.seg-inner');
-    if(!wrap||!inner) return;
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let raf=0;
-    function apply(){
-      raf=0;
-      const out=-wrap.getBoundingClientRect().top;
-      inner.style.transform = out>0 ? 'translateY('+(-Math.min(out*0.22,190))+'px)' : '';
-    }
-    window.addEventListener('scroll',()=>{ if(!raf) raf=requestAnimationFrame(apply); },{passive:true});
-    window.addEventListener('resize',()=>{ if(!raf) raf=requestAnimationFrame(apply); },{passive:true});
-    apply();
-  })();
+  // МОЙ СЕГМЕНТ — параллакс убран по правке: фото сегмента статично, не едет при скролле.
   // ПОДВАЛ — нахлёст-ревил: футер поднимается снизу-вверх к форме (translateY 90→0) по мере
   //          входа в экран. Якорь #footAnchor (вне #footWrap) даёт позицию без обратной связи.
   (function(){
