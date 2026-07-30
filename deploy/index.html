@@ -1691,54 +1691,13 @@
     };
   });
   (function(){
+    // «Истинный пин» убран: работал только когда секция «Подход» (814px) выше окна —
+    // на обычных экранах она короче, pin никогда не срабатывал, а preventDefault на wheel
+    // над колонкой при этом блокировал её родной overflow-scroll. Шаги 04–06 были
+    // недостижимы никаким способом. Колонка и так скроллится нативно (overflow-y:auto).
     const adv=document.querySelector('.podhod-adv'),hint=document.querySelector('.podhod-hint');
     if(!adv) return;
     if(hint){adv.addEventListener('scroll',()=>{hint.style.opacity=adv.scrollTop>12?'0':'1';},{passive:true});}
-    // ИСТИННЫЙ ПИН. Когда секция «Подход» доезжает краем до края экрана — ФИКСИРУЕМ
-    // страницу (scrollTo держит scrollY), а колесо листает правую колонку этапов до конца.
-    // Следующий блок не показывается, пока колонка не домотана до кнопки внизу; верхний
-    // блок — пока не домотана до верха. Флаг armed не даёт повторно запиниться сразу после
-    // отпускания. position:fixed/sticky НЕ используем — канвас в transform:scale их ломает.
-    const section=adv.parentElement;
-    const EPS=2;
-    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function maxScroll(){return adv.scrollHeight-adv.clientHeight;}
-    let target=adv.scrollTop, raf=0, pinned=false, pinY=0, armed=true;
-    function loop(){                          // единый rAF-лерп: страница мягко держится у pinY, колонка плавно идёт к target
-      if(!pinned){ raf=0; return; }
-      const max=maxScroll();
-      target=Math.max(0,Math.min(max,target));
-      const sy=window.pageYOffset, sd=pinY-sy;             // сглаженное удержание страницы — без дёрга на входе и от инерции
-      window.scrollTo(0, Math.abs(sd)>0.4 ? sy+sd*0.30 : pinY);
-      const cur=adv.scrollTop, cd=target-cur;              // сглаженная прокрутка колонки (отзывчивее — меньше «лага»)
-      if(Math.abs(cd)>=0.4) adv.scrollTop=cur+cd*0.36;
-      raf=requestAnimationFrame(loop);
-    }
-    window.addEventListener('wheel',function(e){
-      const max=maxScroll();
-      if(max<=EPS){ pinned=false; return; }  // колонка не переполнена — обычный скролл
-      const r=section.getBoundingClientRect(), vh=window.innerHeight, down=e.deltaY>0;
-      if(!pinned){
-        if(r.bottom<vh*0.5 || r.top>vh*0.5) armed=true;   // секция вышла из активной зоны → снова можно пиниться
-        if(!armed) return;
-        const atPin = down ? (r.top<=2 && r.bottom>vh+2) : (r.bottom>=vh-2 && r.top<-2);
-        if(!atPin){                                        // ещё не доехали до пин-точки
-          if(adv.contains(e.target)){ e.preventDefault(); window.scrollBy(0,e.deltaY); } // курсор над колонкой → двигаем страницу сами (иначе родной скролл колонки мешает подъезду)
-          return;
-        }
-        if(down){ pinY=window.pageYOffset+r.top; adv.scrollTop=0; target=0; }            // фикс верхом к верху, колонка — в начало
-        else { pinY=window.pageYOffset+(r.bottom-vh); adv.scrollTop=max; target=max; }   // фикс низом к низу, колонка — в конец
-        pinned=true;                                       // вход сглаживается через loop
-      }
-      const cur=adv.scrollTop;
-      if((down && cur>=max-EPS) || (!down && cur<=EPS)){   // колонка домотана до края → отпускаем страницу
-        pinned=false; armed=false; return;                 // без preventDefault → это колесо листает страницу дальше
-      }
-      e.preventDefault();
-      if(reduce){ window.scrollTo(0,pinY); adv.scrollTop=Math.max(0,Math.min(max,cur+e.deltaY)); return; }
-      target=Math.max(0,Math.min(max,target+e.deltaY));
-      if(!raf) raf=requestAnimationFrame(loop);
-    },{passive:false});
   })();
   // Аккордеон услуг: активная строка следует за скроллом страницы (0→3)
   (function(){
